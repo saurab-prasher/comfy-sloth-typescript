@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../../images/logo.svg";
 import {
   NavBtn as SidebarBtn,
   ShoppingCartValue,
@@ -31,13 +30,19 @@ const Sidebar = ({ isOpen, toggle }) => {
       <div>
         <SidebarMenu>
           <SidebarItem>
-            <SidebarLink to="/">Home</SidebarLink>
+            <SidebarLink onClick={toggle} to="/">
+              Home
+            </SidebarLink>
           </SidebarItem>
           <SidebarItem>
-            <SidebarLink to="about">About</SidebarLink>
+            <SidebarLink onClick={toggle} to="about">
+              About
+            </SidebarLink>
           </SidebarItem>
           <SidebarItem>
-            <SidebarLink to="/products">Products</SidebarLink>
+            <SidebarLink onClick={toggle} to="/products">
+              Products
+            </SidebarLink>
           </SidebarItem>
         </SidebarMenu>
       </div>
