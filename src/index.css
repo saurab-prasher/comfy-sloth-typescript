@@ -9,3 +9,23 @@
 html {
   box-sizing: border-box;
 }
+
+body {
+  font-family: "Encode Sans Expanded", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+}
