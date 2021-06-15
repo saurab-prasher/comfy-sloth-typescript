@@ -1,5 +1,5 @@
 import React from "react";
-import { FaShoppingCart, FaUserPlus, FaBars } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.svg";
 
 import {
@@ -19,14 +19,14 @@ import {
 Logo.defaultProps = {
   src: logo,
 };
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   return (
     <Header>
       <div>
         <Logo />
       </div>
 
-      <MobileIcon>
+      <MobileIcon onClick={toggle}>
         <FaBars />
       </MobileIcon>
 

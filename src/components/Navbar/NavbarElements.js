@@ -6,12 +6,14 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 1rem auto;
   padding-right: 2rem;
 `;
 
-export const Logo = styled.img``;
+export const Logo = styled.img`
+  max-width: 12rem;
+`;
 
 export const Nav = styled.nav`
   @media screen and (max-width: 768px) {
@@ -46,7 +48,7 @@ export const MobileIcon = styled.div`
   }
 `;
 export const NavBtn = styled.div`
-  margin-left: 3rem;
+  margin-left: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
