@@ -34,4 +34,5 @@ export const FormBtn = styled.button`
   padding: 0.7rem;
   border-radius: 3px;
   font-size: 1rem;
+  cursor: pointer;
 `;

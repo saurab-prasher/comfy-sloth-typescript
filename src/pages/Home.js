@@ -1,4 +1,5 @@
 import React from "react";
+
 import HeroSection from "../components/HeroSection";
 import Featured from "../components/Featured";
 import Services from "../components/Services";
@@ -12,7 +13,6 @@ const Home = () => {
       <Featured />
       <Services />
       <NewsLetter />
-      <Footer />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardImage,
@@ -9,6 +9,7 @@ import {
 } from "./CardElements";
 
 import { Search, SearchContainer } from "../Featured/FeaturesElements";
+import { Link } from "react-router-dom";
 const Cards = ({ id, img, heading, price }) => {
   const [hover, setHover] = useState(false);
 
@@ -22,7 +23,9 @@ const Cards = ({ id, img, heading, price }) => {
 
         {hover && (
           <SearchContainer>
-            <Search />
+            <Link to="/products">
+              <Search />
+            </Link>
           </SearchContainer>
         )}
       </CardImageContainer>

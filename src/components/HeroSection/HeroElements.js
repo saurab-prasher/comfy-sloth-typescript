@@ -6,7 +6,6 @@ export const HeroContainer = styled.section`
   grid-template-columns: repeat(2, 1fr);
   max-width: 1240px;
   grid-gap: 5rem;
-
   margin: 0 auto;
   margin-top: 10rem;
   height: calc(100vh - 14rem);
