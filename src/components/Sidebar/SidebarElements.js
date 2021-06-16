@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,7 @@ export const SidebarContainer = styled.aside`
   width: 100vw;
   z-index: 999;
   background-color: #fff;
+
   transform: ${({ isOpen }) =>
     isOpen ? "translateX(0)" : "translateX(-100%)"};
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
