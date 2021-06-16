@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ImSearch } from "react-icons/im";
 
@@ -36,27 +36,26 @@ export const FeaturedCards = styled.div`
   position: relative;
 `;
 
-export const Search = styled(ImSearch)`
-  opacity: ${({ show }) => (show ? "100%" : "0")};
+export const SearchContainer = styled.div`
+  height: 100%;
+  width: 100%;
   position: absolute;
-  z-index: -1;
-  transition: all 0.3s ease-in-out;
-  left: ${({ center }) => center.xCenter}px;
-  cursor: pointer;
+  inset: 0;
+`;
 
-  ${(show) =>
-    show &&
-    css`
-      z-index: 2;
-    `}
-  top: 35%;
-  transform: translateX(50%);
+export const Search = styled(ImSearch)`
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-size: 2.5rem;
   color: #fff;
   border-radius: 10px;
   background: #00c075;
-
   padding: 0.5rem;
+  z-index: 2;
 `;
 
 export const FeaturedBtn = styled(Link)`

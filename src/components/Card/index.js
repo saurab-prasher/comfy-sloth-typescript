@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardImage,
@@ -7,17 +7,24 @@ import {
   Price,
   CardImageContainer,
 } from "./CardElements";
-const Cards = ({ id, img, heading, price, handleSearchIcon }) => {
-  const refContainer = React.useRef("");
 
-  useEffect(() => {}, [refContainer]);
+import { Search, SearchContainer } from "../Featured/FeaturesElements";
+const Cards = ({ id, img, heading, price }) => {
+  const [hover, setHover] = useState(false);
+
   return (
-    <Card
-      onMouseEnter={() => handleSearchIcon(refContainer)}
-      onMouseLeave={() => handleSearchIcon(refContainer)}
-    >
-      <CardImageContainer ref={refContainer}>
+    <Card>
+      <CardImageContainer
+        onMouseEnter={() => setHover(!hover)}
+        onMouseLeave={() => setHover(!hover)}
+      >
         <CardImage src={img.default} />
+
+        {hover && (
+          <SearchContainer>
+            <Search />
+          </SearchContainer>
+        )}
       </CardImageContainer>
       <CardText>
         <Heading>{heading}</Heading>
