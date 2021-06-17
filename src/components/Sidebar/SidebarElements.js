@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 

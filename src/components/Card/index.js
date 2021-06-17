@@ -23,7 +23,7 @@ const Cards = ({ id, img, heading, price }) => {
 
         {hover && (
           <SearchContainer>
-            <Link to="/products">
+            <Link to={`/products/${id}`}>
               <Search />
             </Link>
           </SearchContainer>

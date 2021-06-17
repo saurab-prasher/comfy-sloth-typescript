@@ -5,7 +5,6 @@ import {
   FormBtn,
   NewsLetterH2,
   Input,
-  Form,
   NewsLetterP,
   NewsLetterText,
 } from "./NewsLetterElements";
