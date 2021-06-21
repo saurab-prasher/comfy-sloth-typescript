@@ -12,6 +12,8 @@ html {
 
 body {
   font-family: "Encode Sans", sans-serif;
+  color: #444444;
+  position: relative;
 }
 
 img {
@@ -30,3 +32,14 @@ a {
 button {
   border: none;
 }
+
+/* Button background color -  #531410;
+background color - 1 - #F4F6F4;
+background color - 2 - #EAE9E1;
+background color - 3 - #FAFAFA;
+Heading Colors  - #444444;
+logo color -  #531410;
+
+
+
+ */

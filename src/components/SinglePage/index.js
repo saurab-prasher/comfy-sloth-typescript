@@ -1,6 +1,27 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
+import ImgSrc from "../../images/product-1.jpeg";
 import { useParams } from "react-router-dom";
+import {
+  SinglePageHeader,
+  SinglePageH1,
+  HomeLink,
+  SinglePageImg,
+  SinglePageText,
+  SinglePageMain,
+  ReviewsContainer,
+  Img,
+  HeaderInner,
+  Price,
+  Description,
+  Available,
+  SKU,
+  Brand,
+  Varients,
+  AddToCartBtn,
+  Products,
+  Star,
+} from "./SinglePageElements";
 
 const SinglePage = () => {
   return (
@@ -14,20 +35,20 @@ const SinglePage = () => {
 
       <SinglePageMain>
         <SinglePageImg>
-          <Img />
+          <Img src={ImgSrc} />
         </SinglePageImg>
 
         <SinglePageText>
           <SinglePageH1>Product Name</SinglePageH1>
           <ReviewsContainer>
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            (100 Customer reviews)
+            <Star />
+            <Star />
+            <Star />
+            <Star />
+            <Star />
+            <p>(100 Customer reviews)</p>
           </ReviewsContainer>
-          <Price />
+          <Price>$ 599.99</Price>
           <Description>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
             maiores veritatis accusamus hic esse, enim consectetur eveniet
@@ -36,13 +57,12 @@ const SinglePage = () => {
             facere!
           </Description>
 
-          <Available>: In Stock</Available>
-          <SKU>: Lorem ipsum dolor sit amet consectetur adipisicing elit.</SKU>
-          <Brand>: Gucci</Brand>
-
-          <Varients>Colors: 1</Varients>
-
-          <Container> - 1 +</Container>
+          <ul>
+            <li>Available: In Stock</li>
+            <li>SKU: Lorem ipsum dolor sit amet.</li>
+            <li>Brand: Cressa</li>
+            <li>Colors: In Stock</li>
+          </ul>
 
           <AddToCartBtn>Add To cart</AddToCartBtn>
         </SinglePageText>

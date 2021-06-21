@@ -34,7 +34,7 @@ export const NavLink = styled(Link)`
   margin: 0 0.75rem;
 
   &:hover {
-    border-bottom: 3px solid #01bf71;
+    border-bottom: 2px solid #531435;
   }
 `;
 
@@ -63,11 +63,19 @@ export const ShoppingCartValue = styled.div`
   right: -0.75rem;
   color: #fff;
   line-height: 1;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
-  background-color: #01bf71;
+  background-color: rgb(83, 20, 16);
   padding: 0.35rem 0.5rem;
   border-radius: 50%;
+  border: 1px solid transparent;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: rgb(83, 20, 16);
+    border: 1px solid rgb(83, 20, 16);
+  }
 `;
 
 const sharedButtonStyle = css`

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ImSearch } from "react-icons/im";
 
 export const FeaturedContainer = styled.section`
-  background-color: #f1f5f8;
+  background-color: #eae9e1;
 `;
 
 export const FeaturedInner = styled.div`
@@ -16,7 +16,7 @@ export const FeaturedInner = styled.div`
 `;
 export const FeaturedH2 = styled.h2`
   font-size: 3rem;
-  color: red;
+  color: #444444;
   position: relative;
   align-self: center;
   margin-bottom: 0.5rem;
@@ -25,7 +25,7 @@ export const Line = styled.div`
   height: 4px;
   margin-bottom: 4rem;
   width: 8rem;
-  background-color: purple;
+  background-color: #531410;
   align-self: center;
 `;
 
@@ -50,16 +50,22 @@ export const Search = styled(ImSearch)`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   color: #fff;
-  border-radius: 10px;
-  background: #00c075;
-  padding: 0.5rem;
+  border-radius: 50%;
+  background: #531410;
+  padding: 0.25rem 0.5rem;
   z-index: 2;
+
+  &:hover {
+    background-color: #fff;
+    color: rgb(83, 20, 16);
+    border: 1px solid rgb(83, 20, 16);
+  }
 `;
 
 export const FeaturedBtn = styled(Link)`
-  background-color: #00c075;
+  background-color: #531410;
   padding: 0.75rem 1rem;
   color: #fff;
   font-size: 1.1rem;
@@ -68,4 +74,12 @@ export const FeaturedBtn = styled(Link)`
   display: inline-block;
   align-self: center;
   margin-top: 3rem;
+  border: 1px solid transparent;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: rgb(83, 20, 16);
+    border: 1px solid rgb(83, 20, 16);
+  }
 `;

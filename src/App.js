@@ -31,8 +31,8 @@ const App = () => {
           </Route>
           <Route path="*" component={Error} />
         </Switch>
-        <Footer />
       </Router>
+      <Footer />
     </>
   );
 };

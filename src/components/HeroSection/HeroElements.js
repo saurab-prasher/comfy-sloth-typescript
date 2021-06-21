@@ -10,7 +10,7 @@ export const HeroContainer = styled.section`
   margin-top: 10rem;
   height: calc(100vh - 14rem);
   justify-content: space-between;
-  color: #102941;
+  color: #444444;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -31,13 +31,21 @@ export const HeroP = styled.p`
   margin-bottom: 2rem;
 `;
 export const HeroBtn = styled(Link)`
-  background-color: #00c075;
+  background-color: rgb(83, 20, 16);
   padding: 0.75rem 1rem;
   color: #fff;
+  border: 1px solid transparent;
   font-size: 1.1rem;
   font-weight: 500;
   border-radius: 5px;
   display: inline-block;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: rgb(83, 20, 16);
+    border: 1px solid rgb(83, 20, 16);
+  }
 `;
 export const HeroImageContainer = styled.article`
   flex-basis: 100%;

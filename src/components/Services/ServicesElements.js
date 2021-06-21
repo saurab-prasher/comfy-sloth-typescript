@@ -3,7 +3,7 @@ import { ImCompass2 } from "react-icons/im";
 import { GiStabbedNote, GiDiamondHard } from "react-icons/gi";
 
 export const ServicesContainer = styled.section`
-  background-color: #eaded7;
+  background-color: #f4f6f4;
 `;
 export const ServicesInner = styled.div`
   margin: 0 auto;
@@ -14,6 +14,7 @@ export const ServicesHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 
   & > * {
     flex-basis: 100%;
@@ -29,11 +30,10 @@ export const ServicesCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 2.5rem;
-
   transform: translateY(7rem);
 `;
 export const ServicesCard = styled.div`
-  background-color: #c5a592;
+  background-color: #dcdddc;
   border-radius: 3px;
   padding: 2rem;
   display: flex;
@@ -42,7 +42,7 @@ export const ServicesCard = styled.div`
   text-align: center;
 `;
 export const IconContainer = styled.div`
-  background-color: #eaded7;
+  background-color: #f4f6f4;
   padding: 1rem;
   border-radius: 50%;
   display: flex;
