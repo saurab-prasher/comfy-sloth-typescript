@@ -8,13 +8,11 @@ import {
   SinglePageText,
   SinglePageMain,
   ReviewsContainer,
-  Img,
   HeaderInner,
   Price,
   Description,
   AddToCartBtn,
   Products,
-  GalleryContainer,
   Star,
 } from "./SinglePageElements";
 import Data from "../../Data";
@@ -34,15 +32,7 @@ const SinglePage = () => {
 
       <SinglePageMain>
         <SinglePageImg>
-          <Img src={Product.img.default} />
-
-          <GalleryContainer>
-            <Gallery src={Product.img.default} />
-            <Gallery src={Product.img.default} />
-            <Gallery src={Product.img.default} />
-            <Gallery src={Product.img.default} />
-            <Gallery src={Product.img.default} />
-          </GalleryContainer>
+          <Gallery src={Product.img.default} />
         </SinglePageImg>
 
         <SinglePageText>

@@ -9,6 +9,7 @@ import SingleProduct from "./pages/SingleProduct";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
+import Cart from "./pages/Cart";
 
 const App = () => {
   const [isOpen, setisOpen] = React.useState(false);
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/products/:id">
             <SingleProduct />
           </Route>
+          <Route path="/cart" component={Cart} />
           <Route path="*" component={Error} />
         </Switch>
       </Router>

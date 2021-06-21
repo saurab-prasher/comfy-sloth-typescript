@@ -33,13 +33,15 @@ button {
   border: none;
 }
 
+.active {
+  border: 1px solid #531410;
+  scale: 0.9;
+}
+
 /* Button background color -  #531410;
 background color - 1 - #F4F6F4;
 background color - 2 - #EAE9E1;
 background color - 3 - #FAFAFA;
 Heading Colors  - #444444;
 logo color -  #531410;
-
-
-
  */

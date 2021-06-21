@@ -23,17 +23,14 @@ export const SinglePageMain = styled.main`
   grid-gap: 2.5rem;
   max-width: 1240px;
   margin: 0 auto;
+  margin-bottom: 4.15rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const SinglePageImg = styled.article``;
-
-export const GalleryContainer = styled.div`
-  margin: 1rem 0;
-  display: grid;
-  grid-gap: 0.75rem;
-  grid-template-columns: repeat(5, 1fr);
-`;
-export const Img = styled.img``;
 
 export const SinglePageText = styled.article`
   & li {

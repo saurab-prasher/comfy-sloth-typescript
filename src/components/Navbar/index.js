@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.svg";
 
@@ -45,7 +46,7 @@ const Navbar = ({ toggle }) => {
       </Nav>
       <NavBtnContainer>
         <NavBtn>
-          Cart
+          <Link to="/cart">Cart</Link>
           <ShoppingCart />
           <ShoppingCartValue>0</ShoppingCartValue>
         </NavBtn>
