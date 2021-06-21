@@ -50,12 +50,13 @@ export const Search = styled(ImSearch)`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2.4rem;
+  font-size: 2.3rem;
   color: #fff;
   border-radius: 50%;
   background: #531410;
   padding: 0.25rem 0.5rem;
   z-index: 2;
+  border: 1px solid rgb(83, 20, 16);
 
   &:hover {
     background-color: #fff;

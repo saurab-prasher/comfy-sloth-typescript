@@ -1,6 +1,4 @@
 import React from "react";
-import { AiFillStar } from "react-icons/ai";
-import ImgSrc from "../../images/product-1.jpeg";
 import { useParams } from "react-router-dom";
 import {
   SinglePageHeader,
@@ -14,54 +12,57 @@ import {
   HeaderInner,
   Price,
   Description,
-  Available,
-  SKU,
-  Brand,
-  Varients,
   AddToCartBtn,
   Products,
+  GalleryContainer,
   Star,
 } from "./SinglePageElements";
+import Data from "../../Data";
+import Gallery from "../Gallery";
 
 const SinglePage = () => {
+  const { id } = useParams();
+  const Product = Data.find((item) => item.id === Number(id));
   return (
     <>
       <SinglePageHeader>
         <HeaderInner>
           <HomeLink to="/">Home</HomeLink> / <Products>Products</Products> /
-          Product Name
+          {Product.heading}
         </HeaderInner>
       </SinglePageHeader>
 
       <SinglePageMain>
         <SinglePageImg>
-          <Img src={ImgSrc} />
+          <Img src={Product.img.default} />
+
+          <GalleryContainer>
+            <Gallery src={Product.img.default} />
+            <Gallery src={Product.img.default} />
+            <Gallery src={Product.img.default} />
+            <Gallery src={Product.img.default} />
+            <Gallery src={Product.img.default} />
+          </GalleryContainer>
         </SinglePageImg>
 
         <SinglePageText>
-          <SinglePageH1>Product Name</SinglePageH1>
+          <SinglePageH1>{Product.heading}</SinglePageH1>
           <ReviewsContainer>
             <Star />
             <Star />
             <Star />
             <Star />
             <Star />
-            <p>(100 Customer reviews)</p>
+            <p>({Product.reviews} Customer reviews)</p>
           </ReviewsContainer>
-          <Price>$ 599.99</Price>
-          <Description>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-            maiores veritatis accusamus hic esse, enim consectetur eveniet
-            molestiae quos est, voluptas aut veniam nulla laboriosam minima
-            fugit quidem magnam dolore sed culpa repudiandae. Id, perspiciatis
-            facere!
-          </Description>
+          <Price>$ {Product.price}</Price>
+          <Description>{Product.description}</Description>
 
           <ul>
-            <li>Available: In Stock</li>
-            <li>SKU: Lorem ipsum dolor sit amet.</li>
-            <li>Brand: Cressa</li>
-            <li>Colors: In Stock</li>
+            <li>Available: {Product.available}</li>
+            <li>SKU: {Product.SKU}</li>
+            <li>Brand: {Product?.company}</li>
+            <li>Colors: {Product.color}</li>
           </ul>
 
           <AddToCartBtn>Add To cart</AddToCartBtn>

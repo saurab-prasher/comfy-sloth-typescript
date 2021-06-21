@@ -26,6 +26,13 @@ export const SinglePageMain = styled.main`
 `;
 
 export const SinglePageImg = styled.article``;
+
+export const GalleryContainer = styled.div`
+  margin: 1rem 0;
+  display: grid;
+  grid-gap: 0.75rem;
+  grid-template-columns: repeat(5, 1fr);
+`;
 export const Img = styled.img``;
 
 export const SinglePageText = styled.article`
@@ -62,7 +69,7 @@ export const Description = styled.p`
 `;
 
 export const AddToCartBtn = styled.button`
-  background-color: green;
+  background-color: #531410;
   padding: 1rem;
   color: #fff;
   cursor: pointer;
@@ -70,4 +77,12 @@ export const AddToCartBtn = styled.button`
   font-size: 1rem;
   font-weight: 600;
   border-radius: 3px;
+  transition: all 0.1s ease-in-out;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: #fff;
+    color: rgb(83, 20, 16);
+    border: 1px solid rgb(83, 20, 16);
+  }
 `;

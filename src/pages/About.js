@@ -26,8 +26,9 @@ const AboutSection = styled.section`
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: center;
   grid-gap: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 13rem;
   @media screen and (max-width: 900px) {
     grid-template-columns: 1fr;
   }
@@ -46,16 +47,17 @@ const AboutTextContainer = styled.article`
 
 const AboutH1 = styled.h1`
   font-size: 3rem;
+  margin-bottom: 1rem;
 `;
 const AboutP = styled.p`
   font-size: 1.2rem;
-  line-height: 1.6;
+  line-height: 1.7;
 `;
 const Line = styled.div`
   height: 4px;
   margin-bottom: 2rem;
   width: 8rem;
-  background-color: purple;
+  background-color: #531410;
   align-self: center;
 `;
 

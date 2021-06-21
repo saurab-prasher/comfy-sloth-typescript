@@ -64,7 +64,6 @@ export const ShoppingCartValue = styled.div`
   color: #fff;
   line-height: 1;
   font-size: 1rem;
-  font-weight: bold;
   background-color: rgb(83, 20, 16);
   padding: 0.35rem 0.5rem;
   border-radius: 50%;
@@ -81,6 +80,7 @@ export const ShoppingCartValue = styled.div`
 const sharedButtonStyle = css`
   font-size: 2rem;
   margin: 0 0.5rem;
+  color: rgb(83, 20, 16);
 `;
 
 export const ShoppingCart = styled(FaShoppingCart)`

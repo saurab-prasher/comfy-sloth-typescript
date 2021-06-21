@@ -10,7 +10,7 @@ import {
 
 import { Search, SearchContainer } from "../Featured/FeaturesElements";
 import { Link } from "react-router-dom";
-const Cards = ({ id, img, heading, price }) => {
+const Cards = ({ id, img, heading, src, price }) => {
   const [hover, setHover] = useState(false);
 
   return (
@@ -19,7 +19,7 @@ const Cards = ({ id, img, heading, price }) => {
         onMouseEnter={() => setHover(!hover)}
         onMouseLeave={() => setHover(!hover)}
       >
-        <CardImage src={img.default} />
+        <CardImage src={img?.default || src} />
 
         {hover && (
           <SearchContainer>
@@ -30,8 +30,8 @@ const Cards = ({ id, img, heading, price }) => {
         )}
       </CardImageContainer>
       <CardText>
-        <Heading>{heading}</Heading>
-        <Price>$ {price}</Price>
+        {heading && <Heading>{heading}</Heading>}
+        {price && <Price>$ {price}</Price>}
       </CardText>
     </Card>
   );
