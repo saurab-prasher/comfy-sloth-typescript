@@ -81,7 +81,7 @@ export const FilterColorBtnBlack = styled(Button)`
   background-color: black;
 `;
 export const FilterColorBtnYellow = styled(Button)`
-  background-color: yellow;
+  background-color: gold;
 `;
 export const FilterPrice = styled.div`
   p {

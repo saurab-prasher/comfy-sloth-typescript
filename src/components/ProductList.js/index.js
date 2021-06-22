@@ -25,12 +25,15 @@ import Data from "../../Data";
 const ProductList = () => {
   const [list, setList] = useState(Data);
   const [category, setCategory] = useState("All");
+  const [color, setColor] = useState("All");
+  const [company, setCompany] = useState("All");
 
-  const handleCategory = (e) => {
+  const handleFilters = (e) => {
     const category = e.target.dataset.category;
     setCategory(category);
   };
 
+  console.log(category, company, color);
   return (
     <ProductListContainer>
       <FilterContainer>
@@ -42,25 +45,25 @@ const ProductList = () => {
 
         <FilterCategory className="category">
           <h3>Category</h3>
-          <button onClick={handleCategory} data-category="All">
+          <button onClick={handleFilters} data-category="All">
             All
           </button>
-          <button onClick={handleCategory} data-category="office">
+          <button onClick={handleFilters} data-category="office">
             Office
           </button>
-          <button onClick={handleCategory} data-category="living room">
+          <button onClick={handleFilters} data-category="living room">
             Living Room
           </button>
-          <button onClick={handleCategory} data-category="kitchen">
+          <button onClick={handleFilters} data-category="kitchen">
             Kitchen
           </button>
-          <button onClick={handleCategory} data-category="bedroom">
+          <button onClick={handleFilters} data-category="bedroom">
             Bedroom
           </button>
-          <button onClick={handleCategory} data-category="dining">
+          <button onClick={handleFilters} data-category="dining">
             Dining
           </button>
-          <button onClick={handleCategory} data-category="kids">
+          <button onClick={handleFilters} data-category="kids">
             Kids
           </button>
         </FilterCategory>
@@ -68,23 +71,55 @@ const ProductList = () => {
         <FilterCompany className="company">
           <h3>Company</h3>
 
-          <select name="company" id="company">
-            <option value="all">all</option>
-            <option value="marcos">marcos</option>
-            <option value="liddy">liddy</option>
-            <option value="ikea">ikea</option>
-            <option value="caressa">caressa</option>
+          <select
+            onClick={(e) => setCompany(e.target.value)}
+            name="company"
+            id="company"
+          >
+            <option value={company}>all</option>
+            <option data-company="marcos" value="marcos">
+              marcos
+            </option>
+            <option data-company="liddy" value="liddy">
+              liddy
+            </option>
+            <option data-company="ikea" value="ikea">
+              ikea
+            </option>
+            <option data-company="caressa" value="caressa">
+              caressa
+            </option>
           </select>
         </FilterCompany>
 
         <FilterColors className="color">
           <h3>Colors</h3>
           <button>All</button>
-          <FilterColorBtnRed data-color="red"></FilterColorBtnRed>
-          <FilterColorBtnGreen></FilterColorBtnGreen>
-          <FilterColorBtnBlue></FilterColorBtnBlue>
-          <FilterColorBtnBlack></FilterColorBtnBlack>
-          <FilterColorBtnYellow></FilterColorBtnYellow>
+          <FilterColorBtnRed
+            data-color="red"
+            className={color === "red" ? "active-btn" : null}
+            onClick={(e) => setColor(e.target.dataset.color)}
+          />
+          <FilterColorBtnGreen
+            className={color === "green" ? "active-btn" : null}
+            onClick={(e) => setColor(e.target.dataset.color)}
+            data-color="green"
+          />
+          <FilterColorBtnBlue
+            className={color === "blue" ? "active-btn" : null}
+            onClick={(e) => setColor(e.target.dataset.color)}
+            data-color="blue"
+          />
+          <FilterColorBtnBlack
+            className={color === "black" ? "active-btn" : null}
+            onClick={(e) => setColor(e.target.dataset.color)}
+            data-color="black"
+          />
+          <FilterColorBtnYellow
+            className={color === "yellow" ? "active-btn" : null}
+            onClick={(e) => setColor(e.target.dataset.color)}
+            data-color="yellow"
+          />
         </FilterColors>
 
         <FilterPrice className="price">
@@ -125,12 +160,18 @@ const ProductList = () => {
           </div>
         </ProductGridBtnContainer>
         <ProductListSection>
+          {list.length === 0 ? <h1>No Items Found</h1> : ""}
           {category === "All"
             ? Data.map((item) => {
                 return <Card key={item.id} {...item} />;
               })
             : list
-                .filter((item) => item.category === category)
+                .filter(
+                  (item) =>
+                    item.category === category &&
+                    item.color === color &&
+                    item.company === company
+                )
                 .map((item) => {
                   return <Card key={item.id} {...item} />;
                 })}
