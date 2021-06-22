@@ -6,7 +6,7 @@ export const NewsLetterContainer = styled.div`
 
 export const NewsLetterSection = styled.section`
   display: grid;
-  max-width: 1280px;
+  max-width: 124rem;
   margin: 0 auto;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
@@ -33,6 +33,7 @@ export const Input = styled.input`
   border-radius: 3px;
   font-size: 1.1rem;
   outline: none;
+  width: 100%;
 
   &:focus {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);

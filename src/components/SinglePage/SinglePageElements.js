@@ -37,6 +37,7 @@ export const SinglePageText = styled.article`
     font-size: 1.1rem;
     font-weight: 500;
     margin: 1rem 0;
+    text-transform: capitalize;
   }
 `;
 export const SinglePageH1 = styled.h1`

@@ -7,7 +7,7 @@ export const FeaturedContainer = styled.section`
 `;
 
 export const FeaturedInner = styled.div`
-  max-width: 1240px;
+  max-width: 124rem;
   margin: 0 auto;
   padding: 5rem 0;
   display: flex;

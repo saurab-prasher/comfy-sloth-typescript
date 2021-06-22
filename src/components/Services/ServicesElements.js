@@ -7,7 +7,7 @@ export const ServicesContainer = styled.section`
 `;
 export const ServicesInner = styled.div`
   margin: 0 auto;
-  max-width: 1240px;
+  max-width: 124rem;
   padding: 4rem 0;
 `;
 export const ServicesHeader = styled.div`
@@ -28,7 +28,7 @@ export const ServicesP = styled.p`
 `;
 export const ServicesCardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 2.5rem;
   transform: translateY(7rem);
 `;

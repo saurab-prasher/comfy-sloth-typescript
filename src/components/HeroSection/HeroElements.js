@@ -4,17 +4,14 @@ import { Link } from "react-router-dom";
 export const HeroContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  max-width: 1240px;
+  max-width: 124rem;
   grid-gap: 5rem;
-  margin: 0 auto;
-  margin-top: 10rem;
-  height: calc(100vh - 14rem);
+  margin: 10rem auto;
   justify-content: space-between;
   color: #444444;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
-    height: calc(100vh - 25rem);
   }
 `;
 export const HeroText = styled.article`

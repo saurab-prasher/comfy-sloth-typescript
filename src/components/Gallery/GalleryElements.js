@@ -23,4 +23,5 @@ export const GalleryCard = styled.div`
 export const GalleryCardImg = styled.img`
   border-radius: 5px;
   height: 75px;
+  border: 1px solid transparent;
 `;

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import img1 from "../../images/gallery-1.jpeg";
 import img2 from "../../images/gallery-2.jpeg";
 import img3 from "../../images/gallery-3.jpeg";
@@ -13,7 +13,6 @@ import {
 const Gallery = ({ src }) => {
   const [index, setIndex] = useState(0);
   const imagesArray = [src, img1, img2, img3, img4];
-
   const handleCardClick = (idx) => {
     setIndex(idx);
   };
@@ -26,7 +25,10 @@ const Gallery = ({ src }) => {
           {imagesArray.map((item, idx) => {
             return (
               <GalleryCard onClick={() => handleCardClick(idx)} key={idx}>
-                <GalleryCardImg src={imagesArray[idx]} />
+                <GalleryCardImg
+                  className={idx === index ? "active " : null}
+                  src={imagesArray[idx]}
+                />
               </GalleryCard>
             );
           })}
