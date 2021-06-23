@@ -13,7 +13,6 @@ import {
 HeroImage.defaultProps = {
   src: heroImage,
 };
-
 const Hero = () => {
   return (
     <HeroContainer>
@@ -30,7 +29,6 @@ const Hero = () => {
 
       <HeroImageContainer>
         <HeroImage />
-      
       </HeroImageContainer>
     </HeroContainer>
   );

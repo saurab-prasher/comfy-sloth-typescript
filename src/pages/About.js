@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import img from "../images/product-1.jpeg";
 
@@ -19,7 +19,11 @@ const AboutInner = styled.div`
 const HomeLink = styled(Link)`
   color: inherit;
 `;
-const AboutLink = styled.a``;
+const AboutLink = styled.a`
+  margin: 0 1rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5rem;
+`;
 
 const AboutSection = styled.section`
   max-width: 1240px;
@@ -62,11 +66,14 @@ const Line = styled.div`
 `;
 
 const About = () => {
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <>
       <AboutHeader>
         <AboutInner>
-          <HomeLink to="/">Home</HomeLink> / <AboutLink>About</AboutLink>
+          <HomeLink to="/">Home</HomeLink>
+          <AboutLink>{location.pathname}</AboutLink>
         </AboutInner>
       </AboutHeader>
 

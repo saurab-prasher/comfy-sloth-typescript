@@ -1,4 +1,5 @@
 import React from "react";
+import { useGlobalContext } from "../../context";
 import {
   FeaturedContainer,
   FeaturedH2,
@@ -8,17 +9,20 @@ import {
   FeaturedCards,
 } from "./FeaturesElements";
 import Card from "../Card";
-import data from "./Data";
+
 const Featured = () => {
+  const { list } = useGlobalContext();
   return (
     <FeaturedContainer>
       <FeaturedInner>
         <FeaturedH2>Featured Products</FeaturedH2>
         <Line />
         <FeaturedCards>
-          {data.map((item) => {
-            return <Card key={item.id} {...item} />;
-          })}
+          {list
+            .filter((item) => item.featured)
+            .map((item) => {
+              return <Card key={item.id} {...item} />;
+            })}
         </FeaturedCards>
         <FeaturedBtn to="/products">All Products</FeaturedBtn>
       </FeaturedInner>

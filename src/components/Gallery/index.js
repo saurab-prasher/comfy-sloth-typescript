@@ -10,6 +10,7 @@ import {
   GalleryMainImg,
   GalleryCard,
 } from "./GalleryElements";
+
 const Gallery = ({ src }) => {
   const [index, setIndex] = useState(0);
   const imagesArray = [src, img1, img2, img3, img4];

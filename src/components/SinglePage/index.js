@@ -1,4 +1,5 @@
 import React from "react";
+import { useGlobalContext } from "../../context";
 import { useParams } from "react-router-dom";
 import {
   SinglePageHeader,
@@ -15,12 +16,24 @@ import {
   Products,
   Star,
 } from "./SinglePageElements";
-import Data from "../../Data";
+
 import Gallery from "../Gallery";
 
 const SinglePage = () => {
+  const { list } = useGlobalContext();
   const { id } = useParams();
-  const Product = Data.find((item) => item.id === Number(id));
+  const Product = list.find((item) => item.id === Number(id));
+
+  const reviewStars = (number) => {
+    let stars = [];
+    for (let i = 0; i < number; i++) {
+      stars.push(<Star />);
+    }
+    return stars;
+  };
+
+  const stars = reviewStars(Product.rating);
+
   return (
     <>
       <SinglePageHeader>
@@ -38,11 +51,10 @@ const SinglePage = () => {
         <SinglePageText>
           <SinglePageH1>{Product.heading}</SinglePageH1>
           <ReviewsContainer>
-            <Star />
-            <Star />
-            <Star />
-            <Star />
-            <Star />
+            {stars.map((item, idx) => {
+              return <React.Fragment key={idx}> {item}</React.Fragment>;
+            })}
+
             <p>({Product.reviews} Customer reviews)</p>
           </ReviewsContainer>
           <Price>$ {Product.price}</Price>
@@ -52,7 +64,30 @@ const SinglePage = () => {
             <li>Available: {Product.available}</li>
             <li>SKU: {Product.SKU}</li>
             <li>Brand: {Product?.company}</li>
-            <li>Colors: {Product.color}</li>
+            <div className="color-container">
+              <li style={{ display: "flex", alignItems: "center" }}>
+                Colors:
+                {Product.color.map((item, idx) => {
+                  return (
+                    <button
+                      style={{
+                        backgroundColor: `${
+                          item === "yellow" ? "gold" : `${item}`
+                        }`,
+                        height: "1.6rem",
+                        width: "1.6rem",
+                        borderRadius: "50%",
+                        display: "inline-block",
+                        marginLeft: "0.5rem",
+                        cursor: "pointer",
+                      }}
+                      key={idx}
+                    ></button>
+                  );
+                })}
+              </li>
+              ;
+            </div>
           </ul>
 
           <AddToCartBtn>Add To cart</AddToCartBtn>
