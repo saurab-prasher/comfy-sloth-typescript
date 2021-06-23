@@ -26,7 +26,6 @@ const Hero = () => {
         </HeroP>
         <HeroBtn to="/products">Shop Now</HeroBtn>
       </HeroText>
-
       <HeroImageContainer>
         <HeroImage />
       </HeroImageContainer>

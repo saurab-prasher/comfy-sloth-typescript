@@ -20,11 +20,14 @@ import {
 Logo.defaultProps = {
   src: logo,
 };
+
 const Navbar = ({ toggle }) => {
   return (
     <Header>
       <div>
-        <Logo />
+        <a href="/">
+          <Logo />
+        </a>
       </div>
 
       <MobileIcon onClick={toggle}>

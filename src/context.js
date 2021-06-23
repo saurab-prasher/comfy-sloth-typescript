@@ -36,13 +36,15 @@ const initState = {
 };
 
 const AppProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(initState, reducer);
+  const [state, dispatch] = useReducer(reducer, initState);
   const [list, setList] = useState(Data);
 
   const allFilterClickListener = (e, filterProp) => {
     console.log("Filter Clicked", e.target.dataset.name);
     const name = e.target.dataset.name;
 
+    dispatch({ type: "FILTER_TAGS", payload: { name, filterProp } });
+    console.log(state);
     // setState((prevState) => {
     //   console.log({
     //     ...prevState.passingTags,
@@ -89,7 +91,11 @@ const AppProvider = ({ children }) => {
       });
     });
   };
-  return <AppContext.Provider value={{ list }}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={{ list, allFilterClickListener }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 const useGlobalContext = () => {

@@ -13,6 +13,7 @@ export const Header = styled.header`
 
 export const Logo = styled.img`
   max-width: 12rem;
+  cursor: pointer;
 `;
 
 export const Nav = styled.nav`

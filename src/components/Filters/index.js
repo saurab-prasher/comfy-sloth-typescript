@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useGlobalContext } from "../../context.js";
 
 import {
   FilterContainer,
@@ -18,6 +19,8 @@ import {
 } from "./FiltersElements.js";
 
 const Filters = () => {
+  const { allFilterClickListener } = useGlobalContext();
+
   const handleFilters = (e) => {
     const category = e.target.dataset.category;
   };
@@ -31,23 +34,46 @@ const Filters = () => {
 
       <FilterCategory className="category">
         <h3>Category</h3>
-        <button onClick={handleFilters} data-category="All">
+        <button
+          onClick={(e) => allFilterClickListener(e, "category")}
+          data-name="All"
+        >
           All
         </button>
-        <button onClick={handleFilters}>Office</button>
-        <button onClick={handleFilters} data-category="living room">
+        <button
+          data-name="office"
+          onClick={(e) => allFilterClickListener(e, "category")}
+        >
+          Office
+        </button>
+        <button
+          onClick={(e) => allFilterClickListener(e, "category")}
+          data-name="living room"
+        >
           Living Room
         </button>
-        <button onClick={handleFilters} data-category="kitchen">
+        <button
+          onClick={(e) => allFilterClickListener(e, "category")}
+          data-name="kitchen"
+        >
           Kitchen
         </button>
-        <button onClick={handleFilters} data-category="bedroom">
+        <button
+          onClick={(e) => allFilterClickListener(e, "category")}
+          data-name="bedroom"
+        >
           Bedroom
         </button>
-        <button onClick={handleFilters} data-category="dining">
+        <button
+          onClick={(e) => allFilterClickListener(e, "category")}
+          data-name="dining"
+        >
           Dining
         </button>
-        <button onClick={handleFilters} data-category="kids">
+        <button
+          onClick={(e) => allFilterClickListener(e, "category")}
+          data-name="kids"
+        >
           Kids
         </button>
       </FilterCategory>
@@ -61,16 +87,16 @@ const Filters = () => {
           id="company"
         >
           <option>all</option>
-          <option data-company="marcos" value="marcos">
+          <option data-name="marcos" value="marcos">
             marcos
           </option>
-          <option data-company="liddy" value="liddy">
+          <option data-name="liddy" value="liddy">
             liddy
           </option>
-          <option data-company="ikea" value="ikea">
+          <option data-name="ikea" value="ikea">
             ikea
           </option>
-          <option data-company="caressa" value="caressa">
+          <option data-name="caressa" value="caressa">
             caressa
           </option>
         </select>
@@ -78,26 +104,36 @@ const Filters = () => {
 
       <FilterColors className="color">
         <h3>Colors</h3>
-        <button>All</button>
+        <button
+          data-name="all"
+          onClick={(e) => allFilterClickListener(e, "category")}
+        >
+          All
+        </button>
         <FilterColorBtnRed
-          data-color="red"
+          data-name="red"
+          onClick={(e) => allFilterClickListener(e, "color")}
           // className={color === "red" ? "active-btn" : null}
         />
         <FilterColorBtnGreen
+          onClick={(e) => allFilterClickListener(e, "color")}
           // className={color === "green" ? "active-btn" : null}
-          data-color="green"
+          data-name="green"
         />
         <FilterColorBtnBlue
+          onClick={(e) => allFilterClickListener(e, "color")}
           // className={color === "blue" ? "active-btn" : null}
-          data-color="blue"
+          data-name="blue"
         />
         <FilterColorBtnBlack
+          onClick={(e) => allFilterClickListener(e, "color")}
           // className={color === "black" ? "active-btn" : null}
-          data-color="black"
+          data-name="black"
         />
         <FilterColorBtnYellow
+          onClick={(e) => allFilterClickListener(e, "color")}
           // className={color === "yellow" ? "active-btn" : null}
-          data-color="yellow"
+          data-name="yellow"
         />
       </FilterColors>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useGlobalContext } from "../../context";
 import { IoGridOutline } from "react-icons/io5";
 import {
@@ -9,7 +9,6 @@ import {
 
 import Filters from "../Filters";
 import Card from "../Card/";
-import Data from "../../Data";
 
 const ProductList = () => {
   const { list } = useGlobalContext();
@@ -26,7 +25,7 @@ const ProductList = () => {
             <button>flex</button>
           </div>
 
-          <p>{Data.length} Products Found</p>
+          <p>{list.length} Products Found</p>
 
           <hr />
           <div className="sort">
