@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { formatPrice } from "../../utils/helper";
 import {
   Card,
   CardImage,
@@ -31,7 +32,7 @@ const Cards = ({ id, image, name, src, price }) => {
       </CardImageContainer>
       <CardText>
         {name && <Heading>{name}</Heading>}
-        {price && <Price>$ {price.toFixed(4)}</Price>}
+        {price && <Price>{formatPrice(price)}</Price>}
       </CardText>
     </Card>
   );

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AiFillStar } from "react-icons/ai";
+import { BsStarHalf, BsStar, BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 export const SinglePageHeader = styled.header`
@@ -43,7 +43,16 @@ export const SinglePageText = styled.article`
 export const SinglePageH1 = styled.h1`
   font-size: 2.5rem;
 `;
-export const Star = styled(AiFillStar)`
+export const Star = styled(BsStar)`
+  color: #ffb900;
+  font-size: 1.2rem;
+`;
+export const StarFill = styled(BsStarFill)`
+  color: #ffb900;
+  font-size: 1.2rem;
+`;
+
+export const StarHalf = styled(BsStarHalf)`
   color: #ffb900;
   font-size: 1.2rem;
 `;

@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import img1 from "../../images/gallery-1.jpeg";
-import img2 from "../../images/gallery-2.jpeg";
-import img3 from "../../images/gallery-3.jpeg";
-import img4 from "../../images/gallery-4.jpeg";
 import {
   GalleryContainer,
   GalleryCardImg,
@@ -11,24 +7,22 @@ import {
   GalleryCard,
 } from "./GalleryElements";
 
-const Gallery = ({ src }) => {
-  const [index, setIndex] = useState(0);
-  const imagesArray = [src, img1, img2, img3, img4];
-  const handleCardClick = (idx) => {
-    setIndex(idx);
-  };
-
+const Gallery = ({ images = [{ id: 1, url: "" }] }) => {
+  const mainImage = images[0];
+  const [main, setMain] = useState(mainImage);
   return (
     <>
       <GalleryContainer>
-        <GalleryMainImg src={imagesArray[index]} />
+        <GalleryMainImg src={main?.url || mainImage.url} />
         <GalleryCardsContainer>
-          {imagesArray.map((item, idx) => {
+          {images.map((item, index) => {
             return (
-              <GalleryCard onClick={() => handleCardClick(idx)} key={idx}>
+              <GalleryCard key={item.id}>
                 <GalleryCardImg
-                  className={idx === index ? "active " : null}
-                  src={imagesArray[idx]}
+                  className={`${item.url === main.url ? "active" : null}`}
+                  src={item.url}
+                  alt={images.filename}
+                  onClick={() => setMain(images[index])}
                 />
               </GalleryCard>
             );

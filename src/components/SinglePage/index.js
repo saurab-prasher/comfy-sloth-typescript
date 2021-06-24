@@ -1,6 +1,7 @@
-import React from "react";
-import { useFilterContext } from "../../context/filter_context";
+import React, { useEffect } from "react";
+import { useProductsContext } from "../../context/products_context";
 import { useParams } from "react-router-dom";
+import { formatPrice } from "../../utils/helper";
 import {
   SinglePageHeader,
   SinglePageH1,
@@ -15,59 +16,80 @@ import {
   AddToCartBtn,
   Products,
   Star,
+  StarFill,
+  StarHalf,
 } from "./SinglePageElements";
 
 import Gallery from "../Gallery";
 
+const Stars = ({ stars }) => {
+  const tempStars = Array.from({ length: 5 }, (_, index) => {
+    const number = index + 0.5;
+
+    return (
+      <React.Fragment key={index}>
+        {stars >= index + 1 ? (
+          <StarFill />
+        ) : stars >= number ? (
+          <StarHalf />
+        ) : (
+          <Star />
+        )}
+      </React.Fragment>
+    );
+  });
+
+  return tempStars;
+};
+
+const single_product_url = `https://course-api.com/react-store-single-product?id=`;
+
 const SinglePage = () => {
-  const { list } = useFilterContext();
+  const {
+    fetchSingleProduct,
+    single_product_loading,
+    single_product_error,
+    single_product: product,
+  } = useProductsContext();
+
   const { id } = useParams();
-  const Product = list.find((item) => item.id === Number(id));
 
-  const reviewStars = (number) => {
-    let stars = [];
-    for (let i = 0; i < number; i++) {
-      stars.push(<Star />);
-    }
-    return stars;
-  };
-
-  const stars = reviewStars(Product.rating);
+  useEffect(() => {
+    fetchSingleProduct(`${single_product_url}${id}`);
+  }, [id]);
 
   return (
     <>
       <SinglePageHeader>
         <HeaderInner>
           <HomeLink to="/">Home</HomeLink> / <Products>Products</Products> /
-          {Product.heading}
+          {product.heading}
         </HeaderInner>
       </SinglePageHeader>
-
       <SinglePageMain>
         <SinglePageImg>
-          <Gallery src={Product.img.default} />
+          <Gallery images={product.images} />
         </SinglePageImg>
 
         <SinglePageText>
-          <SinglePageH1>{Product.heading}</SinglePageH1>
+          <SinglePageH1>{product.name}</SinglePageH1>
           <ReviewsContainer>
-            {stars.map((item, idx) => {
-              return <React.Fragment key={idx}> {item}</React.Fragment>;
-            })}
-
-            <p>({Product.reviews} Customer reviews)</p>
+            <Stars stars={product.stars} />
+            <p>{product.reviews} Customer reviews)</p>
           </ReviewsContainer>
-          <Price>$ {Product.price}</Price>
-          <Description>{Product.description}</Description>
+          <Price> {formatPrice(product.price)}</Price>
+          <Description>{product.description}</Description>
 
           <ul>
-            <li>Available: {Product.available}</li>
-            <li>SKU: {Product.SKU}</li>
-            <li>Brand: {Product?.company}</li>
+            <li>
+              Available: {product.stock > 0 ? "In Stock" : "out of stock"}
+            </li>
+            <li>SKU: {product.id}</li>
+            <li>Brand: {product.company}</li>
             <div className="color-container">
               <li style={{ display: "flex", alignItems: "center" }}>
                 Colors:
-                {Product.color.map((item, idx) => {
+                {/* {product.color.map((item, idx) => {
                   return (
                     <button
                       style={{
@@ -84,9 +106,8 @@ const SinglePage = () => {
                       key={idx}
                     ></button>
                   );
-                })}
+                })} */}
               </li>
-              ;
             </div>
           </ul>
 

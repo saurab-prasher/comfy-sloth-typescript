@@ -1,5 +1,5 @@
 import React from "react";
-import { useFilterContext } from "../../context/filter_context";
+import { useProductsContext } from "../../context/products_context";
 import { IoGridOutline } from "react-icons/io5";
 import {
   ProductListContainer,
@@ -11,7 +11,7 @@ import Filters from "../Filters";
 import Card from "../Card/";
 
 const ProductList = () => {
-  const { list } = useFilterContext();
+  const { products } = useProductsContext();
 
   return (
     <ProductListContainer>
@@ -25,7 +25,7 @@ const ProductList = () => {
             <button>flex</button>
           </div>
 
-          <p>{list.length} Products Found</p>
+          <p>{products.length} Products Found</p>
 
           <hr />
           <div className="sort">
@@ -39,7 +39,7 @@ const ProductList = () => {
           </div>
         </ProductGridBtnContainer>
         <ProductListSection>
-          {list.map((item) => {
+          {products.map((item) => {
             return <Card key={item.id} {...item} />;
           })}
         </ProductListSection>

@@ -29,4 +29,5 @@ export const Heading = styled.h3`
 `;
 export const Price = styled.p`
   font-size: 1.1rem;
+  letter-spacing: 1px;
 `;
