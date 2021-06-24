@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "../../context";
+import { useFilterContext } from "../../context/filter_context";
 import {
   FeaturedContainer,
   FeaturedH2,
@@ -11,7 +11,7 @@ import {
 import Card from "../Card";
 
 const Featured = () => {
-  const { list } = useGlobalContext();
+  const { list } = useFilterContext();
   return (
     <FeaturedContainer>
       <FeaturedInner>

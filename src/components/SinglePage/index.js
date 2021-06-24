@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "../../context";
+import { useFilterContext } from "../../context/filter_context";
 import { useParams } from "react-router-dom";
 import {
   SinglePageHeader,
@@ -20,7 +20,7 @@ import {
 import Gallery from "../Gallery";
 
 const SinglePage = () => {
-  const { list } = useGlobalContext();
+  const { list } = useFilterContext();
   const { id } = useParams();
   const Product = list.find((item) => item.id === Number(id));
 

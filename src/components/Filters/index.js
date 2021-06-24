@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useGlobalContext } from "../../context.js";
+import React from "react";
 
 import {
   FilterContainer,
@@ -19,11 +18,6 @@ import {
 } from "./FiltersElements.js";
 
 const Filters = () => {
-  const { allFilterClickListener } = useGlobalContext();
-
-  const handleFilters = (e) => {
-    const category = e.target.dataset.category;
-  };
   return (
     <FilterContainer>
       <FilterFormContainer className="form">
@@ -34,58 +28,25 @@ const Filters = () => {
 
       <FilterCategory className="category">
         <h3>Category</h3>
-        <button
-          onClick={(e) => allFilterClickListener(e, "category")}
-          data-name="All"
-        >
+        <button onClick={(e) => {}} data-name="All">
           All
         </button>
-        <button
-          data-name="office"
-          onClick={(e) => allFilterClickListener(e, "category")}
-        >
+        <button data-name="office" onClick={(e) => {}}>
           Office
         </button>
-        <button
-          onClick={(e) => allFilterClickListener(e, "category")}
-          data-name="living room"
-        >
+        <button onClick={(e) => {}} data-name="living room">
           Living Room
         </button>
-        <button
-          onClick={(e) => allFilterClickListener(e, "category")}
-          data-name="kitchen"
-        >
-          Kitchen
-        </button>
-        <button
-          onClick={(e) => allFilterClickListener(e, "category")}
-          data-name="bedroom"
-        >
-          Bedroom
-        </button>
-        <button
-          onClick={(e) => allFilterClickListener(e, "category")}
-          data-name="dining"
-        >
-          Dining
-        </button>
-        <button
-          onClick={(e) => allFilterClickListener(e, "category")}
-          data-name="kids"
-        >
-          Kids
-        </button>
+        <button data-name="kitchen">Kitchen</button>
+        <button data-name="bedroom">Bedroom</button>
+        <button data-name="dining">Dining</button>
+        <button data-name="kids">Kids</button>
       </FilterCategory>
 
       <FilterCompany className="company">
         <h3>Company</h3>
 
-        <select
-          // onClick={(e) => setCompany(e.target.value)}
-          name="company"
-          id="company"
-        >
+        <select name="company" id="company">
           <option>all</option>
           <option data-name="marcos" value="marcos">
             marcos
@@ -104,37 +65,12 @@ const Filters = () => {
 
       <FilterColors className="color">
         <h3>Colors</h3>
-        <button
-          data-name="all"
-          onClick={(e) => allFilterClickListener(e, "category")}
-        >
-          All
-        </button>
-        <FilterColorBtnRed
-          data-name="red"
-          onClick={(e) => allFilterClickListener(e, "color")}
-          // className={color === "red" ? "active-btn" : null}
-        />
-        <FilterColorBtnGreen
-          onClick={(e) => allFilterClickListener(e, "color")}
-          // className={color === "green" ? "active-btn" : null}
-          data-name="green"
-        />
-        <FilterColorBtnBlue
-          onClick={(e) => allFilterClickListener(e, "color")}
-          // className={color === "blue" ? "active-btn" : null}
-          data-name="blue"
-        />
-        <FilterColorBtnBlack
-          onClick={(e) => allFilterClickListener(e, "color")}
-          // className={color === "black" ? "active-btn" : null}
-          data-name="black"
-        />
-        <FilterColorBtnYellow
-          onClick={(e) => allFilterClickListener(e, "color")}
-          // className={color === "yellow" ? "active-btn" : null}
-          data-name="yellow"
-        />
+        <button data-name="all">All</button>
+        <FilterColorBtnRed data-name="red" />
+        <FilterColorBtnGreen data-name="green" />
+        <FilterColorBtnBlue data-name="blue" />
+        <FilterColorBtnBlack data-name="black" />
+        <FilterColorBtnYellow data-name="yellow" />
       </FilterColors>
 
       <FilterPrice className="price">

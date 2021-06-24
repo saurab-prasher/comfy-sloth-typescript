@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "../../context";
+import { useFilterContext } from "../../context/filter_context";
 import { IoGridOutline } from "react-icons/io5";
 import {
   ProductListContainer,
@@ -11,7 +11,7 @@ import Filters from "../Filters";
 import Card from "../Card/";
 
 const ProductList = () => {
-  const { list } = useGlobalContext();
+  const { list } = useFilterContext();
 
   return (
     <ProductListContainer>

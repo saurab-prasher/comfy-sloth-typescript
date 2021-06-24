@@ -67,7 +67,6 @@ const Line = styled.div`
 
 const About = () => {
   const location = useLocation();
-  console.log(location.pathname);
   return (
     <>
       <AboutHeader>
