@@ -1,4 +1,5 @@
 import React from "react";
+import { useProductsContext } from "../../context/products_context";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.svg";
@@ -21,7 +22,8 @@ Logo.defaultProps = {
   src: logo,
 };
 
-const Navbar = ({ toggle }) => {
+const Navbar = () => {
+  const { openSidebar } = useProductsContext();
   return (
     <Header>
       <div>
@@ -30,7 +32,7 @@ const Navbar = ({ toggle }) => {
         </a>
       </div>
 
-      <MobileIcon onClick={toggle}>
+      <MobileIcon onClick={openSidebar}>
         <FaBars />
       </MobileIcon>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useFilterContext } from "../../context/filter_context";
+import { useProductsContext } from "../../context/products_context";
 import {
   FeaturedContainer,
   FeaturedH2,
@@ -11,14 +11,15 @@ import {
 import Card from "../Card";
 
 const Featured = () => {
-  const { list } = useFilterContext();
+  const { featured_products } = useProductsContext();
+  console.log(featured_products);
   return (
     <FeaturedContainer>
       <FeaturedInner>
         <FeaturedH2>Featured Products</FeaturedH2>
         <Line />
         <FeaturedCards>
-          {list
+          {featured_products
             .filter((item) => item.featured)
             .map((item) => {
               return <Card key={item.id} {...item} />;

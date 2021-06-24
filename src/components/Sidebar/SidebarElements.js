@@ -16,9 +16,9 @@ export const SidebarContainer = styled.aside`
   z-index: 99;
   background-color: #fff;
 
-  transform: ${({ isOpen }) =>
-    isOpen ? "translateX(0)" : "translateX(-100%)"};
-  opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
+  transform: ${({ isSidebarOpen }) =>
+    isSidebarOpen ? "translateX(0)" : "translateX(-100%)"};
+  opacity: ${({ isSidebarOpen }) => (isSidebarOpen ? "100%" : "0")};
   padding: 1rem;
   transition: all 0.3s ease-in-out;
 `;

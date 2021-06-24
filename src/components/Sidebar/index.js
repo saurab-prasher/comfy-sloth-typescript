@@ -1,4 +1,5 @@
 import React from "react";
+import { useProductsContext } from "../../context/products_context.js";
 import {
   NavBtn as SidebarBtn,
   ShoppingCartValue,
@@ -18,29 +19,30 @@ import {
   SidebarItem,
 } from "./SidebarElements";
 
-const Sidebar = ({ isOpen, toggle }) => {
+const Sidebar = () => {
+  const { isSidebarOpen, closeSidebar } = useProductsContext();
   return (
-    <SidebarContainer isOpen={isOpen}>
+    <SidebarContainer isSidebarOpen={isSidebarOpen}>
       <SidebarHeader>
         <Logo />
         <Icon>
-          <CloseIcon onClick={toggle} />
+          <CloseIcon onClick={closeSidebar} />
         </Icon>
       </SidebarHeader>
       <div>
         <SidebarMenu>
           <SidebarItem>
-            <SidebarLink onClick={toggle} to="/">
+            <SidebarLink onClick={closeSidebar} to="/">
               Home
             </SidebarLink>
           </SidebarItem>
           <SidebarItem>
-            <SidebarLink onClick={toggle} to="about">
+            <SidebarLink onClick={closeSidebar} to="about">
               About
             </SidebarLink>
           </SidebarItem>
           <SidebarItem>
-            <SidebarLink onClick={toggle} to="/products">
+            <SidebarLink onClick={closeSidebar} to="/products">
               Products
             </SidebarLink>
           </SidebarItem>

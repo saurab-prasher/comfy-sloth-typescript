@@ -12,16 +12,12 @@ import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
 
 const App = () => {
-  const [isOpen, setisOpen] = React.useState(false);
-  const toggle = () => {
-    setisOpen(!isOpen);
-  };
   return (
     <>
       <Router>
         <>
-          <Navbar toggle={toggle} />
-          <Sidebar isOpen={isOpen} toggle={toggle} />
+          <Navbar />
+          <Sidebar />
         </>
         <Switch>
           <Route exact path="/" component={Home} />
