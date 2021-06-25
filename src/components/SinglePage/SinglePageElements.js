@@ -4,15 +4,18 @@ import { Link } from "react-router-dom";
 
 export const SinglePageHeader = styled.header`
   background-color: #eaded7;
+
+  position: relative;
 `;
 export const HeaderInner = styled.div`
-  max-width: 1240px;
+  max-width: 124rem;
   margin: 0 auto;
   font-size: 2.5rem;
   font-weight: 500;
   color: #453227;
-  padding: 5rem 0;
-  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  height: 10vh;
 `;
 export const HomeLink = styled(Link)``;
 export const Products = styled.a``;
@@ -21,9 +24,9 @@ export const SinglePageMain = styled.main`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2.5rem;
-  max-width: 1240px;
-  margin: 0 auto;
-  margin-bottom: 4.15rem;
+  max-width: 124rem;
+  margin: 4rem auto;
+  min-height: calc(80vh - 7.9rem);
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;

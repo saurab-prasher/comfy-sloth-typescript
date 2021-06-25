@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useProductsContext } from "../../context/products_context";
+import Loading from "../Loading";
 import { useParams } from "react-router-dom";
 import { formatPrice } from "../../utils/helper";
 import {
@@ -66,53 +67,59 @@ const SinglePage = () => {
           {product.heading}
         </HeaderInner>
       </SinglePageHeader>
+
       <SinglePageMain>
-        <SinglePageImg>
-          <Gallery images={product.images} />
-        </SinglePageImg>
+        {single_product_loading ? (
+          <Loading main={false} />
+        ) : (
+          <>
+            <SinglePageImg>
+              <Gallery images={product.images} />
+            </SinglePageImg>
+            <SinglePageText>
+              <SinglePageH1>{product.name}</SinglePageH1>
+              <ReviewsContainer>
+                <Stars stars={product.stars} />
+                <p>{product.reviews} Customer reviews)</p>
+              </ReviewsContainer>
+              <Price> {formatPrice(product.price)}</Price>
+              <Description>{product.description}</Description>
 
-        <SinglePageText>
-          <SinglePageH1>{product.name}</SinglePageH1>
-          <ReviewsContainer>
-            <Stars stars={product.stars} />
-            <p>{product.reviews} Customer reviews)</p>
-          </ReviewsContainer>
-          <Price> {formatPrice(product.price)}</Price>
-          <Description>{product.description}</Description>
+              <ul>
+                <li>
+                  Available: {product.stock > 0 ? "In Stock" : "out of stock"}
+                </li>
+                <li>SKU: {product.id}</li>
+                <li>Brand: {product.company}</li>
+                <div className="color-container">
+                  <li style={{ display: "flex", alignItems: "center" }}>
+                    Colors:
+                    {/* {product.color.map((item, idx) => {
+                return (
+                  <button
+                    style={{
+                      backgroundColor: `${
+                        item === "yellow" ? "gold" : `${item}`
+                      }`,
+                      height: "1.6rem",
+                      width: "1.6rem",
+                      borderRadius: "50%",
+                      display: "inline-block",
+                      marginLeft: "0.5rem",
+                      cursor: "pointer",
+                    }}
+                    key={idx}
+                  ></button>
+                );
+              })} */}
+                  </li>
+                </div>
+              </ul>
 
-          <ul>
-            <li>
-              Available: {product.stock > 0 ? "In Stock" : "out of stock"}
-            </li>
-            <li>SKU: {product.id}</li>
-            <li>Brand: {product.company}</li>
-            <div className="color-container">
-              <li style={{ display: "flex", alignItems: "center" }}>
-                Colors:
-                {/* {product.color.map((item, idx) => {
-                  return (
-                    <button
-                      style={{
-                        backgroundColor: `${
-                          item === "yellow" ? "gold" : `${item}`
-                        }`,
-                        height: "1.6rem",
-                        width: "1.6rem",
-                        borderRadius: "50%",
-                        display: "inline-block",
-                        marginLeft: "0.5rem",
-                        cursor: "pointer",
-                      }}
-                      key={idx}
-                    ></button>
-                  );
-                })} */}
-              </li>
-            </div>
-          </ul>
-
-          <AddToCartBtn>Add To cart</AddToCartBtn>
-        </SinglePageText>
+              <AddToCartBtn>Add To cart</AddToCartBtn>
+            </SinglePageText>
+          </>
+        )}
       </SinglePageMain>
     </>
   );

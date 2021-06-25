@@ -1,5 +1,6 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context";
+import Loading from "../Loading";
 import {
   FeaturedContainer,
   FeaturedH2,
@@ -11,19 +12,24 @@ import {
 import Card from "../Card";
 
 const Featured = () => {
-  const { featured_products } = useProductsContext();
+  const { featured_products, products_loading } = useProductsContext();
+
   return (
     <FeaturedContainer>
-      <FeaturedInner>
-        <FeaturedH2>Featured Products</FeaturedH2>
-        <Line />
-        <FeaturedCards>
-          {featured_products.slice(0, 3).map((item) => {
-            return <Card key={item.id} {...item} />;
-          })}
-        </FeaturedCards>
-        <FeaturedBtn to="/products">All Products</FeaturedBtn>
-      </FeaturedInner>
+      {products_loading ? (
+        <Loading main={true} />
+      ) : (
+        <FeaturedInner>
+          <FeaturedH2>Featured Products</FeaturedH2>
+          <Line />
+          <FeaturedCards>
+            {featured_products.slice(0, 3).map((item) => {
+              return <Card key={item.id} {...item} />;
+            })}
+          </FeaturedCards>
+          <FeaturedBtn to="/products">All Products</FeaturedBtn>
+        </FeaturedInner>
+      )}
     </FeaturedContainer>
   );
 };

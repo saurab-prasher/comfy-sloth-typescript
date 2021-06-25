@@ -29,8 +29,8 @@ const App = () => {
           <Route path="/cart" component={Cart} />
           <Route path="*" component={Error} />
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
     </>
   );
 };

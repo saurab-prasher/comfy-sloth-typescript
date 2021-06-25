@@ -28,11 +28,13 @@ const AboutLink = styled.a`
 const AboutSection = styled.section`
   max-width: 1240px;
   margin: 0 auto;
+  margin-top: 10rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  align-items: center;
   grid-gap: 3rem;
-  margin-bottom: 13rem;
+  align-items: start;
+
+  min-height: calc(80vh - 13.1rem);
   @media screen and (max-width: 900px) {
     grid-template-columns: 1fr;
   }

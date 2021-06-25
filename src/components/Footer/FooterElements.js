@@ -5,10 +5,6 @@ export const FooterContainer = styled.footer`
   text-align: center;
   color: #fff;
   padding: 1.5rem 0;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
 `;
 export const FooterText = styled.p`
   font-size: 1.2rem;

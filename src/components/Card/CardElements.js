@@ -5,7 +5,9 @@ export const CardImage = styled.img`
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
   object-fit: cover;
+  display: block;
   width: 100%;
+  height: 25rem;
 `;
 
 export const CardImageContainer = styled.div`
@@ -14,6 +16,7 @@ export const CardImageContainer = styled.div`
   background: rgb(0, 0, 0);
   border-radius: 5px;
   display: flex;
+
   &:hover img {
     opacity: 0.5;
   }

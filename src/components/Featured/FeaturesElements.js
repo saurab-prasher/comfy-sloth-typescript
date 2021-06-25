@@ -4,6 +4,9 @@ import { ImSearch } from "react-icons/im";
 
 export const FeaturedContainer = styled.section`
   background-color: #eae9e1;
+  max-height: fit-content;
+  min-height: 50rem;
+  position: relative;
 `;
 
 export const FeaturedInner = styled.div`
@@ -13,6 +16,7 @@ export const FeaturedInner = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 export const FeaturedH2 = styled.h2`
   font-size: 3rem;
@@ -32,8 +36,8 @@ export const Line = styled.div`
 export const FeaturedCards = styled.div`
   display: grid;
   grid-gap: 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  position: relative;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
 `;
 
 export const SearchContainer = styled.div`

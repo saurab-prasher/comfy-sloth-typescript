@@ -7,6 +7,7 @@ export const ProductListContainer = styled.div`
   min-height: 100vh;
   max-width: 1240px;
   margin: 0 auto;
+  position: relative;
 `;
 
 export const ProductListSection = styled.article`
