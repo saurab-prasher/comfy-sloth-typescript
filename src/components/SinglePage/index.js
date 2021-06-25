@@ -14,13 +14,14 @@ import {
   HeaderInner,
   Price,
   Description,
-  AddToCartBtn,
   Products,
   Star,
   StarFill,
   StarHalf,
+  ProductName,
 } from "./SinglePageElements";
 
+import AddToCart from "../AddToCart";
 import Gallery from "../Gallery";
 
 const Stars = ({ stars }) => {
@@ -59,12 +60,27 @@ const SinglePage = () => {
     fetchSingleProduct(`${single_product_url}${id}`);
   }, [id]);
 
+  const {
+    name,
+    images,
+    stars,
+    price,
+    description,
+    id: SKU,
+    company,
+    reviews,
+    stock,
+    colors,
+  } = product;
+
+  console.log(product);
   return (
     <>
       <SinglePageHeader>
         <HeaderInner>
-          <HomeLink to="/">Home</HomeLink> / <Products>Products</Products> /
-          {product.heading}
+          <HomeLink to="/">Home</HomeLink> /
+          <Products to="/products">Products</Products> /
+          <ProductName>{name}</ProductName>
         </HeaderInner>
       </SinglePageHeader>
 
@@ -74,49 +90,47 @@ const SinglePage = () => {
         ) : (
           <>
             <SinglePageImg>
-              <Gallery images={product.images} />
+              <Gallery images={images} />
             </SinglePageImg>
             <SinglePageText>
-              <SinglePageH1>{product.name}</SinglePageH1>
+              <SinglePageH1>{name}</SinglePageH1>
               <ReviewsContainer>
-                <Stars stars={product.stars} />
-                <p>{product.reviews} Customer reviews)</p>
+                <Stars stars={stars} />
+                <p>{reviews} Customer reviews)</p>
               </ReviewsContainer>
-              <Price> {formatPrice(product.price)}</Price>
-              <Description>{product.description}</Description>
-
+              <Price> {formatPrice(price)}</Price>
+              <Description>{description}</Description>
               <ul>
-                <li>
-                  Available: {product.stock > 0 ? "In Stock" : "out of stock"}
-                </li>
-                <li>SKU: {product.id}</li>
-                <li>Brand: {product.company}</li>
+                <li>Available: {stock > 0 ? "In Stock" : "out of stock"}</li>
+                <li>SKU: {SKU}</li>
+                <li>Brand: {company}</li>
+                <hr />
                 <div className="color-container">
                   <li style={{ display: "flex", alignItems: "center" }}>
                     Colors:
-                    {/* {product.color.map((item, idx) => {
-                return (
-                  <button
-                    style={{
-                      backgroundColor: `${
-                        item === "yellow" ? "gold" : `${item}`
-                      }`,
-                      height: "1.6rem",
-                      width: "1.6rem",
-                      borderRadius: "50%",
-                      display: "inline-block",
-                      marginLeft: "0.5rem",
-                      cursor: "pointer",
-                    }}
-                    key={idx}
-                  ></button>
-                );
-              })} */}
+                    {colors &&
+                      colors.map((item, idx) => {
+                        return (
+                          <button
+                            key={idx}
+                            style={{
+                              backgroundColor: `${item}`,
+                              height: "1.6rem",
+                              width: "1.6rem",
+                              borderRadius: "50%",
+                              display: "inline-block",
+                              marginLeft: "0.5rem",
+                              cursor: "pointer",
+                              opacity: "0.5",
+                            }}
+                          ></button>
+                        );
+                      })}
                   </li>
                 </div>
               </ul>
 
-              <AddToCartBtn>Add To cart</AddToCartBtn>
+              <AddToCart stock={stock} />
             </SinglePageText>
           </>
         )}

@@ -9,7 +9,7 @@ import SingleProduct from "./pages/SingleProduct";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
-import Cart from "./pages/Cart";
+import CartPage from "./pages/CartPage";
 
 const App = () => {
   return (
@@ -26,9 +26,10 @@ const App = () => {
           <Route path="/products/:id">
             <SingleProduct />
           </Route>
-          <Route path="/cart" component={Cart} />
+          <Route path="/cart" component={CartPage} />
           <Route path="*" component={Error} />
         </Switch>
+
         <Footer />
       </Router>
     </>

@@ -16,9 +16,23 @@ export const HeaderInner = styled.div`
   display: flex;
   align-items: center;
   height: 10vh;
+  letter-spacing: 2px;
 `;
-export const HomeLink = styled(Link)``;
-export const Products = styled.a``;
+export const HomeLink = styled(Link)`
+  margin-right: 1rem;
+  color: inherit;
+`;
+export const Products = styled(Link)`
+  color: inherit;
+  margin: 1rem;
+`;
+
+export const ProductName = styled.h1`
+  text-transform: capitalize;
+  margin-left: 1rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+`;
 
 export const SinglePageMain = styled.main`
   display: grid;
@@ -45,6 +59,7 @@ export const SinglePageText = styled.article`
 `;
 export const SinglePageH1 = styled.h1`
   font-size: 2.5rem;
+  text-transform: capitalize;
 `;
 export const Star = styled(BsStar)`
   color: #ffb900;
@@ -76,23 +91,4 @@ export const Description = styled.p`
   font-size: 1.2rem;
   line-height: 1.7;
   margin-bottom: 1rem;
-`;
-
-export const AddToCartBtn = styled.button`
-  background-color: #531410;
-  padding: 1rem;
-  color: #fff;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 3px;
-  transition: all 0.1s ease-in-out;
-  border: 1px solid transparent;
-
-  &:hover {
-    background-color: #fff;
-    color: rgb(83, 20, 16);
-    border: 1px solid rgb(83, 20, 16);
-  }
 `;
