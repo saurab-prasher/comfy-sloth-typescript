@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import sampleImg from "../../images/bookshelf-low-res.jpg";
 import {
   CartContainer,
@@ -6,11 +6,31 @@ import {
   CartItem,
   CartItemImgContainer,
   CartItemBtnContainer,
+  CartItemTotalContainer,
   CartItemTotal,
+  Price,
+  SubTotal,
+  Delete,
+  DeleteBtn,
+  BtnClear,
+  BtnContinue,
+  CartItemTotalBtn,
+  IncreaseItem,
+  DecreaseItem,
+  Amount,
+  ChangeQuantity,
 } from "./CartElements";
-import { RiDeleteBinLine } from "react-icons/ri";
 
-const Cart = () => {
+const Cart = ({ stock }) => {
+  const [count, setCount] = useState(1);
+  const handleCount = (value) => {
+    if (value === "increment") {
+      setCount(count + 1);
+    }
+    if (value === "decrement") {
+      setCount(count - 1);
+    }
+  };
   return (
     <CartContainer>
       <CartContainerHeadings>
@@ -31,36 +51,67 @@ const Cart = () => {
       <CartItem>
         <CartItemImgContainer>
           <img src={sampleImg} alt="" />
-
-          <h3>Entertainment Center</h3>
-          <p>Color : </p>
+          <div>
+            <h3>Entertainment Center</h3>
+            <p>
+              Color :
+              <button
+                style={{
+                  backgroundColor: "#000",
+                  height: "1.4rem",
+                  width: "1.4rem",
+                  borderRadius: "50%",
+                  display: "inline-block",
+                  margin: "0 0.5rem",
+                }}
+              ></button>
+            </p>
+          </div>
         </CartItemImgContainer>
-        <div>$599.00</div>
+        <Price>
+          <p>$599.00</p>
+        </Price>
+        <ChangeQuantity>
+          <DecreaseItem onClick={() => handleCount("decrement")}>
+            -
+          </DecreaseItem>
+          <Amount>{count} </Amount>
 
-        <div>- 1 +</div>
-
-        <div>$599</div>
-
-        <div>
-          <button>
-            <RiDeleteBinLine />
-          </button>
-        </div>
+          <IncreaseItem onClick={() => handleCount("increment")}>
+            +
+          </IncreaseItem>
+        </ChangeQuantity>
+        <SubTotal>
+          <p>$599</p>
+        </SubTotal>
+        <Delete>
+          <DeleteBtn />
+        </Delete>
       </CartItem>
 
       <hr />
       <CartItemBtnContainer>
-        <button>Continue Shopping</button>
-        <button>Clear Shopping Cart</button>
+        <BtnContinue>Continue Shopping</BtnContinue>
+        <BtnClear>Clear Shopping Cart</BtnClear>
       </CartItemBtnContainer>
 
-      <CartItemTotal>
-        <h3>Subtotal: $1030.97</h3>
-        <p>Shipping Fee: $5.34</p>
-
-        <h2>Order Total : $1,036.31</h2>
-        <button>Login</button>
-      </CartItemTotal>
+      <CartItemTotalContainer>
+        <CartItemTotal>
+          <div>
+            <h3>Subtotal: </h3>
+            <p> $1,030.97</p>
+          </div>
+          <div>
+            <p>Shipping Fee: </p>
+            <p> $5.34 </p>
+          </div>
+          <hr />
+          <div>
+            <h2>Order Total:</h2> <p>$1,036.31</p>
+          </div>
+        </CartItemTotal>
+        <CartItemTotalBtn>Login</CartItemTotalBtn>
+      </CartItemTotalContainer>
     </CartContainer>
   );
 };
