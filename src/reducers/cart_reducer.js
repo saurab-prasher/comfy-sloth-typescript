@@ -1,7 +1,11 @@
-import React from "react";
+const cart_reducer = (state, action) => {
+  switch (action.type) {
+    case "TEST":
+      return { ...state, product: [...state.product, action.payload] };
 
-const cart_reducer = () => {
-  return <div></div>;
+    default:
+      throw new Error(`No matching "${action.type}" - action type `);
+  }
 };
 
 export default cart_reducer;

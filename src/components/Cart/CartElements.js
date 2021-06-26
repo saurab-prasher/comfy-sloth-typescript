@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 const sharedBtn = css`
@@ -20,7 +21,6 @@ const sharedBtn = css`
 export const CartContainer = styled.main`
   max-width: 124rem;
   margin: 0 auto;
-
   height: 80vh;
 
   hr {
@@ -33,9 +33,8 @@ export const CartContainer = styled.main`
 
 export const CartContainerHeadings = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr auto;
-  justify-items: center;
-  grid-gap: 1rem;
+  grid-template-columns: 2fr repeat(3, 1fr) auto;
+  justify-items: start;
   margin-bottom: 2.5rem;
 
   p {
@@ -44,14 +43,14 @@ export const CartContainerHeadings = styled.div`
 `;
 export const CartItem = styled.article`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr auto;
+  grid-template-columns: 2fr repeat(3, 1fr) auto;
   align-items: center;
-  margin-bottom: 1rem;
-  padding: 3rem 0;
+  margin: 4.5rem 0;
   font-size: 1.4rem;
   color: #531410;
   letter-spacing: 1px;
-  place-items: center;
+  align-items: center;
+  justify-items: start;
 `;
 export const CartItemImgContainer = styled.div`
   display: flex;
@@ -64,12 +63,12 @@ export const CartItemImgContainer = styled.div`
 
   h3 {
     font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    margin-bottom: 1rem;
   }
   img {
-    height: 75px;
-    margin-right: 1rem;
+    width: 150px;
+    height: 100px;
+    margin-right: 1.5rem;
     border-radius: 5px;
   }
 `;

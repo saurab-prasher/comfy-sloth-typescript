@@ -29,8 +29,6 @@ const AddToCart = ({ stock }) => {
           +
         </AddToCartIncBtn>
       </AddToCartSection>
-
-      <AddToCartBtn to="/cart">Add To cart</AddToCartBtn>
     </AddToCartContainer>
   );
 };

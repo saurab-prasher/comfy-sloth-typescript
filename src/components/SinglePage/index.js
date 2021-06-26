@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useProductsContext } from "../../context/products_context";
+import { useCartContext } from "../../context/cart_context";
 import Loading from "../Loading";
 import { useParams } from "react-router-dom";
 import { formatPrice } from "../../utils/helper";
@@ -19,6 +20,7 @@ import {
   StarFill,
   StarHalf,
   ProductName,
+  AddToCartBtn,
 } from "./SinglePageElements";
 
 import AddToCart from "../AddToCart";
@@ -54,6 +56,7 @@ const SinglePage = () => {
     single_product: product,
   } = useProductsContext();
 
+  const { test } = useCartContext();
   const { id } = useParams();
 
   useEffect(() => {
@@ -131,6 +134,16 @@ const SinglePage = () => {
               </ul>
 
               <AddToCart stock={stock} />
+              <AddToCartBtn
+                onClick={() => {
+                  const image = images[0].thumbnails.large.url;
+                  const formattedPrice = price / 100;
+                  test({ name, formattedPrice, stock, image, id: SKU });
+                }}
+                to="/cart"
+              >
+                Add To cart
+              </AddToCartBtn>
             </SinglePageText>
           </>
         )}
