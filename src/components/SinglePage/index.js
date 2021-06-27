@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useProductsContext } from "../../context/products_context";
 import { useCartContext } from "../../context/cart_context";
 import Loading from "../Loading";
@@ -49,6 +49,16 @@ const Stars = ({ stars }) => {
 const single_product_url = `https://course-api.com/react-store-single-product?id=`;
 
 const SinglePage = () => {
+  const [count, setCount] = useState(1);
+  const handleCount = (value) => {
+    if (value === "increment" && count < stock) {
+      setCount(count + 1);
+    }
+    if ((value === "decrement") & (count > 1)) {
+      setCount(count - 1);
+    }
+  };
+
   const {
     fetchSingleProduct,
     single_product_loading,
@@ -77,6 +87,7 @@ const SinglePage = () => {
   } = product;
 
   console.log(product);
+
   return (
     <>
       <SinglePageHeader>
@@ -133,12 +144,23 @@ const SinglePage = () => {
                 </div>
               </ul>
 
-              <AddToCart stock={stock} />
+              <AddToCart
+                handleCount={handleCount}
+                count={count}
+                stock={stock}
+              />
               <AddToCartBtn
                 onClick={() => {
                   const image = images[0].thumbnails.large.url;
                   const formattedPrice = price / 100;
-                  test({ name, formattedPrice, stock, image, id: SKU });
+                  test({
+                    name,
+                    formattedPrice,
+                    stock,
+                    image,
+                    id: SKU,
+                    itemCount: count,
+                  });
                 }}
                 to="/cart"
               >

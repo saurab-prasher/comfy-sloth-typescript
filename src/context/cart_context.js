@@ -11,6 +11,7 @@ const CartContext = React.createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  console.log(state);
   const test = (product) => {
     dispatch({ type: "TEST", payload: product });
   };

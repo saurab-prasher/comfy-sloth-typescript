@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 const sharedBtn = css`
