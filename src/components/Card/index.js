@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { formatPrice } from "../../utils/helper";
+import { Link } from "react-router-dom";
+
 import {
   Card,
   CardImage,
@@ -9,8 +10,9 @@ import {
   CardImageContainer,
 } from "./CardElements";
 
+import { formatPrice } from "../../utils/helper";
 import { Search, SearchContainer } from "../Featured/FeaturesElements";
-import { Link } from "react-router-dom";
+
 const Cards = ({ id, image, name, src, price }) => {
   const [hover, setHover] = useState(false);
 

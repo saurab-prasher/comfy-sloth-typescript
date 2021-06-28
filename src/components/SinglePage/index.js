@@ -1,64 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useProductsContext } from "../../context/products_context";
-import { useCartContext } from "../../context/cart_context";
-import Loading from "../Loading";
+
 import { useParams } from "react-router-dom";
 import { formatPrice } from "../../utils/helper";
+
+import Header from "../Header";
+import Loading from "../Loading";
+import Stars from "./Stars";
+import AddToCart from "../AddToCart";
+import Gallery from "../Gallery";
+
 import {
-  SinglePageHeader,
   SinglePageH1,
-  HomeLink,
   SinglePageImg,
   SinglePageText,
   SinglePageMain,
   ReviewsContainer,
-  HeaderInner,
   Price,
   Description,
-  Products,
-  Star,
-  StarFill,
-  StarHalf,
   ProductName,
-  AddToCartBtn,
 } from "./SinglePageElements";
-
-import AddToCart from "../AddToCart";
-import Gallery from "../Gallery";
-
-const Stars = ({ stars }) => {
-  const tempStars = Array.from({ length: 5 }, (_, index) => {
-    const number = index + 0.5;
-
-    return (
-      <React.Fragment key={index}>
-        {stars >= index + 1 ? (
-          <StarFill />
-        ) : stars >= number ? (
-          <StarHalf />
-        ) : (
-          <Star />
-        )}
-      </React.Fragment>
-    );
-  });
-
-  return tempStars;
-};
 
 const single_product_url = `https://course-api.com/react-store-single-product?id=`;
 
 const SinglePage = () => {
-  const [count, setCount] = useState(1);
-  const handleCount = (value) => {
-    if (value === "increment" && count < stock) {
-      setCount(count + 1);
-    }
-    if ((value === "decrement") & (count > 1)) {
-      setCount(count - 1);
-    }
-  };
-
   const {
     fetchSingleProduct,
     single_product_loading,
@@ -66,7 +31,6 @@ const SinglePage = () => {
     single_product: product,
   } = useProductsContext();
 
-  const { test } = useCartContext();
   const { id } = useParams();
 
   useEffect(() => {
@@ -90,19 +54,14 @@ const SinglePage = () => {
 
   return (
     <>
-      <SinglePageHeader>
-        <HeaderInner>
-          <HomeLink to="/">Home</HomeLink> /
-          <Products to="/products">Products</Products> /
-          <ProductName>{name}</ProductName>
-        </HeaderInner>
-      </SinglePageHeader>
-
-      <SinglePageMain>
-        {single_product_loading ? (
-          <Loading main={false} />
-        ) : (
-          <>
+      {single_product_loading ? (
+        <Loading singleProduct={true} />
+      ) : (
+        <>
+          <Header location="Products">
+            <ProductName>{name}</ProductName>
+          </Header>
+          <SinglePageMain>
             <SinglePageImg>
               <Gallery images={images} />
             </SinglePageImg>
@@ -119,57 +78,13 @@ const SinglePage = () => {
                 <li>SKU: {SKU}</li>
                 <li>Brand: {company}</li>
                 <hr />
-                <div className="color-container">
-                  <li style={{ display: "flex", alignItems: "center" }}>
-                    Colors:
-                    {colors &&
-                      colors.map((item, idx) => {
-                        return (
-                          <button
-                            key={idx}
-                            style={{
-                              backgroundColor: `${item}`,
-                              height: "1.6rem",
-                              width: "1.6rem",
-                              borderRadius: "50%",
-                              display: "inline-block",
-                              marginLeft: "0.5rem",
-                              cursor: "pointer",
-                              opacity: "0.5",
-                            }}
-                          ></button>
-                        );
-                      })}
-                  </li>
-                </div>
               </ul>
 
-              <AddToCart
-                handleCount={handleCount}
-                count={count}
-                stock={stock}
-              />
-              <AddToCartBtn
-                onClick={() => {
-                  const image = images[0].thumbnails.large.url;
-                  const formattedPrice = price / 100;
-                  test({
-                    name,
-                    formattedPrice,
-                    stock,
-                    image,
-                    id: SKU,
-                    itemCount: count,
-                  });
-                }}
-                to="/cart"
-              >
-                Add To cart
-              </AddToCartBtn>
+              {stock > 0 && <AddToCart product={product} />}
             </SinglePageText>
-          </>
-        )}
-      </SinglePageMain>
+          </SinglePageMain>
+        </>
+      )}
     </>
   );
 };

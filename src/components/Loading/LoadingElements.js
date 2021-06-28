@@ -33,8 +33,10 @@ export const Loader = styled.div`
   transform: translateZ(0);
 
   position: absolute;
-  top: ${({ main }) => (main ? "26%" : "30%")};
-  left: ${({ productList }) => (productList ? "55%" : "45%")};
+  top: ${({ mainPage, productList, singleProduct }) =>
+    (mainPage && "26%") || (productList && "10%") || (singleProduct && "350%")};
+  left: ${({ productList, singleProduct, mainPage }) =>
+    (mainPage && "45%") || (productList && "55%") || (singleProduct && "45%")};
 
   &:before {
     width: 50%;
@@ -47,7 +49,7 @@ export const Loader = styled.div`
     content: "";
   }
   &:after {
-    background: ${({ main }) => (main ? "#eae9e1" : "#fff")};
+    background: ${({ mainPage }) => (mainPage ? "#eae9e1" : "#fff")};
     width: 75%;
     height: 75%;
     border-radius: 50%;

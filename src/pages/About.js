@@ -1,32 +1,12 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+
+import Header from "../components/Header";
+
 import img from "../images/product-1.jpeg";
 
-const AboutHeader = styled.header`
-  background-color: #eaded7;
-`;
-const AboutInner = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-  font-size: 2.5rem;
-  font-weight: 500;
-  color: #453227;
-  padding: 5rem 0;
-  margin-bottom: 4rem;
-`;
-
-const HomeLink = styled(Link)`
-  color: inherit;
-`;
-const AboutLink = styled.a`
-  margin: 0 1rem;
-  text-transform: capitalize;
-  letter-spacing: 0.5rem;
-`;
-
 const AboutSection = styled.section`
-  max-width: 1240px;
+  max-width: 124rem;
   margin: 0 auto;
   margin-top: 10rem;
   display: grid;
@@ -68,16 +48,9 @@ const Line = styled.div`
 `;
 
 const About = () => {
-  const location = useLocation();
   return (
     <>
-      <AboutHeader>
-        <AboutInner>
-          <HomeLink to="/">Home</HomeLink>
-          <AboutLink>{location.pathname}</AboutLink>
-        </AboutInner>
-      </AboutHeader>
-
+      <Header Home="Home" location="About" />
       <AboutSection>
         <AboutImgContainer>
           <AboutImg src={img} />

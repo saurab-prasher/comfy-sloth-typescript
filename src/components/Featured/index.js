@@ -1,6 +1,6 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context";
-import Loading from "../Loading";
+
 import {
   FeaturedContainer,
   FeaturedH2,
@@ -9,6 +9,8 @@ import {
   FeaturedBtn,
   FeaturedCards,
 } from "./FeaturesElements";
+
+import Loading from "../Loading";
 import Card from "../Card";
 
 const Featured = () => {
@@ -17,7 +19,7 @@ const Featured = () => {
   return (
     <FeaturedContainer>
       {products_loading ? (
-        <Loading main={true} />
+        <Loading mainPage={true} />
       ) : (
         <FeaturedInner>
           <FeaturedH2>Featured Products</FeaturedH2>

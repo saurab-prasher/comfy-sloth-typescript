@@ -9,6 +9,7 @@ export const Header = styled.header`
   max-width: 124rem;
   margin: 1rem auto;
   padding-right: 2rem;
+  position: relative;
 `;
 
 export const Logo = styled.img`

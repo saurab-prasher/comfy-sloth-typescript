@@ -1,5 +1,6 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context";
+import { useCartContext } from "../../context/cart_context";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.svg";
@@ -24,6 +25,7 @@ Logo.defaultProps = {
 
 const Navbar = () => {
   const { openSidebar } = useProductsContext();
+  const { totalItem } = useCartContext();
   return (
     <Header>
       <div>
@@ -53,7 +55,7 @@ const Navbar = () => {
         <NavBtn>
           <Link to="/cart">Cart</Link>
           <ShoppingCart />
-          <ShoppingCartValue>0</ShoppingCartValue>
+          <ShoppingCartValue>{totalItem}</ShoppingCartValue>
         </NavBtn>
         <NavBtn>
           Login

@@ -2,45 +2,13 @@ import styled from "styled-components";
 import { BsStarHalf, BsStar, BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-export const SinglePageHeader = styled.header`
-  background-color: #eaded7;
-
-  position: relative;
-`;
-export const HeaderInner = styled.div`
-  max-width: 124rem;
-  margin: 0 auto;
-  font-size: 2.5rem;
-  font-weight: 500;
-  color: #453227;
-  display: flex;
-  align-items: center;
-  height: 10vh;
-  letter-spacing: 2px;
-`;
-export const HomeLink = styled(Link)`
-  margin-right: 1rem;
-  color: inherit;
-`;
-export const Products = styled(Link)`
-  color: inherit;
-  margin: 1rem;
-`;
-
-export const ProductName = styled.h1`
-  text-transform: capitalize;
-  margin-left: 1rem;
-  font-size: 2.5rem;
-  font-weight: 600;
-`;
-
 export const SinglePageMain = styled.main`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2.5rem;
   max-width: 124rem;
   margin: 4rem auto;
-  min-height: calc(80vh - 7.9rem);
+  min-height: calc(80vh - 11.1rem);
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -48,6 +16,14 @@ export const SinglePageMain = styled.main`
 `;
 
 export const SinglePageImg = styled.article``;
+
+export const ProductName = styled.h1`
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  display: inline-block;
+`;
 
 export const SinglePageText = styled.article`
   & li {
@@ -91,22 +67,4 @@ export const Description = styled.p`
   font-size: 1.2rem;
   line-height: 1.7;
   margin-bottom: 1rem;
-`;
-export const AddToCartBtn = styled(Link)`
-  background-color: #531410;
-  padding: 1rem;
-  color: #fff;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 3px;
-  transition: all 0.1s ease-in-out;
-  border: 1px solid transparent;
-
-  &:hover {
-    background-color: #fff;
-    color: rgb(83, 20, 16);
-    border: 1px solid rgb(83, 20, 16);
-  }
 `;

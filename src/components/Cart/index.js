@@ -23,17 +23,8 @@ import {
 } from "./CartElements";
 
 const Cart = ({ stock }) => {
-  const [count, setCount] = useState(1);
   const { product } = useCartContext();
 
-  const handleCount = (value) => {
-    if (value === "increment") {
-      setCount(count + 1);
-    }
-    if (value === "decrement") {
-      setCount(count - 1);
-    }
-  };
   return (
     <CartContainer>
       {product.length === 0 ? (
@@ -57,7 +48,8 @@ const Cart = ({ stock }) => {
           <hr />
 
           {product.map((item) => {
-            const { id, name, formattedPrice, image } = item;
+            const { id, name, price, image, mainColor, amount, subTotal } =
+              item;
             return (
               <CartItem key={id}>
                 <CartItemImgContainer>
@@ -68,7 +60,7 @@ const Cart = ({ stock }) => {
                       Color :
                       <button
                         style={{
-                          backgroundColor: "#000",
+                          backgroundColor: `${mainColor}`,
                           height: "1.4rem",
                           width: "1.4rem",
                           borderRadius: "50%",
@@ -80,20 +72,16 @@ const Cart = ({ stock }) => {
                   </div>
                 </CartItemImgContainer>
                 <Price>
-                  <p>${formattedPrice}</p>
+                  <p>${price}</p>
                 </Price>
                 <ChangeQuantity>
-                  <DecreaseItem onClick={() => handleCount("decrement")}>
-                    -
-                  </DecreaseItem>
-                  <Amount>{count} </Amount>
+                  <DecreaseItem>-</DecreaseItem>
+                  <Amount>{amount} </Amount>
 
-                  <IncreaseItem onClick={() => handleCount("increment")}>
-                    +
-                  </IncreaseItem>
+                  <IncreaseItem>+</IncreaseItem>
                 </ChangeQuantity>
                 <SubTotal>
-                  <p>${formattedPrice}</p>
+                  <p>${subTotal}</p>
                 </SubTotal>
                 <Delete>
                   <DeleteBtn />

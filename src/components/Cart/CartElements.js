@@ -21,6 +21,7 @@ export const CartContainer = styled.main`
   max-width: 124rem;
   margin: 0 auto;
   height: 80vh;
+  text-transform: capitalize;
 
   hr {
     height: 1px;
