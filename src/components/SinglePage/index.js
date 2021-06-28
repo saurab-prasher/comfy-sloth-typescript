@@ -47,7 +47,6 @@ const SinglePage = () => {
     company,
     reviews,
     stock,
-    colors,
   } = product;
 
   console.log(product);

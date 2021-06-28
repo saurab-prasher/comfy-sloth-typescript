@@ -5,9 +5,14 @@ export const ProductListContainer = styled.div`
   grid-template-columns: max-content 1fr;
   grid-gap: 3rem;
   min-height: 100vh;
-  max-width: 1240px;
+  max-width: 124rem;
   margin: 0 auto;
   position: relative;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-gap: 0.5rem;
+  }
 `;
 
 export const ProductListSection = styled.article`
@@ -15,7 +20,7 @@ export const ProductListSection = styled.article`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 2rem;
   img {
-    height: 200px;
+    height: 20rem;
   }
 `;
 
@@ -30,10 +35,25 @@ export const ProductGridBtnContainer = styled.div`
   label {
     font-size: 1.4rem;
     margin: 0 0.75rem;
+    font-weight: 500;
   }
 
   hr {
     border: none;
     border-bottom: 1px solid #ccc;
+  }
+
+  select {
+    background-color: #dadada;
+    background-color: #dadada;
+    font-family: inherit;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    padding: 0.45rem;
+
+    &:focus {
+      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+    }
   }
 `;

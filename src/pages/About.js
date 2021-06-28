@@ -11,10 +11,9 @@ const AboutSection = styled.section`
   margin-top: 10rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 3rem;
+  grid-gap: 5rem;
   align-items: start;
-
-  min-height: calc(80vh - 13.1rem);
+  min-height: calc(80vh - 17.2rem);
   @media screen and (max-width: 900px) {
     grid-template-columns: 1fr;
   }
@@ -28,7 +27,8 @@ const AboutTextContainer = styled.article`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #102a47;
+
+  justify-self: end;
 `;
 
 const AboutH1 = styled.h1`
@@ -36,13 +36,12 @@ const AboutH1 = styled.h1`
   margin-bottom: 1rem;
 `;
 const AboutP = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.7;
+  font-size: 1.6rem;
 `;
 const Line = styled.div`
   height: 4px;
-  margin-bottom: 2rem;
-  width: 8rem;
+  width: 12rem;
+  margin-bottom: 4rem;
   background-color: #531410;
   align-self: center;
 `;

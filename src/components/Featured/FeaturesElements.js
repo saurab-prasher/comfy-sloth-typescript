@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ImSearch } from "react-icons/im";
 
 export const FeaturedContainer = styled.section`
   background-color: #eae9e1;
@@ -28,7 +27,7 @@ export const FeaturedH2 = styled.h2`
 export const Line = styled.div`
   height: 4px;
   margin-bottom: 4rem;
-  width: 8rem;
+  width: 12rem;
   background-color: #531410;
   align-self: center;
 `;
@@ -40,42 +39,13 @@ export const FeaturedCards = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
 `;
 
-export const SearchContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  inset: 0;
-`;
-
-export const Search = styled(ImSearch)`
-  position: absolute;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.3rem;
-  color: #fff;
-  border-radius: 50%;
-  background: #531410;
-  padding: 0.25rem 0.5rem;
-  z-index: 2;
-  border: 1px solid rgb(83, 20, 16);
-
-  &:hover {
-    background-color: #fff;
-    color: rgb(83, 20, 16);
-    border: 1px solid rgb(83, 20, 16);
-  }
-`;
-
 export const FeaturedBtn = styled(Link)`
   background-color: #531410;
   padding: 0.75rem 1rem;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  border-radius: 5px;
+  border-radius: 3px;
   display: inline-block;
   align-self: center;
   margin-top: 3rem;

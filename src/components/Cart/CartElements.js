@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 const sharedBtn = css`
@@ -20,7 +21,7 @@ const sharedBtn = css`
 export const CartContainer = styled.main`
   max-width: 124rem;
   margin: 0 auto;
-  height: 80vh;
+  height: 100vh;
   text-transform: capitalize;
 
   hr {
@@ -127,9 +128,11 @@ export const CartItemBtnContainer = styled.div`
   margin-top: 3rem;
 `;
 
-export const BtnContinue = styled.button`
+export const BtnContinue = styled(Link)`
   ${sharedBtn}
   background-color: #531410;
+  font-size: 1.4rem;
+  font-weight: 500;
 `;
 export const BtnClear = styled.button`
   ${sharedBtn}

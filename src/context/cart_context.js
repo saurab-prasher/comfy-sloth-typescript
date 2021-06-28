@@ -14,12 +14,16 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: "TEST", payload: product });
   };
 
+  const deleteItem = (id) => {
+    dispatch({ type: "DELETE_ITEM", payload: id });
+  };
+
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(state));
   }, [state]);
 
   return (
-    <CartContext.Provider value={{ ...state, test }}>
+    <CartContext.Provider value={{ ...state, test, deleteItem }}>
       {children}
     </CartContext.Provider>
   );

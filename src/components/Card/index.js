@@ -8,10 +8,11 @@ import {
   Heading,
   Price,
   CardImageContainer,
+  Search,
+  SearchContainer,
 } from "./CardElements";
 
 import { formatPrice } from "../../utils/helper";
-import { Search, SearchContainer } from "../Featured/FeaturesElements";
 
 const Cards = ({ id, image, name, src, price }) => {
   const [hover, setHover] = useState(false);

@@ -19,9 +19,10 @@ export const NewsLetterText = styled.div``;
 export const NewsLetterH2 = styled.h2`
   font-size: 3rem;
   margin-bottom: 1rem;
+  text-transform: capitalize;
 `;
 export const NewsLetterP = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 `;
 
 export const NewsLetterForm = styled.form`
@@ -31,7 +32,8 @@ export const Input = styled.input`
   padding: 0.75rem;
   border: 1px solid #a4a39e;
   border-radius: 3px;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
+  font-family: inherit;
   outline: none;
   width: 100%;
 
@@ -43,9 +45,9 @@ export const FormBtn = styled.button`
   border: 1px solid #531410;
   background-color: #531410;
   color: #fff;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   border-radius: 3px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
   margin-left: 1rem;
 

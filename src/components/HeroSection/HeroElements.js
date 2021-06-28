@@ -18,11 +18,11 @@ export const HeroText = styled.article`
   flex-basis: 100%;
 `;
 export const HeroH1 = styled.h1`
-  font-size: 3rem;
+  font-size: 3.8rem;
   margin-bottom: 2rem;
 `;
 export const HeroP = styled.p`
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   line-height: 1.7;
   font-weight: 400;
   margin-bottom: 2rem;
@@ -32,9 +32,9 @@ export const HeroBtn = styled(Link)`
   padding: 0.75rem 1rem;
   color: #fff;
   border: 1px solid transparent;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  border-radius: 5px;
+  border-radius: 3px;
   display: inline-block;
   transition: all 0.1s ease-in-out;
 

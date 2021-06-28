@@ -1,20 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ImCompass2 } from "react-icons/im";
 import { GiStabbedNote, GiDiamondHard } from "react-icons/gi";
 
 export const ServicesContainer = styled.section`
   background-color: #f4f6f4;
+  height: 50rem;
 `;
 export const ServicesInner = styled.div`
   margin: 0 auto;
   max-width: 124rem;
   padding: 4rem 0;
+  height: 100%;
 `;
 export const ServicesHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-top: 6rem;
 
   & > * {
     flex-basis: 100%;
@@ -24,13 +26,13 @@ export const ServicesH2 = styled.h2`
   font-size: 3rem;
 `;
 export const ServicesP = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 `;
 export const ServicesCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 2.5rem;
-  transform: translateY(7rem);
+  transform: translateY(12rem);
 `;
 export const ServicesCard = styled.div`
   background-color: #dcdddc;
@@ -48,13 +50,25 @@ export const IconContainer = styled.div`
   display: flex;
   margin-bottom: 1rem;
 `;
-export const Icon = styled(ImCompass2, GiDiamondHard, GiStabbedNote)`
-  font-size: 2rem;
+
+const sharedIconCSS = css`
+  font-size: 2.5rem;
 `;
+
+export const IconCompass = styled(ImCompass2)`
+  ${sharedIconCSS}
+`;
+export const IconDiamond = styled(GiDiamondHard)`
+  ${sharedIconCSS}
+`;
+export const IconNote = styled(GiStabbedNote)`
+  ${sharedIconCSS}
+`;
+
 export const CardHeading = styled.h3`
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
 `;
 export const CardDescription = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 `;

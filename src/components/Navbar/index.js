@@ -52,12 +52,12 @@ const Navbar = () => {
         </NavMenu>
       </Nav>
       <NavBtnContainer>
-        <NavBtn>
-          <Link to="/cart">Cart</Link>
+        <NavBtn to="/cart">
+          Cart
           <ShoppingCart />
           <ShoppingCartValue>{totalItem}</ShoppingCartValue>
         </NavBtn>
-        <NavBtn>
+        <NavBtn to="/login">
           Login
           <UserLogin />
         </NavBtn>

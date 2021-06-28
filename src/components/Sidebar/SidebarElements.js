@@ -17,10 +17,10 @@ export const SidebarContainer = styled.aside`
   background-color: #fff;
 
   transform: ${({ isSidebarOpen }) =>
-    isSidebarOpen ? "translateX(0)" : "translateX(-100%)"};
+    isSidebarOpen ? "translateX(0)" : "translateX(-110%)"};
   opacity: ${({ isSidebarOpen }) => (isSidebarOpen ? "100%" : "0")};
   padding: 1rem;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease;
 `;
 export const SidebarHeader = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ export const Icon = styled.div``;
 
 export const CloseIcon = styled(RiCloseLine)`
   color: #531410;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.1s ease-in-out;
@@ -58,8 +58,10 @@ export const SidebarLink = styled(Link)`
   margin: 0 auto;
   display: block;
   padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   border-radius: 3px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease;
 
   &:hover {
     background: #531410;
@@ -70,6 +72,7 @@ export const SidebarLink = styled(Link)`
 export const SidebarItem = styled.li`
   width: 100%;
   margin: 0.5rem;
+  margin-bottom: 2rem;
 `;
 export const SidebarBtnContainer = styled.div`
   display: flex;

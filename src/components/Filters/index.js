@@ -65,12 +65,13 @@ const Filters = () => {
 
       <FilterColors className="color">
         <h3>Colors</h3>
-        <button data-name="all">All</button>
-        <FilterColorBtnRed data-name="red" />
-        <FilterColorBtnGreen data-name="green" />
-        <FilterColorBtnBlue data-name="blue" />
-        <FilterColorBtnBlack data-name="black" />
-        <FilterColorBtnYellow data-name="yellow" />
+        <div>
+          <FilterColorBtnRed data-name="red" />
+          <FilterColorBtnGreen data-name="green" />
+          <FilterColorBtnBlue data-name="blue" />
+          <FilterColorBtnBlack data-name="black" />
+          <FilterColorBtnYellow data-name="yellow" />
+        </div>
       </FilterColors>
 
       <FilterPrice className="price">

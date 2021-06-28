@@ -9,7 +9,9 @@ import {
   ServicesCard,
   ServicesCardContainer,
   IconContainer,
-  Icon,
+  IconCompass,
+  IconDiamond,
+  IconNote,
   CardHeading,
   CardDescription,
 } from "./ServicesElements";
@@ -29,7 +31,7 @@ const Services = () => {
         <ServicesCardContainer>
           <ServicesCard>
             <IconContainer>
-              <Icon />
+              <IconCompass />
             </IconContainer>
             <CardHeading>Mission</CardHeading>
             <CardDescription>
@@ -40,7 +42,7 @@ const Services = () => {
           </ServicesCard>
           <ServicesCard>
             <IconContainer>
-              <Icon />
+              <IconDiamond />
             </IconContainer>
             <CardHeading>Vision</CardHeading>
             <CardDescription>
@@ -51,7 +53,7 @@ const Services = () => {
           </ServicesCard>
           <ServicesCard>
             <IconContainer>
-              <Icon />
+              <IconNote />
             </IconContainer>
             <CardHeading>History</CardHeading>
             <CardDescription>

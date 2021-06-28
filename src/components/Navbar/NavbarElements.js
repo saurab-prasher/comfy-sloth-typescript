@@ -10,10 +10,11 @@ export const Header = styled.header`
   margin: 1rem auto;
   padding-right: 2rem;
   position: relative;
+  height: 6rem;
 `;
 
 export const Logo = styled.img`
-  max-width: 12rem;
+  max-width: 16rem;
   cursor: pointer;
 `;
 
@@ -32,8 +33,9 @@ export const NavMenu = styled.ul`
 export const NavLink = styled(Link)`
   color: #000;
   padding: 0.5rem;
-  font-size: 1.2rem;
-  margin: 0 0.75rem;
+  font-size: 1.6rem;
+  margin: 0 1.5rem;
+  letter-spacing: 1px;
 
   &:hover {
     border-bottom: 2px solid #531435;
@@ -42,32 +44,39 @@ export const NavLink = styled(Link)`
 
 export const MobileIcon = styled.div`
   display: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
   cursor: pointer;
 
   @media screen and (max-width: 768px) {
     display: block;
   }
 `;
-export const NavBtn = styled.div`
-  margin-left: 2rem;
+export const NavBtn = styled(Link)`
+  margin-left: 2.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 2rem;
+  font-weight: 500;
+  color: rgb(83, 20, 16);
   position: relative;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    border-bottom: 2px solid #531435;
+  }
 `;
 
-export const ShoppingCartValue = styled.div`
+export const ShoppingCartValue = styled.p`
   position: absolute;
-  top: -0.75rem;
+  top: -1rem;
   right: -0.75rem;
   color: #fff;
   line-height: 1;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
   background-color: rgb(83, 20, 16);
-  padding: 0.35rem 0.5rem;
+  padding: 0.45rem 0.75rem;
   border-radius: 50%;
   border: 1px solid transparent;
   transition: all 0.1s ease-in-out;
@@ -80,8 +89,8 @@ export const ShoppingCartValue = styled.div`
 `;
 
 const sharedButtonStyle = css`
-  font-size: 2rem;
-  margin: 0 0.5rem;
+  font-size: 2.5rem;
+  margin: 0 0.75rem;
   color: rgb(83, 20, 16);
 `;
 
