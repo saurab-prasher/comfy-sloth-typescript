@@ -13,7 +13,7 @@ const AboutSection = styled.section`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 5rem;
   align-items: start;
-  min-height: calc(80vh - 17.2rem);
+  min-height: calc(80vh - 14rem);
   @media screen and (max-width: 900px) {
     grid-template-columns: 1fr;
   }

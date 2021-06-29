@@ -56,7 +56,12 @@ const SinglePage = () => {
       {single_product_loading ? (
         <Loading singleProduct={true} />
       ) : (
-        <>
+        <div
+          style={{
+            backgroundColor: "#Fafafa",
+            minHeight: "86vh",
+          }}
+        >
           <Header location="Products">
             <ProductName>{name}</ProductName>
           </Header>
@@ -72,7 +77,7 @@ const SinglePage = () => {
               </ReviewsContainer>
               <Price> {formatPrice(price)}</Price>
               <Description>{description}</Description>
-              <ul>
+              <>
                 <li>
                   Available:
                   <span> {stock > 0 ? "In Stock" : "out of stock"} </span>
@@ -84,12 +89,12 @@ const SinglePage = () => {
                   Brand: <span> {company} </span>{" "}
                 </li>
                 <hr />
-              </ul>
+              </>
 
               {stock > 0 && <AddToCart product={product} />}
             </SinglePageText>
           </SinglePageMain>
-        </>
+        </div>
       )}
     </>
   );

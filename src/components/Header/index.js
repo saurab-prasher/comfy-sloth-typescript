@@ -3,18 +3,18 @@ import { Link as link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
-  background-color: #eaded7;
+  background-color: #f3f2f0;
   position: relative;
 `;
 const HeaderInner = styled.div`
   max-width: 124rem;
   margin: 0 auto;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 500;
-  color: #453227;
-  padding: 5rem 0;
+  color: #531410;
+  padding: 3rem 0;
   margin-bottom: 4rem;
-  letter-spacing: 0.5rem;
+  letter-spacing: 2px;
 `;
 
 const HomeLink = styled(link)`

@@ -1,13 +1,3 @@
-const initialState = {
-  total_items: 0,
-  total_amount: 0,
-  cart: [],
-  shipping_fee: 534,
-};
-
-export const initializer = (initialValue = initialState) =>
-  JSON.parse(localStorage.getItem("data")) || initialValue;
-
 export const cart_reducer = (state, action) => {
   if (action.type === "ADD_TO_CART") {
     const { id, color, amount, product } = action.payload;

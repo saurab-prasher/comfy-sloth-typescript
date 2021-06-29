@@ -35,6 +35,7 @@ const Cart = ({ stock }) => {
     clearCart,
     shipping_fee,
   } = useCartContext();
+  console.log(useCartContext());
 
   const increase = (id, value) => {
     toggleAmount(id, value);
@@ -47,7 +48,7 @@ const Cart = ({ stock }) => {
     <>
       <Header location="cart" />
       <CartContainer>
-        {cart.length === 0 ? (
+        {cart?.length === 0 ? (
           <h1>Add Items to cart</h1>
         ) : (
           <>
@@ -67,7 +68,7 @@ const Cart = ({ stock }) => {
             </CartContainerHeadings>
             <hr />
 
-            {cart.map((item) => {
+            {cart?.map((item) => {
               const { id, name, price, image, color, amount, subTotal } = item;
 
               return (

@@ -9,13 +9,13 @@ import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <FilterProvider>
-      <CartProvider>
+    <CartProvider>
+      <FilterProvider>
         <ProductsProvider>
           <App />
         </ProductsProvider>
-      </CartProvider>
-    </FilterProvider>
+      </FilterProvider>
+    </CartProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

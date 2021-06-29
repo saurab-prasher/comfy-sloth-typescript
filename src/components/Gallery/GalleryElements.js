@@ -3,15 +3,14 @@ import styled from "styled-components";
 export const GalleryContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const GalleryMainImg = styled.img`
   border-radius: 3px;
-
-  @media screen and (max-width: 1024px) {
-    width: 100%;
-    height: auto;
-  }
+  width: 100%;
+  height: 45rem;
+  width: 55rem;
 `;
 
 export const GalleryCardsContainer = styled.div`
@@ -25,11 +24,13 @@ export const GalleryCardsContainer = styled.div`
 `;
 
 export const GalleryCard = styled.div`
+  display: flex;
   cursor: pointer;
 `;
 export const GalleryCardImg = styled.img`
   border-radius: 5px;
-  height: 75px;
   width: 100%;
+  height: 7.5rem;
+
   border: 1px solid transparent;
 `;
