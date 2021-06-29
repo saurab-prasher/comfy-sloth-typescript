@@ -1,5 +1,5 @@
 import React from "react";
-import heroImage from "../../images/hero-bcg.jpeg";
+import heroImage from "../../images/entertainment-high-res.jpg";
 import {
   HeroContainer,
   HeroImage,
