@@ -25,7 +25,7 @@ Logo.defaultProps = {
 
 const Navbar = () => {
   const { openSidebar } = useProductsContext();
-  const { total_item } = useCartContext();
+  const { total_items } = useCartContext();
   return (
     <Header>
       <div>
@@ -55,7 +55,7 @@ const Navbar = () => {
         <NavBtn to="/cart">
           Cart
           <ShoppingCart />
-          <ShoppingCartValue>{total_item}</ShoppingCartValue>
+          <ShoppingCartValue>{total_items}</ShoppingCartValue>
         </NavBtn>
         <NavBtn to="/login">
           Login

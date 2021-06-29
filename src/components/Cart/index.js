@@ -36,8 +36,12 @@ const Cart = ({ stock }) => {
     shipping_fee,
   } = useCartContext();
 
-  const increase = () => {};
-  const decrease = () => {};
+  const increase = (id, value) => {
+    toggleAmount(id, value);
+  };
+  const decrease = (id, value) => {
+    toggleAmount(id, value);
+  };
 
   return (
     <>
@@ -91,10 +95,14 @@ const Cart = ({ stock }) => {
                     <p>{formatPrice(price)}</p>
                   </Price>
                   <ChangeQuantity>
-                    <DecreaseItem onClick={() => decrease()}>-</DecreaseItem>
+                    <DecreaseItem onClick={() => decrease(id, "decrease")}>
+                      -
+                    </DecreaseItem>
                     <Amount>{amount} </Amount>
 
-                    <IncreaseItem onClick={() => increase()}>+</IncreaseItem>
+                    <IncreaseItem onClick={() => increase(id, "increase")}>
+                      +
+                    </IncreaseItem>
                   </ChangeQuantity>
                   <SubTotal>
                     <p>{formatPrice(price * amount)}</p>

@@ -6,13 +6,14 @@ const CartContext = React.createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(
     reducer,
-    { total_item: 0, total_amount: 0, shipping_fee: 534, cart: [] },
+    { total_items: 0, total_amount: 0, shipping_fee: 534, cart: [] },
     initializer
   );
 
   useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(state));
-  }, [state]);
+    dispatch({ type: "COUNT_CART_TOTALS" });
+    localStorage.setItem("data", JSON.stringify(state.cart));
+  }, [state.cart]);
 
   const addToCart = (id, color, amount, product) => {
     dispatch({ type: "ADD_TO_CART", payload: { id, color, amount, product } });
@@ -20,11 +21,12 @@ export const CartProvider = ({ children }) => {
   // remove Item
   const deleteItem = (id) => {
     dispatch({ type: "DELETE_ITEM", payload: id });
-    console.log("sdfsd");
   };
 
   // toggle amount
-  const toggleAmount = (id, value) => {};
+  const toggleAmount = (id, value) => {
+    dispatch({ type: "TOGGLE_CART_ITEM_AMOUNT", payload: { id, value } });
+  };
 
   // clear cart
   const clearCart = () => {
