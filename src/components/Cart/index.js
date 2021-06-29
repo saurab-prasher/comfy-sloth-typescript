@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useCartContext } from "../../context/cart_context";
 
 import { formatPrice } from "../../utils/helper";
@@ -69,7 +69,7 @@ const Cart = ({ stock }) => {
             <hr />
 
             {cart?.map((item) => {
-              const { id, name, price, image, color, amount, subTotal } = item;
+              const { id, name, price, image, color, amount } = item;
 
               return (
                 <CartItem key={id}>

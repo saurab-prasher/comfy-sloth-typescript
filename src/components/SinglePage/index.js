@@ -27,7 +27,6 @@ const SinglePage = () => {
   const {
     fetchSingleProduct,
     single_product_loading,
-    single_product_error,
     single_product: product,
   } = useProductsContext();
 
@@ -35,7 +34,7 @@ const SinglePage = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${single_product_url}${id}`);
-  }, [id]);
+  }, [id, fetchSingleProduct]);
 
   const {
     name,
