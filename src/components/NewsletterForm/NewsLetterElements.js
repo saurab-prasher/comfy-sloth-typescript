@@ -15,7 +15,11 @@ export const NewsLetterSection = styled.section`
   justify-items: center;
   grid-gap: 2.5rem;
   align-items: center;
-  /* padding: 10rem 0; */
+  padding: 0 3rem;
+
+  @media screen and (max-width: 64em) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const NewsLetterText = styled.div``;

@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const ProductListContainer = styled.div`
   display: grid;
   grid-template-columns: max-content 1fr;
-  grid-gap: 3rem;
+  grid-gap: 2rem;
   min-height: 100vh;
   max-width: 124rem;
   margin: 0 auto;
   position: relative;
+  padding: 0 3rem;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;

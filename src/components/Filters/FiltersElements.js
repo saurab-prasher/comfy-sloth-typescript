@@ -1,7 +1,6 @@
 import styled from "styled-components";
 export const FilterContainer = styled.aside`
-  padding: 2rem;
-
+  padding: 1rem;
   div {
     margin: 2rem 0;
   }
@@ -23,6 +22,10 @@ export const FilterFormContainer = styled.div`
     font-family: inherit;
     outline: none;
     width: 100%;
+
+    @media screen and (max-width: 48em) {
+      width: 22%;
+    }
 
     &:focus {
       box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);

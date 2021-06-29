@@ -52,21 +52,23 @@ const Cart = ({ stock }) => {
           <h1>Add Items to cart</h1>
         ) : (
           <>
-            <CartContainerHeadings>
-              <div>
-                <p>Item</p>
-              </div>
-              <div>
-                <p>Price</p>
-              </div>
-              <div>
-                <p>Quantity</p>
-              </div>
-              <div>
-                <p>Subtotal</p>
-              </div>
-            </CartContainerHeadings>
-            <hr />
+            <div>
+              <CartContainerHeadings>
+                <div>
+                  <p>Item</p>
+                </div>
+                <div>
+                  <p>Price</p>
+                </div>
+                <div>
+                  <p>Quantity</p>
+                </div>
+                <div>
+                  <p>Subtotal</p>
+                </div>
+              </CartContainerHeadings>
+              <hr />
+            </div>
 
             {cart?.map((item) => {
               const { id, name, price, image, color, amount } = item;

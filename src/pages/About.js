@@ -7,6 +7,7 @@ import img from "../images/product-1.jpeg";
 
 const AboutSection = styled.section`
   max-width: 124rem;
+  padding: 0 3rem;
   margin: 0 auto;
   margin-top: 10rem;
   display: grid;
@@ -14,14 +15,21 @@ const AboutSection = styled.section`
   grid-gap: 5rem;
   align-items: start;
   min-height: calc(80vh - 14rem);
-  @media screen and (max-width: 900px) {
-    grid-template-columns: 1fr;
+  @media screen and (max-width: 64em) {
+    display: flex;
+    grid-gap: 0;
   }
 `;
 
 const AboutImgContainer = styled.div``;
 
-const AboutImg = styled.img``;
+const AboutImg = styled.img`
+  width: 100%;
+
+  @media screen and (max-width: 64em) {
+    display: none;
+  }
+`;
 const AboutTextContainer = styled.article`
   display: flex;
   flex-direction: column;
@@ -41,7 +49,7 @@ const AboutP = styled.p`
 const Line = styled.div`
   height: 4px;
   width: 12rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   background-color: #531410;
   align-self: center;
 `;

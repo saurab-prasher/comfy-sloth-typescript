@@ -58,7 +58,6 @@ const SinglePage = () => {
         <div
           style={{
             backgroundColor: "#Fafafa",
-            minHeight: "86vh",
           }}
         >
           <Header location="Products">

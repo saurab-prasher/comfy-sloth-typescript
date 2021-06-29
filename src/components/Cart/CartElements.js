@@ -23,6 +23,7 @@ export const CartContainer = styled.main`
   margin: 0 auto;
   height: 100vh;
   text-transform: capitalize;
+  padding: 0 3rem;
 
   hr {
     height: 1px;
@@ -34,36 +35,56 @@ export const CartContainer = styled.main`
 
 export const CartContainerHeadings = styled.div`
   display: grid;
-  grid-template-columns: 2fr repeat(3, 1fr) auto;
-  justify-items: start;
-  margin-bottom: 2.5rem;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  justify-items: center;
+  /* column-gap: 1rem; */
+  margin-bottom: 2rem;
+
+  transform: translateX(-1rem);
+
+  @media screen and (max-width: 37.5em) {
+    /* display: none; */
+    grid-template-columns: repeat(4, 1fr) auto;
+  }
 
   p {
     font-size: 1.6rem;
+    display: inline-block;
   }
 `;
 export const CartItem = styled.article`
   display: grid;
-  grid-template-columns: 2fr repeat(3, 1fr) auto;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  justify-items: center;
   align-items: center;
   margin: 4.5rem 0;
   font-size: 1.4rem;
   color: #531410;
-  letter-spacing: 1px;
-  align-items: center;
-  justify-items: start;
 
-  @media screen and (max-width: 600px) {
-    justify-items: center;
+  @media screen and (max-width: 37.5em) {
+    grid-template-columns: repeat(4, 1fr) auto;
   }
 `;
 export const CartItemImgContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-self: start;
+
+  @media screen and (max-width: 37.5em) {
+    flex-direction: column;
+
+    div {
+      margin-top: 1.5rem;
+    }
+  }
 
   p {
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: 37.5em) {
+      justify-content: space-between;
+    }
   }
 
   h3 {
@@ -71,8 +92,9 @@ export const CartItemImgContainer = styled.div`
     margin-bottom: 1rem;
   }
   img {
-    width: 150px;
-    height: 100px;
+    width: 15rem;
+    height: 10rem;
+    object-fit: cover;
     margin-right: 1.5rem;
     border-radius: 5px;
   }
@@ -82,6 +104,11 @@ export const CartItemTotalContainer = styled.div`
   min-width: fit-content;
   margin: 5rem 0;
   margin-left: auto;
+
+  @media screen and (max-width: 48em) {
+    margin: 5rem auto;
+    max-width: 50%;
+  }
 `;
 export const CartItemTotal = styled.div`
   border: 1px solid #dadada;
@@ -112,11 +139,7 @@ export const CartItemTotalBtn = styled.button`
   margin-top: 1.5rem;
   background-color: #531410;
 `;
-export const Price = styled.div`
-  p {
-    margin-left: 2rem;
-  }
-`;
+export const Price = styled.div``;
 export const SubTotal = styled.div``;
 export const Delete = styled.div``;
 
@@ -152,8 +175,13 @@ export const ChangeQuantity = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100px;
-  margin-right: -5rem;
+  width: 10rem;
+  transform: translateX(2rem);
+
+  @media screen and (max-width: 37.5em) {
+    width: 8rem;
+    transform: translateX(0);
+  }
 `;
 
 const sharedCSS = css`

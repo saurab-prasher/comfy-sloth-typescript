@@ -12,7 +12,7 @@ const HeaderInner = styled.div`
   font-size: 2rem;
   font-weight: 500;
   color: #531410;
-  padding: 3rem 0;
+  padding: 3rem;
   margin-bottom: 4rem;
   letter-spacing: 2px;
 `;

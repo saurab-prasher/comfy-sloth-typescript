@@ -6,12 +6,14 @@ export const SinglePageMain = styled.main`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 5rem;
   max-width: 124rem;
-  margin: 4rem auto;
+  margin: 0 auto;
 
-  height: 100%;
+  padding: 3rem;
+  padding-bottom: 10rem;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 50em) {
     grid-template-columns: 1fr;
+    grid-gap: 2.5rem;
   }
 `;
 

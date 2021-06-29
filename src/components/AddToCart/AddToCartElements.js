@@ -27,7 +27,7 @@ const sharedCSS = css`
 export const ColorsContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-transform: capitalize;
 `;
@@ -43,8 +43,8 @@ export const AddToCartAmount = styled.p`
   margin: 1.5rem;
 `;
 export const ColorsBtn = styled.button`
-  height: 2rem;
-  width: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
   border-radius: 50%;
   display: inline-block;
   margin-left: 0.75rem;

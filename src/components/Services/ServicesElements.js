@@ -8,7 +8,7 @@ export const ServicesContainer = styled.section`
 export const ServicesInner = styled.div`
   margin: 0 auto;
   max-width: 124rem;
-  padding: 4rem 0;
+  padding: 3rem;
   height: 100%;
 `;
 export const ServicesHeader = styled.div`
@@ -20,6 +20,14 @@ export const ServicesHeader = styled.div`
   & > * {
     flex-basis: 100%;
   }
+  @media screen and (max-width: 64em) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 75%;
+  }
+  @media screen and (max-width: 37.5em) {
+    width: 100%;
+  } ;
 `;
 export const ServicesH2 = styled.h2`
   font-size: 3rem;
@@ -33,7 +41,7 @@ export const ServicesCardContainer = styled.div`
   grid-gap: 2.5rem;
   transform: translateY(10rem);
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 50em) {
     margin: 4rem 0;
     transform: translateY(0);
   }

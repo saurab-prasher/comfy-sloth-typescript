@@ -8,7 +8,7 @@ export const CardImage = styled.img`
   object-fit: cover;
   display: block;
   width: 100%;
-  height: 25rem;
+  height: 20rem;
 `;
 
 export const CardImageContainer = styled.div`
@@ -53,7 +53,7 @@ export const Search = styled(ImSearch)`
   top: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 4rem;
+  font-size: 3.4rem;
   border-radius: 50%;
   padding: 0.65rem 0.1rem;
   background: #531410;

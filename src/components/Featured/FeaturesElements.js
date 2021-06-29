@@ -11,7 +11,7 @@ export const FeaturedContainer = styled.section`
 export const FeaturedInner = styled.div`
   max-width: 124rem;
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 5rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +36,7 @@ export const FeaturedCards = styled.div`
   display: grid;
   grid-gap: 2.5rem;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
 `;
 
 export const FeaturedBtn = styled(Link)`

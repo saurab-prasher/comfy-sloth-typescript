@@ -7,20 +7,21 @@ export const GalleryContainer = styled.div`
 `;
 
 export const GalleryMainImg = styled.img`
-  border-radius: 3px;
+  border-radius: 5px;
   width: 100%;
-  height: 45rem;
-  width: 55rem;
+  display: block;
+  height: 40rem;
+  object-fit: cover;
+  border: 1px solid #dadada;
 `;
 
 export const GalleryCardsContainer = styled.div`
   margin: 1.5rem 0;
   display: grid;
   grid-gap: 1.5rem;
-
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   justify-items: center;
-  overflow: hidden;
+  align-items: center;
 `;
 
 export const GalleryCard = styled.div`
@@ -29,8 +30,10 @@ export const GalleryCard = styled.div`
 `;
 export const GalleryCardImg = styled.img`
   border-radius: 5px;
+  object-fit: cover;
   width: 100%;
-  height: 7.5rem;
+  max-height: 8rem;
+  display: block;
 
   border: 1px solid transparent;
 `;

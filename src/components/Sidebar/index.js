@@ -22,7 +22,7 @@ import {
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
-  const { totalItem } = useCartContext();
+  const { total_items } = useCartContext();
   return (
     <SidebarContainer isSidebarOpen={isSidebarOpen}>
       <SidebarHeader>
@@ -54,7 +54,7 @@ const Sidebar = () => {
         <SidebarBtn onClick={closeSidebar} to="/cart">
           Cart
           <ShoppingCart />
-          <ShoppingCartValue>{totalItem}</ShoppingCartValue>
+          <ShoppingCartValue>{total_items}</ShoppingCartValue>
         </SidebarBtn>
         <SidebarBtn onClick={closeSidebar} to="/login">
           Login

@@ -8,9 +8,9 @@ export const Header = styled.header`
   justify-content: space-between;
   max-width: 124rem;
   margin: 1rem auto;
-  padding-right: 2rem;
+  padding: 0 3rem;
   position: relative;
-  height: 6rem;
+  height: 8rem;
 `;
 
 export const Logo = styled.img`
@@ -107,7 +107,7 @@ export const NavBtnContainer = styled.div`
   justify-content: center;
   font-size: 1.6rem;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 48em) {
     display: none;
   }
 `;

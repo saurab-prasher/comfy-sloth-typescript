@@ -8,9 +8,10 @@ export const HeroContainer = styled.section`
   grid-gap: 5rem;
   margin: 10rem auto;
   justify-content: space-between;
+  padding: 0 3rem;
   color: #444444;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 48em) {
     grid-template-columns: 1fr;
   }
 `;
@@ -19,7 +20,7 @@ export const HeroText = styled.article`
 `;
 export const HeroH1 = styled.h1`
   font-size: 3.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 `;
 export const HeroP = styled.p`
   font-size: 1.8rem;
@@ -47,7 +48,7 @@ export const HeroBtn = styled(Link)`
 export const HeroImageContainer = styled.article`
   flex-basis: 100%;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 48em) {
     display: none;
   }
 `;
