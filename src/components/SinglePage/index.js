@@ -68,14 +68,21 @@ const SinglePage = () => {
               <SinglePageH1>{name}</SinglePageH1>
               <ReviewsContainer>
                 <Stars stars={stars} />
-                <p>{reviews} Customer reviews)</p>
+                <p>({reviews} Customer reviews)</p>
               </ReviewsContainer>
               <Price> {formatPrice(price)}</Price>
               <Description>{description}</Description>
               <ul>
-                <li>Available: {stock > 0 ? "In Stock" : "out of stock"}</li>
-                <li>SKU: {SKU}</li>
-                <li>Brand: {company}</li>
+                <li>
+                  Available:
+                  <span> {stock > 0 ? "In Stock" : "out of stock"} </span>
+                </li>
+                <li>
+                  SKU: <span> {SKU} </span>{" "}
+                </li>
+                <li>
+                  Brand: <span> {company} </span>{" "}
+                </li>
                 <hr />
               </ul>
 

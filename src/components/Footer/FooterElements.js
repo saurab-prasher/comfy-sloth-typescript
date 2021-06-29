@@ -7,6 +7,7 @@ export const FooterContainer = styled.footer`
   padding: 1.5rem 0;
 `;
 export const FooterText = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   letter-spacing: 2px;
 `;

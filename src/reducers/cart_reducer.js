@@ -1,53 +1,60 @@
-const initialState = { totalItem: 1, totalAmount: 0, product: [] };
+const initialState = {
+  total_item: 0,
+  total_amount: 0,
+  cart: [],
+  shipping_fee: 534,
+};
 
 export const initializer = (initialValue = initialState) =>
   JSON.parse(localStorage.getItem("data")) || initialValue;
 
-const helper = (array) => {
-  const itemCount = array
-    .map((item) => item.amount)
-    .reduce((acc, curr) => acc + curr);
-
-  const itemsubTotal = array
-    .map((item) => item.subTotal)
-    .reduce((acc, curr) => acc + curr);
-
-  return [itemCount, itemsubTotal];
-};
-
 export const cart_reducer = (state, action) => {
-  if (action.type === "TEST") {
-    const [itemCount, itemsubTotal] = helper([action.payload]);
-    const newTotalItem = state?.totalItem + itemCount;
-    const newsubTotal = state?.totalAmount + itemsubTotal;
+  if (action.type === "ADD_TO_CART") {
+    const { id, color, amount, product } = action.payload;
 
-    console.log(state.totalAmount, state.totalItem, itemCount, itemsubTotal);
+    const tempItem = state.cart.find((i) => i.id === id + color);
 
-    return {
-      ...state,
-      totalItem: newTotalItem,
-      totalAmount: newsubTotal,
-      product: [...state.product, action.payload],
-    };
+    if (tempItem) {
+      const tempCart = state.cart.map((cartItem) => {
+        if (cartItem.id === id + color) {
+          let newAmount = cartItem.amount + amount;
+          if (newAmount > cartItem.max) {
+            newAmount = cartItem.max;
+          }
+          return { ...cartItem, amount: newAmount };
+        } else {
+          return cartItem;
+        }
+      });
+
+      return { ...state, cart: tempCart };
+    } else {
+      const newItem = {
+        id: id + color,
+        name: product?.name,
+        color,
+        amount,
+        image: product?.images[0].url,
+        price: product?.price,
+        max: product?.stock,
+      };
+      return { ...state, cart: [...state.cart, newItem] };
+    }
   }
 
   if (action.type === "DELETE_ITEM") {
-    const oldList = state.product.filter((item) => item.id === action.payload);
-    const [itemCount, itemsubTotal] = helper(oldList);
-    console.log(itemCount, itemsubTotal);
-    const newTotalItem = state?.totalItem - itemCount;
-    const newsubTotal = parseFloat(state?.totalAmount - itemsubTotal).toFixed(
-      2
-    );
-    const newList = state.product.filter((item) => item.id !== action.payload);
+    const tempCart = state.cart.filter((item) => item.id !== action.payload);
 
-    console.log(newList);
+    console.log(tempCart);
+
     return {
       ...state,
-      totalItem: newTotalItem,
-      totalAmount: newsubTotal,
-      product: newList,
+      cart: tempCart,
     };
+  }
+
+  if (action.type === "CLEAR_CART") {
+    return { ...state, cart: [] };
   }
 
   throw new Error(`No matching "${action.type}" - action type `);

@@ -28,6 +28,7 @@ export const ColorsContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.6rem;
+  font-weight: 600;
   text-transform: capitalize;
 `;
 export const AddToCartIncBtn = styled.button`
@@ -42,11 +43,11 @@ export const AddToCartAmount = styled.p`
   margin: 1.5rem;
 `;
 export const ColorsBtn = styled.button`
-  height: 1.6rem;
-  width: 1.6rem;
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
   display: inline-block;
-  margin-left: 0.5rem;
+  margin-left: 0.75rem;
   cursor: pointer;
   opacity: 0.5;
   background-color: ${({ background }) => `${background}`};

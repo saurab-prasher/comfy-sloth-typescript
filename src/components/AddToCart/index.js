@@ -14,14 +14,12 @@ import {
 import { FaCheck } from "react-icons/fa";
 
 const AddToCart = ({ product }) => {
-  const { name, id, colors, stock, images, price: _price } = product;
+  const { id, colors, stock } = product;
+
   const [mainColor, setMainColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
 
-  const { test } = useCartContext();
-  const price = _price / 100;
-
-  const image = images[0].thumbnails.large.url;
+  const { addToCart } = useCartContext();
 
   const handleAmount = (value) => {
     if (value === "increment" && amount < stock) {
@@ -30,18 +28,6 @@ const AddToCart = ({ product }) => {
     if ((value === "decrement") & (amount > 1)) {
       setAmount(amount - 1);
     }
-  };
-  const handleAddToCartClick = () => {
-    test({
-      name,
-      price,
-      stock,
-      image,
-      id,
-      mainColor,
-      amount,
-      subTotal: amount * price,
-    });
   };
 
   return (
@@ -70,7 +56,10 @@ const AddToCart = ({ product }) => {
           +
         </AddToCartIncBtn>
       </AddToCartSection>
-      <AddToCartBtn onClick={() => handleAddToCartClick()} to="/cart">
+      <AddToCartBtn
+        onClick={() => addToCart(id, mainColor, amount, product)}
+        to="/cart"
+      >
         Add to Cart
       </AddToCartBtn>
     </AddToCartContainer>

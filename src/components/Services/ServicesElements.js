@@ -4,7 +4,6 @@ import { GiStabbedNote, GiDiamondHard } from "react-icons/gi";
 
 export const ServicesContainer = styled.section`
   background-color: #f4f6f4;
-  height: 50rem;
 `;
 export const ServicesInner = styled.div`
   margin: 0 auto;
@@ -32,7 +31,12 @@ export const ServicesCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 2.5rem;
-  transform: translateY(12rem);
+  transform: translateY(10rem);
+
+  @media screen and (max-width: 800px) {
+    margin: 4rem 0;
+    transform: translateY(0);
+  }
 `;
 export const ServicesCard = styled.div`
   background-color: #dcdddc;

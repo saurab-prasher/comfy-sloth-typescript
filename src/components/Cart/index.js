@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useCartContext } from "../../context/cart_context";
 
+import { formatPrice } from "../../utils/helper";
+
 import {
   CartContainer,
   CartContainerHeadings,
@@ -25,13 +27,23 @@ import {
 import Header from "../Header";
 
 const Cart = ({ stock }) => {
-  const { product, totalAmount, deleteItem } = useCartContext();
+  const {
+    cart,
+    total_amount,
+    deleteItem,
+    toggleAmount,
+    clearCart,
+    shipping_fee,
+  } = useCartContext();
+
+  const increase = () => {};
+  const decrease = () => {};
 
   return (
     <>
       <Header location="cart" />
       <CartContainer>
-        {product.length === 0 ? (
+        {cart.length === 0 ? (
           <h1>Add Items to cart</h1>
         ) : (
           <>
@@ -51,9 +63,9 @@ const Cart = ({ stock }) => {
             </CartContainerHeadings>
             <hr />
 
-            {product.map((item) => {
-              const { id, name, price, image, mainColor, amount, subTotal } =
-                item;
+            {cart.map((item) => {
+              const { id, name, price, image, color, amount, subTotal } = item;
+
               return (
                 <CartItem key={id}>
                   <CartItemImgContainer>
@@ -64,7 +76,7 @@ const Cart = ({ stock }) => {
                         Color :
                         <button
                           style={{
-                            backgroundColor: `${mainColor}`,
+                            backgroundColor: `${color}`,
                             height: "1.4rem",
                             width: "1.4rem",
                             borderRadius: "50%",
@@ -76,16 +88,16 @@ const Cart = ({ stock }) => {
                     </div>
                   </CartItemImgContainer>
                   <Price>
-                    <p>${price}</p>
+                    <p>{formatPrice(price)}</p>
                   </Price>
                   <ChangeQuantity>
-                    <DecreaseItem>-</DecreaseItem>
+                    <DecreaseItem onClick={() => decrease()}>-</DecreaseItem>
                     <Amount>{amount} </Amount>
 
-                    <IncreaseItem>+</IncreaseItem>
+                    <IncreaseItem onClick={() => increase()}>+</IncreaseItem>
                   </ChangeQuantity>
                   <SubTotal>
-                    <p>${subTotal.toFixed(2)}</p>
+                    <p>{formatPrice(price * amount)}</p>
                   </SubTotal>
                   <Delete>
                     <DeleteBtn onClick={() => deleteItem(id)} />
@@ -97,22 +109,23 @@ const Cart = ({ stock }) => {
             <hr />
             <CartItemBtnContainer>
               <BtnContinue to="/products">Continue Shopping</BtnContinue>
-              <BtnClear>Clear Shopping Cart</BtnClear>
+              <BtnClear onClick={clearCart}>Clear Shopping Cart</BtnClear>
             </CartItemBtnContainer>
 
             <CartItemTotalContainer>
               <CartItemTotal>
                 <div>
                   <h3>Subtotal: </h3>
-                  <p> ${totalAmount}</p>
+                  <p> {formatPrice(total_amount)}</p>
                 </div>
                 <div>
                   <p>Shipping Fee: </p>
-                  <p> $5.34 </p>
+                  <p> {formatPrice(shipping_fee)} </p>
                 </div>
                 <hr />
                 <div>
-                  <h2>Order Total:</h2> <p>$1,036.31</p>
+                  <h2>Order Total:</h2>{" "}
+                  <p>{formatPrice(total_amount + shipping_fee)}</p>
                 </div>
               </CartItemTotal>
               <CartItemTotalBtn>Login</CartItemTotalBtn>

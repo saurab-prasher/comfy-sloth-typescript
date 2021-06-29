@@ -52,6 +52,10 @@ export const CartItem = styled.article`
   letter-spacing: 1px;
   align-items: center;
   justify-items: start;
+
+  @media screen and (max-width: 600px) {
+    justify-items: center;
+  }
 `;
 export const CartItemImgContainer = styled.div`
   display: flex;

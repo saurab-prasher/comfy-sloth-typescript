@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const NewsLetterContainer = styled.div`
   background: #fafafa;
+  height: 50rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const NewsLetterSection = styled.section`
@@ -12,7 +15,7 @@ export const NewsLetterSection = styled.section`
   justify-items: center;
   grid-gap: 2.5rem;
   align-items: center;
-  padding: 10rem 0;
+  /* padding: 10rem 0; */
 `;
 
 export const NewsLetterText = styled.div``;
