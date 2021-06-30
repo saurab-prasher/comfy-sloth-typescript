@@ -10,14 +10,17 @@ import {
   FilterShipping,
   FilterClearBtn,
   FilterClear,
-  FilterColorBtnBlack,
-  FilterColorBtnBlue,
-  FilterColorBtnGreen,
-  FilterColorBtnRed,
-  FilterColorBtnYellow,
+  FilterColorBtn,
+  SpanBtnAll,
 } from "./FiltersElements.js";
 
-const Filters = () => {
+import { getUniqueValues } from "../../utils/helper";
+
+const Filters = ({ products }) => {
+  const category = getUniqueValues(products, "category");
+  const company = getUniqueValues(products, "company");
+  const colors = getUniqueValues(products, "colors");
+  console.log(colors);
   return (
     <FilterContainer>
       <FilterFormContainer className="form">
@@ -28,49 +31,42 @@ const Filters = () => {
 
       <FilterCategory className="category">
         <h3>Category</h3>
-        <button onClick={(e) => {}} data-name="All">
-          All
-        </button>
-        <button data-name="office" onClick={(e) => {}}>
-          Office
-        </button>
-        <button onClick={(e) => {}} data-name="living room">
-          Living Room
-        </button>
-        <button data-name="kitchen">Kitchen</button>
-        <button data-name="bedroom">Bedroom</button>
-        <button data-name="dining">Dining</button>
-        <button data-name="kids">Kids</button>
+        {category?.map((item, idx) => {
+          return (
+            <button key={idx} data-name={`${item}`}>
+              {item}
+            </button>
+          );
+        })}
       </FilterCategory>
 
       <FilterCompany className="company">
         <h3>Company</h3>
-
         <select name="company" id="company">
-          <option>all</option>
-          <option data-name="marcos" value="marcos">
-            marcos
-          </option>
-          <option data-name="liddy" value="liddy">
-            liddy
-          </option>
-          <option data-name="ikea" value="ikea">
-            ikea
-          </option>
-          <option data-name="caressa" value="caressa">
-            caressa
-          </option>
+          {company.map((item, idx) => {
+            return (
+              <option key={idx} data-name={`${item}`} value={`${item}`}>
+                {item}
+              </option>
+            );
+          })}
         </select>
       </FilterCompany>
 
       <FilterColors className="color">
         <h3>Colors</h3>
         <div>
-          <FilterColorBtnRed data-name="red" />
-          <FilterColorBtnGreen data-name="green" />
-          <FilterColorBtnBlue data-name="blue" />
-          <FilterColorBtnBlack data-name="black" />
-          <FilterColorBtnYellow data-name="yellow" />
+          {colors.map((item, idx) =>
+            item === "all" ? (
+              <SpanBtnAll>{item}</SpanBtnAll>
+            ) : (
+              <FilterColorBtn
+                key={idx}
+                background={item}
+                data-name={`${item}`}
+              />
+            )
+          )}
         </div>
       </FilterColors>
 

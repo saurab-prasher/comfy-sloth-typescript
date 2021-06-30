@@ -1,6 +1,7 @@
 import styled from "styled-components";
 export const FilterContainer = styled.aside`
   padding: 1rem;
+
   div {
     margin: 2rem 0;
   }
@@ -22,7 +23,7 @@ export const FilterFormContainer = styled.div`
     font-family: inherit;
     outline: none;
     width: 100%;
-
+    text-transform: capitalize;
     @media screen and (max-width: 48em) {
       width: 22%;
     }
@@ -41,6 +42,7 @@ export const FilterCategory = styled.div`
     letter-spacing: 1px;
     cursor: pointer;
     color: #444;
+    text-transform: capitalize;
   }
 `;
 export const FilterCompany = styled.div`
@@ -51,6 +53,7 @@ export const FilterCompany = styled.div`
     outline: none;
     border: none;
     padding: 0.35rem;
+    text-transform: capitalize;
 
     &:focus {
       box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
@@ -58,9 +61,11 @@ export const FilterCompany = styled.div`
   }
 `;
 export const FilterColors = styled.div`
+  width: 85%;
   div {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
   }
 `;
 
@@ -72,21 +77,20 @@ const Button = styled.button`
   opacity: 0.5;
   cursor: pointer;
 `;
-export const FilterColorBtnRed = styled(Button)`
-  background-color: red;
+
+export const SpanBtnAll = styled(Button)`
+  background-color: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid #444;
+  padding-bottom: 2rem;
+  display: inline-block;
+  text-transform: capitalize;
 `;
-export const FilterColorBtnGreen = styled(Button)`
-  background-color: green;
+
+export const FilterColorBtn = styled(Button)`
+  background-color: ${({ background }) => (background ? background : "#444")};
 `;
-export const FilterColorBtnBlue = styled(Button)`
-  background-color: blue;
-`;
-export const FilterColorBtnBlack = styled(Button)`
-  background-color: black;
-`;
-export const FilterColorBtnYellow = styled(Button)`
-  background-color: gold;
-`;
+
 export const FilterPrice = styled.div`
   p {
     font-size: 1.6rem;

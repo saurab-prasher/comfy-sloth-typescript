@@ -21,13 +21,13 @@ const initialState = {
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state);
 
   useEffect(() => {
     dispatch({ type: "COUNT_CART_TOTALS" });
     localStorage.setItem("cart", JSON.stringify(state.cart));
   }, [state.cart]);
 
+  // Add to cart
   const addToCart = (id, color, amount, product) => {
     dispatch({ type: "ADD_TO_CART", payload: { id, color, amount, product } });
   };

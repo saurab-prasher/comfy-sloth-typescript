@@ -19,7 +19,7 @@ const ProductList = () => {
     <>
       <Header location="products" />
       <ProductListContainer>
-        <Filters />
+        <Filters products={products} />
         {products_loading ? (
           <Loading productList={true} />
         ) : (
