@@ -22,10 +22,10 @@ export const FilterFormContainer = styled.div`
     font-size: 1.6rem;
     font-family: inherit;
     outline: none;
-    width: 100%;
     text-transform: capitalize;
-    @media screen and (max-width: 48em) {
-      width: 22%;
+
+    @media screen and (min-width: 48em), (max-width: 25em) {
+      width: 100%;
     }
 
     &:focus {
@@ -66,6 +66,10 @@ export const FilterColors = styled.div`
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+
+    @media screen and (max-width: 48em) {
+      justify-content: flex-start;
+    }
   }
 `;
 
@@ -73,7 +77,7 @@ const Button = styled.button`
   height: 1.6rem;
   width: 1.6rem;
   border-radius: 50%;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
   opacity: 0.5;
   cursor: pointer;
 `;
@@ -81,7 +85,7 @@ const Button = styled.button`
 export const SpanBtnAll = styled(Button)`
   background-color: transparent;
   border-radius: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 2px solid #333;
   padding-bottom: 2rem;
   display: inline-block;
   text-transform: capitalize;

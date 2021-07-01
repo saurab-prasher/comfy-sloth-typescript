@@ -1,6 +1,6 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context";
-import { IoGridOutline } from "react-icons/io5";
+import { BsFillGridFill, BsList } from "react-icons/bs";
 import {
   ProductListContainer,
   ProductListSection,
@@ -13,13 +13,13 @@ import Card from "../Card/";
 import Loading from "../Loading";
 
 const ProductList = () => {
-  const { products, products_loading } = useProductsContext();
+  const { products, products_loading, dispatch } = useProductsContext();
 
   return (
     <>
       <Header location="products" />
       <ProductListContainer>
-        <Filters products={products} />
+        <Filters dispatch={dispatch} products={products} />
         {products_loading ? (
           <Loading productList={true} />
         ) : (
@@ -27,9 +27,9 @@ const ProductList = () => {
             <ProductGridBtnContainer className="btn-container">
               <div className="btn-container">
                 <button>
-                  <IoGridOutline />
+                  <BsFillGridFill />
                 </button>
-                <button>flex</button>
+                <BsList />
               </div>
 
               <p>{products.length} Products Found</p>

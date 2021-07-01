@@ -10,11 +10,11 @@ import "./index.css";
 ReactDOM.render(
   <React.StrictMode>
     <CartProvider>
-      <FilterProvider>
-        <ProductsProvider>
+      <ProductsProvider>
+        <FilterProvider>
           <App />
-        </ProductsProvider>
-      </FilterProvider>
+        </FilterProvider>
+      </ProductsProvider>
     </CartProvider>
   </React.StrictMode>,
   document.getElementById("root")

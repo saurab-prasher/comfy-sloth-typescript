@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   FilterContainer,
@@ -14,27 +14,35 @@ import {
   SpanBtnAll,
 } from "./FiltersElements.js";
 
-import { getUniqueValues } from "../../utils/helper";
-
+import { formatPrice, getUniqueValues } from "../../utils/helper";
 const Filters = ({ products }) => {
   const category = getUniqueValues(products, "category");
   const company = getUniqueValues(products, "company");
   const colors = getUniqueValues(products, "colors");
-  console.log(colors);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [value, setValue] = useState(50000);
+
   return (
     <FilterContainer>
       <FilterFormContainer className="form">
         <form>
-          <input placeholder="Search" type="text" />
+          <input
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+            value={searchTerm}
+            placeholder="Search"
+            type="text"
+          />
         </form>
       </FilterFormContainer>
 
       <FilterCategory className="category">
         <h3>Category</h3>
-        {category?.map((item, idx) => {
+        {category?.map((category, idx) => {
           return (
-            <button key={idx} data-name={`${item}`}>
-              {item}
+            <button key={idx} data-name={`${category}`}>
+              {category}
             </button>
           );
         })}
@@ -43,10 +51,10 @@ const Filters = ({ products }) => {
       <FilterCompany className="company">
         <h3>Company</h3>
         <select name="company" id="company">
-          {company.map((item, idx) => {
+          {company.map((company, idx) => {
             return (
-              <option key={idx} data-name={`${item}`} value={`${item}`}>
-                {item}
+              <option key={idx} data-name={`${company}`} value={`${company}`}>
+                {company}
               </option>
             );
           })}
@@ -56,14 +64,14 @@ const Filters = ({ products }) => {
       <FilterColors className="color">
         <h3>Colors</h3>
         <div>
-          {colors.map((item, idx) =>
-            item === "all" ? (
-              <SpanBtnAll>{item}</SpanBtnAll>
+          {colors.map((color, idx) =>
+            color === "all" ? (
+              <SpanBtnAll key={idx}>{color}</SpanBtnAll>
             ) : (
               <FilterColorBtn
                 key={idx}
-                background={item}
-                data-name={`${item}`}
+                background={color}
+                data-name={`${color}`}
               />
             )
           )}
@@ -72,8 +80,17 @@ const Filters = ({ products }) => {
 
       <FilterPrice className="price">
         <label htmlFor="price">Price</label>
-        <p>$3,339.99</p>
-        <input type="range" name="price" id="price" />
+        <p>{formatPrice(value)}</p>
+        <input
+          min="0"
+          max="300000"
+          defaultValue={value}
+          step="1"
+          onChange={(e) => setValue(e.target.value)}
+          type="range"
+          name="price"
+          id="price"
+        />
       </FilterPrice>
 
       <FilterShipping className="free-shipping">

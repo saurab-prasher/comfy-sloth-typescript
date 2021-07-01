@@ -18,10 +18,11 @@ export const ProductListContainer = styled.div`
 
 export const ProductListSection = styled.article`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 2rem;
   img {
-    height: 20rem;
+    height: 18rem;
+    object-fit: cover;
   }
 `;
 
