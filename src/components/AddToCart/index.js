@@ -1,61 +1,44 @@
 import React, { useState } from "react";
 import { useCartContext } from "../../context/cart_context";
-import {
-  AddToCartAmount,
-  AddToCartContainer,
-  AddToCartIncBtn,
-  AddToCartDecBtn,
-  AddToCartSection,
-  AddToCartBtn,
-  ColorsBtn,
-  ColorsContainer,
-} from "./AddToCartElements";
+import { AddToCartContainer, AddToCartBtn } from "./AddToCartElements";
 
-import { FaCheck } from "react-icons/fa";
+import ColorsContainer from "./ColorsContainer";
+import ChangeItemAmount from "../Cart/ChangeQuantity";
 
 const AddToCart = ({ product }) => {
   const { id, colors, stock } = product;
+  const { addToCart } = useCartContext();
 
   const [mainColor, setMainColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
 
-  const { addToCart } = useCartContext();
+  const handleMainColor = (color) => {
+    setMainColor(color);
+  };
 
-  const handleAmount = (value) => {
-    if (value === "increment" && amount < stock) {
+  const handleAmount = (id = 0, value) => {
+    if (value === "increase" && amount < stock) {
       setAmount(amount + 1);
     }
-    if ((value === "decrement") & (amount > 1)) {
+    if ((value === "decrease") & (amount > 1)) {
       setAmount(amount - 1);
     }
   };
 
   return (
     <AddToCartContainer>
-      <ColorsContainer>
-        <p> Colors: </p>
-        {colors.map((color, index) => {
-          return (
-            <ColorsBtn
-              onClick={() => setMainColor(color)}
-              key={index}
-              background={color}
-              className={mainColor === color ? "active-btn" : null}
-            >
-              {mainColor === color && <FaCheck />}
-            </ColorsBtn>
-          );
-        })}
-      </ColorsContainer>
-      <AddToCartSection>
-        <AddToCartDecBtn onClick={() => handleAmount("decrement")}>
-          -
-        </AddToCartDecBtn>
-        <AddToCartAmount>{amount}</AddToCartAmount>
-        <AddToCartIncBtn onClick={() => handleAmount("increment")}>
-          +
-        </AddToCartIncBtn>
-      </AddToCartSection>
+      <ColorsContainer
+        colors={colors}
+        mainColor={mainColor}
+        handleMainColor={handleMainColor}
+      />
+
+      <ChangeItemAmount
+        singleProduct={true}
+        amount={amount}
+        decrease={handleAmount}
+        increase={handleAmount}
+      />
       <AddToCartBtn
         onClick={() => addToCart(id, mainColor, amount, product)}
         to="/cart"

@@ -1,15 +1,11 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context";
-import { BsFillGridFill, BsList } from "react-icons/bs";
-import {
-  ProductListContainer,
-  ProductListSection,
-  ProductGridBtnContainer,
-} from "./ProductElements";
+import { ProductListContainer } from "./ProductElements";
 
 import Header from "../Header";
+import ProductListSec from "./ProductListSec";
+import ProductGridBtns from "./ProductGridBtns";
 import Filters from "../Filters";
-import Card from "../Card/";
 import Loading from "../Loading";
 
 const ProductList = () => {
@@ -24,32 +20,8 @@ const ProductList = () => {
           <Loading productList={true} />
         ) : (
           <section>
-            <ProductGridBtnContainer className="btn-container">
-              <div className="btn-container">
-                <button>
-                  <BsFillGridFill />
-                </button>
-                <BsList />
-              </div>
-
-              <p>{products.length} Products Found</p>
-
-              <hr />
-              <div className="sort">
-                <label htmlFor="sort">Sort By</label>
-                <select name="sort" id="sort">
-                  <option value="lowest">Price (Lowest)</option>
-                  <option value="highest">Price (Highest)</option>
-                  <option value="a-z">Name (A-Z)</option>
-                  <option value="z-a">Name (Z-A)</option>
-                </select>
-              </div>
-            </ProductGridBtnContainer>
-            <ProductListSection>
-              {products.map((item) => {
-                return <Card key={item.id} {...item} />;
-              })}
-            </ProductListSection>
+            <ProductGridBtns products={products} />
+            <ProductListSec />
           </section>
         )}
       </ProductListContainer>

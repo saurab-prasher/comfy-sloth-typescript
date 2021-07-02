@@ -38,6 +38,17 @@ export const Loader = styled.div`
   left: ${({ productList, singleProduct, mainPage }) =>
     (mainPage && "45%") || (productList && "55%") || (singleProduct && "45%")};
 
+  @media screen and (max-width: 48em) {
+    top: ${({ mainPage, productList, singleProduct }) =>
+      (mainPage && "20%") ||
+      (productList && "10%") ||
+      (singleProduct && "200%")};
+    left: ${({ productList, singleProduct, mainPage }) =>
+      (mainPage && "30%") ||
+      (productList && "55%") ||
+      (singleProduct && "35%")};
+  }
+
   &:before {
     width: 50%;
     height: 50%;

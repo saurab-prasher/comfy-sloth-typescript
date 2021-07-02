@@ -13,26 +13,21 @@ import CartPage from "./pages/CartPage";
 
 const App = () => {
   return (
-    <>
-      <Router>
-        <>
-          <Navbar />
-          <Sidebar />
-        </>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route exact path="/products" component={Products} />
-          <Route path="/products/:id">
-            <SingleProduct />
-          </Route>
-          <Route path="/cart" component={CartPage} />
-          <Route path="*" component={Error} />
-        </Switch>
-
-        <Footer />
-      </Router>
-    </>
+    <Router>
+      <Navbar />
+      <Sidebar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route exact path="/products" component={Products} />
+        <Route path="/products/:id">
+          <SingleProduct />
+        </Route>
+        <Route path="/cart" component={CartPage} />
+        <Route path="*" component={Error} />
+      </Switch>
+      <Footer />
+    </Router>
   );
 };
 

@@ -65,6 +65,16 @@ export const CartItem = styled.article`
     grid-template-columns: repeat(4, 1fr) auto;
   }
 `;
+
+export const CartColorBtn = styled.button`
+  background-color: ${({ background }) => `${background}`};
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 0.5rem;
+`;
+
 export const CartItemImgContainer = styled.div`
   display: flex;
   align-items: center;
@@ -176,7 +186,11 @@ export const ChangeQuantity = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 10rem;
-  transform: translateX(2rem);
+  transform: translateX(
+    ${({ singleProduct }) => (singleProduct ? "0rem" : "2rem")}
+  );
+
+  margin: ${({ singleProduct }) => (singleProduct ? "1.25rem 0" : null)};
 
   @media screen and (max-width: 37.5em) {
     width: 8rem;

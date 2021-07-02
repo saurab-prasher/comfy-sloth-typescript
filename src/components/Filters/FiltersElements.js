@@ -64,7 +64,7 @@ export const FilterColors = styled.div`
   width: 85%;
   div {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
 
     @media screen and (max-width: 48em) {
@@ -85,13 +85,29 @@ const Button = styled.button`
 export const SpanBtnAll = styled(Button)`
   background-color: transparent;
   border-radius: 0;
-  border-bottom: 2px solid #333;
-  padding-bottom: 2rem;
+  color: #111;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
   display: inline-block;
   text-transform: capitalize;
+  font-size: 1.8rem;
+  margin-right: 1.5rem;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1rem;
+    height: 1.9px;
+    background-color: #111;
+    width: 2rem;
+  }
 `;
 
 export const FilterColorBtn = styled(Button)`
+  height: 2rem;
+  width: 2.5rem;
   background-color: ${({ background }) => (background ? background : "#444")};
 `;
 

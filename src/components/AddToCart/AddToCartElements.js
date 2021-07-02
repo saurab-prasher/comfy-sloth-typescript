@@ -24,7 +24,7 @@ const sharedCSS = css`
   display: block;
 `;
 
-export const ColorsContainer = styled.div`
+export const ColorContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.5rem;

@@ -24,7 +24,7 @@ export const Nav = styled.nav`
   }
 `;
 
-export const NavMenu = styled.ul`
+export const Menu = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,7 +101,7 @@ export const UserLogin = styled(FaUserPlus)`
   ${sharedButtonStyle}
 `;
 
-export const NavBtnContainer = styled.div`
+export const BtnContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

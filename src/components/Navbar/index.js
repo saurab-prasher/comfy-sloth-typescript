@@ -3,20 +3,10 @@ import { useProductsContext } from "../../context/products_context";
 import { useCartContext } from "../../context/cart_context";
 import { FaBars } from "react-icons/fa";
 import logo from "../../images/logo.svg";
+import NavMenu from "./Menu";
+import NavBtnContainer from "./NavBtnContainer";
 
-import {
-  Header,
-  MobileIcon,
-  Logo,
-  Nav,
-  NavMenu,
-  NavBtn,
-  NavLink,
-  NavBtnContainer,
-  ShoppingCartValue,
-  ShoppingCart,
-  UserLogin,
-} from "./NavbarElements.js";
+import { Header, MobileIcon, Logo, Nav } from "./NavbarElements.js";
 
 Logo.defaultProps = {
   src: logo,
@@ -38,29 +28,9 @@ const Navbar = () => {
       </MobileIcon>
 
       <Nav>
-        <NavMenu>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about">About</NavLink>
-          </li>
-          <li>
-            <NavLink to="/products">Products</NavLink>
-          </li>
-        </NavMenu>
+        <NavMenu />
       </Nav>
-      <NavBtnContainer>
-        <NavBtn to="/cart">
-          Cart
-          <ShoppingCart />
-          <ShoppingCartValue>{total_items}</ShoppingCartValue>
-        </NavBtn>
-        <NavBtn to="/login">
-          Login
-          <UserLogin />
-        </NavBtn>
-      </NavBtnContainer>
+      <NavBtnContainer total_items={total_items} />
     </Header>
   );
 };

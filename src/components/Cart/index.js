@@ -1,32 +1,14 @@
 import React from "react";
 import { useCartContext } from "../../context/cart_context";
-
-import { formatPrice } from "../../utils/helper";
-
-import {
-  CartContainer,
-  CartContainerHeadings,
-  CartItem,
-  CartItemImgContainer,
-  CartItemBtnContainer,
-  CartItemTotalContainer,
-  CartItemTotal,
-  Price,
-  SubTotal,
-  Delete,
-  DeleteBtn,
-  BtnClear,
-  BtnContinue,
-  CartItemTotalBtn,
-  IncreaseItem,
-  DecreaseItem,
-  Amount,
-  ChangeQuantity,
-} from "./CartElements";
+import { CartContainer } from "./CartElements";
 
 import Header from "../Header";
+import CartHeading from "./CartHeading";
+import SingleCartItem from "./SingleCartItem";
+import CartTotal from "./CartTotal";
+import CartBtns from "./CartBtns";
 
-const Cart = ({ stock }) => {
+const Cart = () => {
   const {
     cart,
     total_amount,
@@ -53,94 +35,23 @@ const Cart = ({ stock }) => {
         ) : (
           <>
             <div>
-              <CartContainerHeadings>
-                <div>
-                  <p>Item</p>
-                </div>
-                <div>
-                  <p>Price</p>
-                </div>
-                <div>
-                  <p>Quantity</p>
-                </div>
-                <div>
-                  <p>Subtotal</p>
-                </div>
-              </CartContainerHeadings>
-              <hr />
+              <CartHeading />
             </div>
 
-            {cart?.map((item) => {
-              const { id, name, price, image, color, amount } = item;
-
-              return (
-                <CartItem key={id}>
-                  <CartItemImgContainer>
-                    <img src={image} alt="" />
-                    <div>
-                      <h3>{name}</h3>
-                      <p>
-                        Color :
-                        <button
-                          style={{
-                            backgroundColor: `${color}`,
-                            height: "1.4rem",
-                            width: "1.4rem",
-                            borderRadius: "50%",
-                            display: "inline-block",
-                            margin: "0 0.5rem",
-                          }}
-                        ></button>
-                      </p>
-                    </div>
-                  </CartItemImgContainer>
-                  <Price>
-                    <p>{formatPrice(price)}</p>
-                  </Price>
-                  <ChangeQuantity>
-                    <DecreaseItem onClick={() => decrease(id, "decrease")}>
-                      -
-                    </DecreaseItem>
-                    <Amount>{amount} </Amount>
-
-                    <IncreaseItem onClick={() => increase(id, "increase")}>
-                      +
-                    </IncreaseItem>
-                  </ChangeQuantity>
-                  <SubTotal>
-                    <p>{formatPrice(price * amount)}</p>
-                  </SubTotal>
-                  <Delete>
-                    <DeleteBtn onClick={() => deleteItem(id)} />
-                  </Delete>
-                </CartItem>
-              );
-            })}
+            <SingleCartItem
+              cart={cart}
+              increase={increase}
+              decrease={decrease}
+              deleteItem={deleteItem}
+            />
 
             <hr />
-            <CartItemBtnContainer>
-              <BtnContinue to="/products">Continue Shopping</BtnContinue>
-              <BtnClear onClick={clearCart}>Clear Shopping Cart</BtnClear>
-            </CartItemBtnContainer>
+            <CartBtns clearCart={clearCart} />
 
-            <CartItemTotalContainer>
-              <CartItemTotal>
-                <div>
-                  <h3>Subtotal: </h3>
-                  <p> {formatPrice(total_amount)}</p>
-                </div>
-                <div>
-                  <p>Shipping Fee: </p>
-                  <p> {formatPrice(shipping_fee)} </p>
-                </div>
-                <hr />
-                <div>
-                  <h2>Order Total:</h2>{" "}
-                  <p>{formatPrice(total_amount + shipping_fee)}</p>
-                </div>
-              </CartItemTotal>
-              <CartItemTotalBtn>Login</CartItemTotalBtn>
-            </CartItemTotalContainer>
+            <CartTotal
+              total_amount={total_amount}
+              shipping_fee={shipping_fee}
+            />
           </>
         )}
       </CartContainer>
