@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Header from "../components/Header";
 
-import img from "../images/product-1.jpeg";
+import img from "../images/heroImg3.jpg";
 
 const AboutSection = styled.section`
   max-width: 124rem;
@@ -25,6 +25,7 @@ const AboutImgContainer = styled.div``;
 
 const AboutImg = styled.img`
   width: 100%;
+  border-radius: 5px;
 
   @media screen and (max-width: 64em) {
     display: none;
@@ -44,7 +45,8 @@ const AboutH1 = styled.h1`
   margin-bottom: 1rem;
 `;
 const AboutP = styled.p`
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  font-weight: 500;
 `;
 const Line = styled.div`
   height: 4px;

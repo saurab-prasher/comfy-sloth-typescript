@@ -12,7 +12,7 @@ import Loading from "../Loading";
 const ProductList = () => {
   const { products, products_loading, dispatch } = useProductsContext();
 
-  const [productView, setProductView] = useState("list");
+  const [productView, setProductView] = useState("grid");
 
   const handleProductListView = (view) => {
     setProductView(view);

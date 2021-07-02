@@ -1,4 +1,5 @@
 import { BsFillGridFill, BsList } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 export const ProductListContainer = styled.div`
@@ -19,7 +20,7 @@ export const ProductListContainer = styled.div`
 
 export const ProductGridSection = styled.article`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   grid-gap: 2rem;
   img {
     height: 18rem;
@@ -138,22 +139,27 @@ export const ProductListText = styled.article`
   p {
     font-size: 1.5rem;
     margin: 1.5rem 0;
+    font-weight: 500;
   }
 
   button {
-    background-color: rgb(83, 20, 16);
-    padding: 0.75rem 1rem;
-    color: #fff;
-    border: 1px solid transparent;
-    font-size: 1.4rem;
-    font-weight: 500;
-    border-radius: 3px;
-    display: inline-block;
-    transition: all 0.1s ease-in-out;
-    &:hover {
-      background-color: #fff;
-      color: rgb(83, 20, 16);
-      border: 1px solid rgb(83, 20, 16);
-    }
+  }
+`;
+
+export const ProductListDetailBtn = styled(Link)`
+  background-color: rgb(83, 20, 16);
+  padding: 0.75rem 1rem;
+  color: #fff;
+  border: 1px solid transparent;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 3px;
+  display: inline-block;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: rgb(83, 20, 16);
+    border: 1px solid rgb(83, 20, 16);
   }
 `;

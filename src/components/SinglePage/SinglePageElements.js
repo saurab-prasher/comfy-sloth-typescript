@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { BsStarHalf, BsStar, BsStarFill } from "react-icons/bs";
 
 export const SinglePageMain = styled.main`
@@ -7,13 +8,31 @@ export const SinglePageMain = styled.main`
   grid-gap: 5rem;
   max-width: 124rem;
   margin: 0 auto;
-
   padding: 3rem;
   padding-bottom: 10rem;
+  font-weight: 500;
 
   @media screen and (max-width: 50em) {
     grid-template-columns: 1fr;
     grid-gap: 2.5rem;
+  }
+`;
+
+export const BackToProdbtn = styled(Link)`
+  background-color: rgb(83, 20, 16);
+  padding: 0.75rem 1rem;
+  color: #fff;
+  border: 1px solid transparent;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 3px;
+  display: inline-block;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: rgb(83, 20, 16);
+    border: 1px solid rgb(83, 20, 16);
   }
 `;
 

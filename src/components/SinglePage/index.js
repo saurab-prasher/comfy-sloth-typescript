@@ -19,6 +19,7 @@ import {
   Price,
   Description,
   ProductName,
+  BackToProdbtn,
 } from "./SinglePageElements";
 
 const single_product_url = `https://course-api.com/react-store-single-product?id=`;
@@ -63,6 +64,16 @@ const SinglePage = () => {
           <Header location="Products">
             <ProductName>{name}</ProductName>
           </Header>
+          <div
+            style={{
+              maxWidth: "124rem",
+              padding: "0rem 3rem",
+              margin: "0.75rem auto",
+            }}
+          >
+            <BackToProdbtn to="/products">Back to Products </BackToProdbtn>
+          </div>
+
           <SinglePageMain>
             <SinglePageImg>
               <Gallery images={images} />

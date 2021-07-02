@@ -1,18 +1,17 @@
 import React from "react";
-import heroImage from "../../images/entertainment-high-res.jpg";
+
+import heroImg1 from "../../images/heroImg1.jpg";
+import heroImg2 from "../../images/heroImg2.jpg";
+import heroImg3 from "../../images/heroImg3.jpg";
+
 import {
   HeroContainer,
-  HeroImage,
   HeroH1,
   HeroP,
   HeroBtn,
   HeroText,
-  HeroImageContainer,
 } from "./HeroElements";
 
-HeroImage.defaultProps = {
-  src: heroImage,
-};
 const Hero = () => {
   return (
     <HeroContainer>
@@ -26,9 +25,12 @@ const Hero = () => {
         </HeroP>
         <HeroBtn to="/products">Shop Now</HeroBtn>
       </HeroText>
-      <HeroImageContainer>
-        <HeroImage />
-      </HeroImageContainer>
+
+      <div className="heroImageContainer">
+        <img className="heroImg-1" src={heroImg1} alt=" heroimage1" />
+        <img className="heroImg-2" src={heroImg2} alt=" heroimage2" />
+        <img className="heroImg-3" src={heroImg3} alt=" heroimage3" />
+      </div>
     </HeroContainer>
   );
 };

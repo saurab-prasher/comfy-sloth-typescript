@@ -4,29 +4,29 @@ import { Link } from "react-router-dom";
 export const HeroContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: dense;
   max-width: 124rem;
-  grid-gap: 5rem;
-  margin: 10rem auto;
-  justify-content: space-between;
+  grid-gap: 2.5rem;
+  margin: 9rem auto;
   padding: 0 3rem;
   color: #444444;
 
-  @media screen and (max-width: 48em) {
-    grid-template-columns: 1fr;
+  @media screen and (max-width: 37.5em) {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 6rem auto;
   }
 `;
-export const HeroText = styled.article`
-  flex-basis: 100%;
-`;
+export const HeroText = styled.article``;
 export const HeroH1 = styled.h1`
   font-size: 3.8rem;
   margin-bottom: 1.5rem;
 `;
 export const HeroP = styled.p`
   font-size: 1.8rem;
-  line-height: 1.7;
-  font-weight: 400;
-  margin-bottom: 2rem;
+  font-weight: 500;
+  margin-bottom: 5rem;
 `;
 export const HeroBtn = styled(Link)`
   background-color: rgb(83, 20, 16);
@@ -45,11 +45,3 @@ export const HeroBtn = styled(Link)`
     border: 1px solid rgb(83, 20, 16);
   }
 `;
-export const HeroImageContainer = styled.article`
-  flex-basis: 100%;
-
-  @media screen and (max-width: 48em) {
-    display: none;
-  }
-`;
-export const HeroImage = styled.img``;

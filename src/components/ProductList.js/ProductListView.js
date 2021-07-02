@@ -4,12 +4,12 @@ import {
   ProductListSection,
   ProductListImage,
   ProductListText,
+  ProductListDetailBtn,
 } from "./ProductElements";
 import { formatPrice } from "../../utils/helper";
 
 const ProductListView = () => {
   const { products } = useProductsContext();
-  console.log(products);
   return products.map((item) => {
     const { id, image, name, description, price } = item;
     return (
@@ -21,7 +21,9 @@ const ProductListView = () => {
           <h1>{name}</h1>
           <h3>{formatPrice(price)}</h3>
           <p>{description.slice(0, 150)}</p>
-          <button>Details</button>
+          <ProductListDetailBtn to={`/products/${id}`}>
+            Details
+          </ProductListDetailBtn>
         </ProductListText>
       </ProductListSection>
     );

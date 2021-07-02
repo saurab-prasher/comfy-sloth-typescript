@@ -1,9 +1,13 @@
 import styled from "styled-components";
 export const FilterContainer = styled.aside`
   padding: 1rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   div {
-    margin: 2rem 0;
+    margin: 0.8rem 0;
   }
 
   h3,
@@ -33,7 +37,7 @@ export const FilterFormContainer = styled.div`
     }
   }
 `;
-export const FilterCategory = styled.div`
+export const Category = styled.div`
   button {
     display: block;
     background-color: transparent;
@@ -45,7 +49,7 @@ export const FilterCategory = styled.div`
     text-transform: capitalize;
   }
 `;
-export const FilterCompany = styled.div`
+export const Company = styled.div`
   select {
     background-color: #dadada;
     font-family: inherit;
@@ -60,7 +64,7 @@ export const FilterCompany = styled.div`
     }
   }
 `;
-export const FilterColors = styled.div`
+export const Colors = styled.div`
   width: 85%;
   div {
     display: flex;
@@ -85,7 +89,8 @@ const Button = styled.button`
 export const SpanBtnAll = styled(Button)`
   background-color: transparent;
   border-radius: 0;
-  color: #111;
+  opacity: 1;
+  color: #444;
   font-weight: 500;
   position: relative;
   z-index: 1;
@@ -109,21 +114,21 @@ export const FilterColorBtn = styled(Button)`
   height: 2rem;
   width: 2.5rem;
   background-color: ${({ background }) => (background ? background : "#444")};
-  
-   @media screen and (max-width: 48em) {
+
+  @media screen and (max-width: 48em) {
     height: 2.3rem;
     width: 2.3rem;
   }
 `;
 
-export const FilterPrice = styled.div`
+export const Price = styled.div`
   p {
     font-size: 1.6rem;
     margin-bottom: 1rem;
     font-weight: 500;
   }
 `;
-export const FilterShipping = styled.div`
+export const Shipping = styled.div`
   display: flex;
   align-items: center;
 
