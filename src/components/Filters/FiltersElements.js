@@ -109,6 +109,11 @@ export const FilterColorBtn = styled(Button)`
   height: 2rem;
   width: 2.5rem;
   background-color: ${({ background }) => (background ? background : "#444")};
+  
+   @media screen and (max-width: 48em) {
+    height: 2.3rem;
+    width: 2.3rem;
+  }
 `;
 
 export const FilterPrice = styled.div`
