@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { BsFillGridFill, BsList } from "react-icons/bs";
+import styled, { css } from "styled-components";
 
 export const ProductListContainer = styled.div`
   display: grid;
@@ -16,7 +17,7 @@ export const ProductListContainer = styled.div`
   }
 `;
 
-export const ProductListSection = styled.article`
+export const ProductGridSection = styled.article`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-gap: 2rem;
@@ -32,17 +33,28 @@ export const ProductGridBtnContainer = styled.div`
   grid-template-columns: auto auto 1fr auto;
   align-items: center;
   grid-gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 37.5em) {
+    grid-template-columns: 1fr;
+  }
 
   p,
   label {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     margin: 0 0.75rem;
     font-weight: 500;
+    @media (max-width: 37.5em) {
+      margin: 1rem 0;
+    }
   }
 
   hr {
     border: none;
     border-bottom: 1px solid #ccc;
+    @media (max-width: 37.5em) {
+      margin-bottom: 1rem;
+    }
   }
 
   select {
@@ -56,6 +68,92 @@ export const ProductGridBtnContainer = styled.div`
 
     &:focus {
       box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+    }
+  }
+`;
+
+const sharedBtn = css`
+  /* padding: 1rem; */
+  width: 3rem;
+  height: 3rem;
+  margin-right: 1.5rem;
+  padding: 0.35rem;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #000;
+  background-color: transparent;
+`;
+
+export const BtnGrid = styled(BsFillGridFill)`
+  ${sharedBtn}
+
+  background-color: ${({ background }) =>
+    background === "grid" ? "#000" : "#fff"};
+  color: ${({ background }) => (background === "grid" ? "#fff" : "#000")};
+`;
+
+export const BtnList = styled(BsList)`
+  ${sharedBtn}
+  background-color: ${({ background }) =>
+    background === "list" ? "#000" : "#fff"};
+  color: ${({ background }) => (background === "list" ? "#fff" : "#000")};
+`;
+
+export const ProductListSection = styled.main`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  align-items: center;
+
+  @media (max-width: 48em) {
+    grid-template-columns: 1fr;
+  }
+`;
+export const ProductListImage = styled.article`
+  img {
+    display: block;
+    width: 30rem;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+`;
+export const ProductListText = styled.article`
+  padding: 2rem;
+
+  h1 {
+    font-size: 2.2rem;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+  p {
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  button {
+    background-color: rgb(83, 20, 16);
+    padding: 0.75rem 1rem;
+    color: #fff;
+    border: 1px solid transparent;
+    font-size: 1.4rem;
+    font-weight: 500;
+    border-radius: 3px;
+    display: inline-block;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+      background-color: #fff;
+      color: rgb(83, 20, 16);
+      border: 1px solid rgb(83, 20, 16);
     }
   }
 `;

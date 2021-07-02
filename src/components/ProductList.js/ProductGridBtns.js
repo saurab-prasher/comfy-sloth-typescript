@@ -1,17 +1,14 @@
 import React from "react";
-import { BsFillGridFill, BsList } from "react-icons/bs";
 
-import { ProductGridBtnContainer } from "./ProductElements";
+import { ProductGridBtnContainer, BtnGrid, BtnList } from "./ProductElements";
 import Sort from "./Sort";
 
-const ProductGridBtns = ({ products }) => {
+const ProductGridBtns = ({ products, handleView, view }) => {
   return (
     <ProductGridBtnContainer className="btn-container">
       <div className="btn-container">
-        <button>
-          <BsFillGridFill />
-        </button>
-        <BsList />
+        <BtnGrid onClick={() => handleView("grid")} background={view} />
+        <BtnList onClick={() => handleView("list")} background={view} />
       </div>
 
       <p>{products.length} Products Found</p>

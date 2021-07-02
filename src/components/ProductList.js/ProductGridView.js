@@ -1,20 +1,20 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context";
 
-import { ProductListSection } from "./ProductElements";
+import { ProductGridSection } from "./ProductElements";
 
 import Card from "../Card";
 
-const ProductListSec = () => {
+const ProductGridView = () => {
   const { products } = useProductsContext();
 
   return (
-    <ProductListSection>
+    <ProductGridSection>
       {products.map((item) => {
         return <Card key={item.id} {...item} />;
       })}
-    </ProductListSection>
+    </ProductGridSection>
   );
 };
 
-export default ProductListSec;
+export default ProductGridView;

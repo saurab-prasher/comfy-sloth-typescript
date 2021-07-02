@@ -3,7 +3,9 @@ import React from "react";
 const Sort = () => {
   return (
     <div className="sort">
-      <label htmlFor="sort">Sort By</label>
+      <label style={{ marginRight: "1.5rem" }} htmlFor="sort">
+        Sort By
+      </label>
       <select name="sort" id="sort">
         <option value="lowest">Price (Lowest)</option>
         <option value="highest">Price (Highest)</option>
