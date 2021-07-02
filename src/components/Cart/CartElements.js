@@ -37,13 +37,10 @@ export const CartContainerHeadings = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr auto;
   justify-items: center;
-  /* column-gap: 1rem; */
   margin-bottom: 2rem;
-
   transform: translateX(-1rem);
 
   @media screen and (max-width: 37.5em) {
-    /* display: none; */
     grid-template-columns: repeat(4, 1fr) auto;
   }
 
@@ -68,8 +65,8 @@ export const CartItem = styled.article`
 
 export const CartColorBtn = styled.button`
   background-color: ${({ background }) => `${background}`};
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1.6rem;
+  width: 1.6rem;
   border-radius: 50%;
   display: inline-block;
   margin: 0 0.5rem;
@@ -186,14 +183,19 @@ export const ChangeQuantity = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 10rem;
+  width: ${({ singleProduct }) => (singleProduct ? "12rem" : "10rem")};
+  transform: translateX(0);
+  font-size: ${({ singleProduct }) => (singleProduct ? "1.8rem" : "1.6rem")};
   transform: translateX(
     ${({ singleProduct }) => (singleProduct ? "0rem" : "2rem")}
   );
+  margin: ${({ singleProduct }) => (singleProduct ? "1.5rem 0" : null)};
 
-  margin: ${({ singleProduct }) => (singleProduct ? "1.25rem 0" : null)};
+  @media screen and (max-width: 48em) {
+  }
 
   @media screen and (max-width: 37.5em) {
-    width: 8rem;
+    width: ${({ singleProduct }) => (singleProduct ? "12rem" : "8rem")};
     transform: translateX(0);
   }
 `;

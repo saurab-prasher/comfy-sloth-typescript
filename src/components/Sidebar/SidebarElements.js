@@ -15,11 +15,10 @@ export const SidebarContainer = styled.aside`
   width: 100%;
   z-index: 99;
   background-color: #fff;
-
   transform: ${({ isSidebarOpen }) =>
     isSidebarOpen ? "translateX(0)" : "translateX(-110%)"};
   opacity: ${({ isSidebarOpen }) => (isSidebarOpen ? "100%" : "0")};
-  padding: 1rem;
+  padding: 3rem;
   transition: all 0.2s ease;
 `;
 export const SidebarHeader = styled.div`
@@ -33,15 +32,9 @@ export const Icon = styled.div``;
 
 export const CloseIcon = styled(RiCloseLine)`
   color: #531410;
-  font-size: 2.5rem;
+  height: 5rem;
+  width: 5rem;
   cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.1s ease-in-out;
-
-  &:hover {
-    color: #fff;
-    background-color: #531410;
-  }
 `;
 
 export const SidebarMenu = styled.ul`
@@ -57,16 +50,10 @@ export const SidebarLink = styled(Link)`
   width: 90%;
   margin: 0 auto;
   display: block;
-  padding: 1rem;
-  font-size: 1.5rem;
-  font-weight: 500;
+  padding: 1.5rem;
+  font-size: 1.8rem;
   border-radius: 3px;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: #531410;
-    color: #fff;
-  }
+  font-weight: 500;
 `;
 
 export const SidebarItem = styled.li`

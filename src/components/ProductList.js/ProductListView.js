@@ -24,6 +24,7 @@ const ProductListView = () => {
           <ProductListDetailBtn to={`/products/${id}`}>
             Details
           </ProductListDetailBtn>
+          <hr />
         </ProductListText>
       </ProductListSection>
     );

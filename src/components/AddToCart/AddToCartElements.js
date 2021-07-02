@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export const AddToCartContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 2.5em;
+  align-items: flex-start;
+  margin-top: 2.5rem;
   width: fit-content;
 `;
 
@@ -19,7 +19,6 @@ const sharedCSS = css`
   font-size: 3rem;
   font-weight: 600;
   color: #531410;
-
   cursor: pointer;
   display: block;
 `;
@@ -27,7 +26,7 @@ const sharedCSS = css`
 export const ColorContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   text-transform: capitalize;
 `;
@@ -39,7 +38,7 @@ export const AddToCartDecBtn = styled.button`
 `;
 export const AddToCartAmount = styled.p`
   ${sharedCSS}
-  cursor: default;
+  cursor: none;
   margin: 1.5rem;
 `;
 export const ColorsBtn = styled.button`
@@ -47,7 +46,7 @@ export const ColorsBtn = styled.button`
   width: 2.5rem;
   border-radius: 50%;
   display: inline-block;
-  margin-left: 0.75rem;
+  margin-left: 1.5rem;
   cursor: pointer;
   opacity: 0.5;
   background-color: ${({ background }) => `${background}`};
@@ -65,7 +64,7 @@ export const AddToCartBtn = styled(Link)`
   color: #fff;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 600;
   border-radius: 3px;
   transition: all 0.1s ease-in-out;

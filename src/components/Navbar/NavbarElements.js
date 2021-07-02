@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { FaShoppingCart, FaUserPlus } from "react-icons/fa";
+import { FaShoppingCart, FaUserPlus, FaBars } from "react-icons/fa";
 
 export const Header = styled.header`
   display: flex;
@@ -33,7 +33,7 @@ export const Menu = styled.ul`
 export const NavLink = styled(Link)`
   color: #000;
   padding: 0.5rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin: 0 1.5rem;
   letter-spacing: 1px;
 
@@ -42,12 +42,13 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const MobileIcon = styled.div`
+export const MobileIcon = styled(FaBars)`
   display: none;
-  font-size: 2.5rem;
+  width: 4rem;
+  height: 4rem;
   cursor: pointer;
-
-  @media screen and (max-width: 768px) {
+  color: #531410;
+  @media screen and (max-width: 48em) {
     display: block;
   }
 `;
@@ -89,7 +90,8 @@ export const ShoppingCartValue = styled.p`
 `;
 
 const sharedButtonStyle = css`
-  font-size: 2.5rem;
+  height: 3.3rem;
+  width: 3.3rem;
   margin: 0 0.75rem;
   color: rgb(83, 20, 16);
 `;

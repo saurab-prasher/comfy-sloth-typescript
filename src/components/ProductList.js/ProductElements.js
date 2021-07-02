@@ -74,7 +74,6 @@ export const ProductGridBtnContainer = styled.div`
 `;
 
 const sharedBtn = css`
-  /* padding: 1rem; */
   width: 3rem;
   height: 3rem;
   margin-right: 1.5rem;
@@ -104,13 +103,14 @@ export const BtnList = styled(BsList)`
 export const ProductListSection = styled.main`
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 2.5rem;
+  gap: 2rem;
   align-items: center;
   margin-bottom: 3rem;
   align-items: center;
 
   @media (max-width: 48em) {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 `;
 export const ProductListImage = styled.article`
@@ -120,11 +120,10 @@ export const ProductListImage = styled.article`
     height: 20rem;
     object-fit: cover;
     border-radius: 3px;
-    margin-bottom: 1rem;
   }
 `;
 export const ProductListText = styled.article`
-  padding: 2rem;
+  padding: 0 2rem;
 
   h1 {
     font-size: 2.2rem;
@@ -137,12 +136,16 @@ export const ProductListText = styled.article`
     font-weight: 500;
   }
   p {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin: 1.5rem 0;
     font-weight: 500;
   }
 
-  button {
+  hr {
+    border: none;
+    border-bottom: 2px solid #ccc;
+
+    margin: 2rem 0;
   }
 `;
 

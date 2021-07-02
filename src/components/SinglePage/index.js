@@ -20,6 +20,7 @@ import {
   Description,
   ProductName,
   BackToProdbtn,
+  Available,
 } from "./SinglePageElements";
 
 const single_product_url = `https://course-api.com/react-store-single-product?id=`;
@@ -86,7 +87,7 @@ const SinglePage = () => {
               </ReviewsContainer>
               <Price> {formatPrice(price)}</Price>
               <Description>{description}</Description>
-              <>
+              <Available>
                 <li>
                   Available:
                   <span> {stock > 0 ? "In Stock" : "out of stock"} </span>
@@ -98,7 +99,7 @@ const SinglePage = () => {
                   Brand: <span> {company} </span>{" "}
                 </li>
                 <hr />
-              </>
+              </Available>
 
               {stock > 0 && <AddToCart product={product} />}
             </SinglePageText>

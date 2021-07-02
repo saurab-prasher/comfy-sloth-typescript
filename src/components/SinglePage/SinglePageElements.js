@@ -48,7 +48,7 @@ export const ProductName = styled.h1`
 
 export const SinglePageText = styled.article`
   li {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 600;
     margin: 1.5rem 0;
     text-transform: capitalize;
@@ -56,7 +56,7 @@ export const SinglePageText = styled.article`
 
   span {
     font-weight: 500;
-    margin-left: 5rem;
+    margin-left: 6rem;
     display: inline-block;
   }
 `;
@@ -66,16 +66,19 @@ export const SinglePageH1 = styled.h1`
 `;
 export const Star = styled(BsStar)`
   color: #ffb900;
-  font-size: 1.4rem;
+  width: 2rem;
+  height: 2rem;
 `;
 export const StarFill = styled(BsStarFill)`
   color: #ffb900;
-  font-size: 1.4rem;
+  width: 2rem;
+  height: 2rem;
 `;
 
 export const StarHalf = styled(BsStarHalf)`
   color: #ffb900;
-  font-size: 1.4rem;
+  width: 2rem;
+  height: 2rem;
 `;
 export const ReviewsContainer = styled.div`
   display: flex;
@@ -84,17 +87,20 @@ export const ReviewsContainer = styled.div`
 
   p {
     margin-left: 0.5rem;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 `;
 export const Price = styled.p`
   font-weight: 600;
   margin: 1rem 0;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   letter-spacing: 1px;
 `;
 export const Description = styled.p`
-  font-size: 1.6rem;
-  line-height: 1.7;
+  font-size: 1.8rem;
   margin-bottom: 2rem;
+`;
+export const Available = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
