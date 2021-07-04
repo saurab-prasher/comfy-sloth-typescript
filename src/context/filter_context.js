@@ -22,6 +22,7 @@ export const FilterProvider = ({ children }) => {
     <FilterContext.Provider
       value={{
         ...state,
+        dispatch,
       }}
     >
       {children}

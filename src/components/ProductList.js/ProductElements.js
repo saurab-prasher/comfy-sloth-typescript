@@ -151,12 +151,14 @@ export const ProductListText = styled.article`
 
 export const ProductListDetailBtn = styled(Link)`
   background-color: rgb(83, 20, 16);
-  padding: 0.75rem 1rem;
+  padding: 0.75rem;
   color: #fff;
   border: 1px solid transparent;
   font-size: 1.4rem;
   font-weight: 500;
+  text-transform: uppercase;
   border-radius: 3px;
+  letter-spacing: 1px;
   display: inline-block;
   transition: all 0.1s ease-in-out;
 

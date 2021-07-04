@@ -8,9 +8,11 @@ import ProductGridBtns from "./ProductGridBtns";
 import ProductListView from "./ProductListView";
 import Filters from "../Filters";
 import Loading from "../Loading";
+import { useFilterContext } from "../../context/filter_context";
 
 const ProductList = () => {
-  const { products, products_loading, dispatch } = useProductsContext();
+  const { products_loading } = useProductsContext();
+  const { filtered_products } = useFilterContext();
 
   const [productView, setProductView] = useState("grid");
 
@@ -22,14 +24,14 @@ const ProductList = () => {
     <>
       <Header location="products" />
       <ProductListContainer>
-        <Filters dispatch={dispatch} products={products} />
+        <Filters products={filtered_products} />
         {products_loading ? (
           <Loading productList={true} />
         ) : (
           <section>
             <ProductGridBtns
               handleView={handleProductListView}
-              products={products}
+              products={filtered_products}
               view={productView}
             />
             {productView === "grid" ? <ProductGridView /> : <ProductListView />}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Header from "../components/Header";
 
-import img from "../images/heroImg3.jpg";
+import img from "../assets/images/heroImg3.jpg";
 
 const AboutSection = styled.section`
   max-width: 124rem;

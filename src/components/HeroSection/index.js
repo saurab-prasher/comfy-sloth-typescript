@@ -1,8 +1,8 @@
 import React from "react";
 
-import heroImg1 from "../../images/heroImg1.jpg";
-import heroImg2 from "../../images/heroImg2.jpg";
-import heroImg3 from "../../images/heroImg3.jpg";
+import heroImg1 from "../../assets/images/heroImg1.jpg";
+import heroImg2 from "../../assets/images/heroImg2.jpg";
+import heroImg3 from "../../assets/images/heroImg3.jpg";
 
 import {
   HeroContainer,
