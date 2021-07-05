@@ -1,12 +1,17 @@
 import React from "react";
+import { useFilterContext } from "../../context/filter_context.js";
 
 import { FilterFormContainer } from "./FiltersElements.js";
-
-const FilterForm = ({ searchTerm }) => {
+const FilterForm = () => {
+  const { handleFilters } = useFilterContext();
   return (
     <FilterFormContainer className="form">
       <form>
-        <input placeholder="Search" type="text" />
+        <input
+          onChange={(e) => handleFilters(e, "input")}
+          placeholder="Search"
+          type="text"
+        />
       </form>
     </FilterFormContainer>
   );

@@ -1,16 +1,16 @@
 import React from "react";
-import { useProductsContext } from "../../context/products_context";
+import { useFilterContext } from "../../context/filter_context";
 
 import { ProductGridSection } from "./ProductElements";
 
 import Card from "../Card";
 
 const ProductGridView = () => {
-  const { products } = useProductsContext();
+  const { filtered_products } = useFilterContext();
 
   return (
     <ProductGridSection>
-      {products.map((item) => {
+      {filtered_products.map((item) => {
         return <Card key={item.id} {...item} />;
       })}
     </ProductGridSection>

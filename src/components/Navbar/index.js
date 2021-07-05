@@ -1,7 +1,7 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context";
 import { useCartContext } from "../../context/cart_context";
-import logo from "../../images/logo.svg";
+import logo from "../../assets/images/logo.svg";
 import NavMenu from "./Menu";
 import NavBtnContainer from "./NavBtnContainer";
 

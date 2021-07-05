@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useFilterContext } from "../../context/filter_context.js";
+import React, { useState } from "react";
+
 import {
   FilterContainer,
   FilterClearBtn,
@@ -20,59 +20,11 @@ const Filters = ({ products }) => {
   const companies = getUniqueValues(products, "company");
   const colors = getUniqueValues(products, "colors");
 
-  const { dispatch } = useFilterContext();
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [company, setCompany] = useState("");
-  const [category, setCategory] = useState("");
-  const [color, setColor] = useState("");
   const [value, setValue] = useState(50000);
-
-  // dispatch({
-  //   type: "just_checking",
-  //   payload: { company, category, color, value, searchTerm },
-  // });
-
-  const allFilterClickListener = (e, filterProp) => {
-    console.log("FILTER clicked", e.target.dataset.name);
-    const name = e.target.dataset.name;
-    this.setState((prevState) => ({
-      passingTags: {
-        ...prevState.passingTags,
-        [filterProp]: {
-          ...prevState.passingTags[filterProp],
-          [name]: !prevState.passingTags[filterProp][name],
-        },
-      },
-    }));
-  };
-
-  const filteredCollected = () => {
-    const collectedTrueKeys = {
-      color: [],
-      gender: [],
-      material: [],
-      category: [],
-    };
-    const { color, gender, material, category } = this.state.passingTags;
-    for (let colorKey in color) {
-      if (color[colorKey]) collectedTrueKeys.color.push(colorKey);
-    }
-    for (let genderKey in gender) {
-      if (gender[genderKey]) collectedTrueKeys.gender.push(genderKey);
-    }
-    for (let materialKey in material) {
-      if (material[materialKey]) collectedTrueKeys.material.push(materialKey);
-    }
-    for (let categoryKey in category) {
-      if (category[categoryKey]) collectedTrueKeys.category.push(categoryKey);
-    }
-    return collectedTrueKeys;
-  };
 
   return (
     <FilterContainer>
-      <FilterForm searchTerm={searchTerm} />
+      <FilterForm />
 
       <FilterCategory categories={categories} />
       <FilterCompany companies={companies} />

@@ -1,5 +1,4 @@
 import React from "react";
-import { useProductsContext } from "../../context/products_context";
 import {
   ProductListSection,
   ProductListImage,
@@ -7,10 +6,11 @@ import {
   ProductListDetailBtn,
 } from "./ProductElements";
 import { formatPrice } from "../../utils/helper";
+import { useFilterContext } from "../../context/filter_context";
 
 const ProductListView = () => {
-  const { products } = useProductsContext();
-  return products.map((item) => {
+  const { filtered_products } = useFilterContext();
+  return filtered_products.map((item) => {
     const { id, image, name, description, price } = item;
     return (
       <ProductListSection key={id}>

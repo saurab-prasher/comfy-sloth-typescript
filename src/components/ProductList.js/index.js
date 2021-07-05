@@ -11,7 +11,7 @@ import Loading from "../Loading";
 import { useFilterContext } from "../../context/filter_context";
 
 const ProductList = () => {
-  const { products_loading } = useProductsContext();
+  const { products_loading, products } = useProductsContext();
   const { filtered_products } = useFilterContext();
 
   const [productView, setProductView] = useState("grid");
@@ -24,7 +24,7 @@ const ProductList = () => {
     <>
       <Header location="products" />
       <ProductListContainer>
-        <Filters products={filtered_products} />
+        <Filters products={products} />
         {products_loading ? (
           <Loading productList={true} />
         ) : (
