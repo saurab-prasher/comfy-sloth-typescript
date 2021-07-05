@@ -14,8 +14,10 @@ import FilterCompany from "./FilterCompany.js";
 import FilterColors from "./FilterColors.js";
 import FilterPrice from "./FilterPrice.js";
 import FilterShipping from "./FilterShipping.js";
+import { useFilterContext } from "../../context/filter_context.js";
 
 const Filters = ({ products }) => {
+  const { resetFilters } = useFilterContext();
   const categories = getUniqueValues(products, "category");
   const companies = getUniqueValues(products, "company");
   const colors = getUniqueValues(products, "colors");
@@ -31,7 +33,7 @@ const Filters = ({ products }) => {
 
       <FilterShipping />
 
-      <FilterClear className="clear">
+      <FilterClear onClick={resetFilters} className="clear">
         <FilterClearBtn>Clear Filters</FilterClearBtn>
       </FilterClear>
     </FilterContainer>
