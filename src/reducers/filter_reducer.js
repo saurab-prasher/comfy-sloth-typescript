@@ -6,11 +6,36 @@ export const filter_reducer = (state, action) => {
       filtered_products: [...action.payload],
     };
   }
+
+  if (action.type === "CALCULATE_TOTALS") {
+    const maxValue = state.all_products?.map((item) => item.price);
+    let max = 0;
+    maxValue.forEach((item) => {
+      if (item > max) max = item;
+    });
+
+    return {
+      ...state,
+      max_range_value: max,
+    };
+  }
+
   if (action.type === "testing") {
     const { filterValue, filterKey } = action.payload;
 
-    if (filterKey === "all" || filterValue === "all" || !filterValue)
-      return { ...state, filtered_products: state.all_products };
+    if (
+      filterKey === "all" ||
+      filterValue === "all" ||
+      !filterValue ||
+      (filterKey === "free_shipping" && filterValue === "on")
+    ) {
+      console.log(filterKey, filterValue);
+      return {
+        ...state,
+        filtered_products: state.all_products,
+        [filterKey]: filterValue,
+      };
+    }
 
     if (filterKey === "colors" || filterValue === "colors") {
       // const tempArr = state.all_products.map((item) => item[filterKey]);
@@ -38,9 +63,26 @@ export const filter_reducer = (state, action) => {
     }
 
     if (filterKey === "search_term" && filterValue) {
-      const tempArr = state.all_products.filter((item) =>
-        item.name.startsWith(filterValue)
+      const tempArr = state.all_products?.filter((item) =>
+        item.name?.startsWith(filterValue)
       );
+
+      return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
+    }
+
+    if (filterKey === "price") {
+      const tempArr = state.all_products?.filter(
+        (item) => item.price <= Number(filterValue)
+      );
+      console.log(tempArr);
+      return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
+    }
+
+    if (filterKey === "free_shipping" && filterValue === true) {
+      const tempArr = state.all_products?.filter(
+        (item) => item.shipping === filterValue
+      );
+      console.log(tempArr, filterKey, filterValue);
 
       return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
     }

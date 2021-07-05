@@ -41,7 +41,7 @@ export const Category = styled.div`
   button {
     display: block;
     background-color: transparent;
-    margin: 0.75rem 0;
+    margin-bottom: 1.25rem;
     font-size: 1.45rem;
     letter-spacing: 1px;
     cursor: pointer;
@@ -96,24 +96,22 @@ export const SpanBtnAll = styled(Button)`
   z-index: 1;
   display: inline-block;
   text-transform: capitalize;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-right: 1.5rem;
-
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -1rem;
-    height: 1.9px;
-    background-color: #111;
-    width: 2rem;
-  }
+  line-height: 0;
 `;
 
 export const FilterColorBtn = styled(Button)`
   height: 2rem;
-  width: 2.5rem;
+  width: 2.6rem;
   background-color: ${({ background }) => (background ? background : "#444")};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 700;
 
   @media screen and (max-width: 48em) {
     height: 2.3rem;

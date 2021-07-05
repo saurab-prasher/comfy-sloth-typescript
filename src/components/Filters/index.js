@@ -19,9 +19,6 @@ const Filters = ({ products }) => {
   const categories = getUniqueValues(products, "category");
   const companies = getUniqueValues(products, "company");
   const colors = getUniqueValues(products, "colors");
-
-  const [value, setValue] = useState(50000);
-
   return (
     <FilterContainer>
       <FilterForm />
@@ -30,7 +27,7 @@ const Filters = ({ products }) => {
       <FilterCompany companies={companies} />
       <FilterColors colors={colors} />
 
-      <FilterPrice value={value} />
+      <FilterPrice />
 
       <FilterShipping />
 

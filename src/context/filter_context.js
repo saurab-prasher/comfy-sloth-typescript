@@ -5,9 +5,12 @@ import { useProductsContext } from "./products_context";
 const initialState = {
   filtered_products: [],
   all_products: [],
+
   category: "all",
   company: "all",
   colors: "all",
+  price: 0,
+  max_range_value: 0,
   search_term: "",
   free_shipping: false,
 };
@@ -20,10 +23,13 @@ export const FilterProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: "LOAD_PRODUCTS", payload: products });
+    dispatch({ type: "CALCULATE_TOTALS" });
   }, [products]);
 
   function handleFilters(e, filterKey = "") {
-    const filterValue = e.target.dataset.name || e.target.value;
+    const filterValue =
+      e.target.dataset.name || e.target.checked || e.target.value;
+
     console.log("filterKey:", filterKey, "\nfilterValue:", filterValue);
 
     dispatch({ type: "testing", payload: { filterKey, filterValue } });

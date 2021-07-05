@@ -10,7 +10,8 @@ export const ProductListContainer = styled.div`
   max-width: 124rem;
   margin: 0 auto;
   position: relative;
-  padding: 0 3rem;
+  padding: 1rem 3rem;
+  background-color: #fdfdfd;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;

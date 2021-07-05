@@ -4,8 +4,7 @@ import { useFilterContext } from "../../context/filter_context.js";
 import { Category } from "./FiltersElements.js";
 
 const FilterCategory = ({ categories }) => {
-  const { handleFilters } = useFilterContext();
-
+  const { handleFilters, category: filterCategory } = useFilterContext();
   return (
     <Category className="category">
       <h3>Category</h3>
@@ -15,6 +14,9 @@ const FilterCategory = ({ categories }) => {
             onClick={(e) => handleFilters(e, "category")}
             key={idx}
             data-name={`${category}`}
+            className={`${
+              filterCategory === category ? "active-filter" : null
+            }  `}
           >
             {category}
           </button>
