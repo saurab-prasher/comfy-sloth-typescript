@@ -25,8 +25,8 @@ export const FilterProvider = ({ children }) => {
   function handleFilters(e, filterKey = "") {
     const filterValue = e.target.dataset.name || e.target.value;
     console.log("filterKey:", filterKey, "\nfilterValue:", filterValue);
-    if (!filterValue) return;
-    dispatch({ type: "testing", payload: { filterValue, filterKey } });
+
+    dispatch({ type: "testing", payload: { filterKey, filterValue } });
   }
   return (
     <FilterContext.Provider
