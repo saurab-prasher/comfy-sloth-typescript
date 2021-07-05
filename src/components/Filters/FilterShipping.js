@@ -3,7 +3,7 @@ import { useFilterContext } from "../../context/filter_context.js";
 import { Shipping } from "./FiltersElements.js";
 
 const FilterShipping = () => {
-  const { handleFilters, free_shipping } = useFilterContext();
+  const { handleFilters } = useFilterContext();
   return (
     <Shipping className="free-shipping">
       <label htmlFor="freeshipping">Free Shipping</label>

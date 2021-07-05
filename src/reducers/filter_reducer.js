@@ -29,7 +29,6 @@ export const filter_reducer = (state, action) => {
       !filterValue ||
       (filterKey === "free_shipping" && filterValue === "on")
     ) {
-      console.log(filterKey, filterValue);
       return {
         ...state,
         filtered_products: state.all_products,
@@ -52,6 +51,16 @@ export const filter_reducer = (state, action) => {
       const tempArr = state.all_products?.filter(
         (item) => item[filterKey] === filterValue
       );
+
+      const tempArr1 = state.all_products?.filter((item) => {
+        return (
+          item[filterKey] === filterValue &&
+          item?.company === (state.company === "all" ? "" : state.company)
+        );
+      });
+
+      console.log(tempArr1);
+
       return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
     }
 
@@ -74,7 +83,6 @@ export const filter_reducer = (state, action) => {
       const tempArr = state.all_products?.filter(
         (item) => item.price <= Number(filterValue)
       );
-      console.log(tempArr);
       return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
     }
 
@@ -82,7 +90,6 @@ export const filter_reducer = (state, action) => {
       const tempArr = state.all_products?.filter(
         (item) => item.shipping === filterValue
       );
-      console.log(tempArr, filterKey, filterValue);
 
       return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
     }

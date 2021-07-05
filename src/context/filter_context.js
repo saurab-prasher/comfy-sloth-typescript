@@ -5,7 +5,6 @@ import { useProductsContext } from "./products_context";
 const initialState = {
   filtered_products: [],
   all_products: [],
-
   category: "all",
   company: "all",
   colors: "all",
