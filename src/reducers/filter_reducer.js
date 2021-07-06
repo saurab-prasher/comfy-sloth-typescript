@@ -20,7 +20,7 @@ export const filter_reducer = (state, action) => {
     };
   }
 
-  if (action.type === "testing") {
+  if (action.type === "SETTING_FILTERS") {
     const { filterValue, filterKey } = action.payload;
 
     if (
@@ -30,62 +30,72 @@ export const filter_reducer = (state, action) => {
     ) {
       return {
         ...state,
-        filtered_products: state.all_products,
         [filterKey]: filterValue,
       };
     }
 
     if (filterKey === "colors" || filterValue === "colors") {
-      // const tempArr = state.all_products.map((item) => item[filterKey]);
-
-      // const tempArr1 = tempArr.filter((item) => item.filterValue);
-      // console.log(tempArr1, state.filtered_products);
       return {
         ...state,
         [filterKey]: filterValue,
       };
     }
 
-    if (filterKey === "category" || filterKey === "company") {
-      console.log(state);
-      const tempArr = state.all_products?.filter(
-        (item) => item[filterKey] === filterValue
-      );
-
-      console.log(tempArr);
-      return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
+    if (filterKey === "category") {
+      return { ...state, [filterKey]: filterValue };
     }
 
     if (filterKey === "company") {
-      const tempArr = state.all_products?.filter(
-        (item) => item[filterKey] === filterValue
-      );
-      return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
+      return { ...state, [filterKey]: filterValue };
     }
 
     if (filterKey === "search_term" && filterValue) {
-      const tempArr = state.all_products?.filter((item) =>
-        item.name?.startsWith(filterValue)
-      );
-
-      return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
+      return { ...state, [filterKey]: filterValue };
     }
 
     if (filterKey === "price") {
-      const tempArr = state.all_products?.filter(
-        (item) => item.price <= Number(filterValue)
-      );
-      return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
+      return { ...state, [filterKey]: filterValue };
     }
 
     if (filterKey === "free_shipping" && filterValue === true) {
-      const tempArr = state.all_products?.filter(
+      const tempArr = state.filtered_products?.filter(
         (item) => item.shipping === filterValue
       );
 
       return { ...state, [filterKey]: filterValue, filtered_products: tempArr };
     }
   }
+
+  if (action.type === "FILTERING_PRODUCTS") {
+    if (state.search_term) {
+      const tempArr = state.all_products?.filter((item) =>
+        item.name?.startsWith(state.search_term)
+      );
+      return { ...state, filtered_products: tempArr };
+    }
+    if (state.company === "all" && state.category === "all") {
+      return { ...state, filtered_products: state.all_products };
+    } else if (state.company === "all") {
+      const tempArr = state.all_products?.filter(
+        (item) => item.category === state.category
+      );
+
+      return { ...state, filtered_products: tempArr };
+    } else if (state.category === "all") {
+      const tempArr = state.all_products?.filter(
+        (item) => item.company === state.company
+      );
+
+      return { ...state, filtered_products: tempArr };
+    } else if (state.company !== "all") {
+      const tempArr = state.all_products?.filter(
+        (item) =>
+          item.company === state.company && item.category === state.category
+      );
+      return { ...state, filtered_products: tempArr };
+    }
+  }
+
   if (action.type === "RESET_FILTERS") {
     return {
       ...state,

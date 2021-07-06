@@ -29,7 +29,8 @@ export const FilterProvider = ({ children }) => {
     const filterValue =
       e.target.dataset.name || e.target.checked || e.target.value;
     console.log("filterKey:", filterKey, "\nfilterValue:", filterValue);
-    dispatch({ type: "testing", payload: { filterKey, filterValue } });
+    dispatch({ type: "SETTING_FILTERS", payload: { filterKey, filterValue } });
+    dispatch({ type: "FILTERING_PRODUCTS" });
   }
 
   function resetFilters() {
