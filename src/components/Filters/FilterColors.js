@@ -5,7 +5,10 @@ import { Colors, FilterColorBtn, SpanBtnAll } from "./FiltersElements.js";
 import { FaCheck } from "react-icons/fa";
 
 const FilterColors = ({ colors }) => {
-  const { handleFilters, colors: filterColor } = useFilterContext();
+  const {
+    handleFilters,
+    filters: { color: filterColor },
+  } = useFilterContext();
   return (
     <Colors className="color">
       <h3>Colors</h3>
@@ -14,7 +17,7 @@ const FilterColors = ({ colors }) => {
           color === "all" ? (
             <SpanBtnAll
               onClick={handleFilters}
-              data-name={`${color}`}
+              data-color={color}
               key={idx}
               name="color"
               className={`${filterColor === "all" ? "active-filter" : null}`}
@@ -24,8 +27,9 @@ const FilterColors = ({ colors }) => {
           ) : (
             <FilterColorBtn
               key={idx}
+              name="color"
               background={color}
-              data-name={`${color}`}
+              data-color={color}
               className={`${filterColor === color ? "active-btn" : null}`}
               onClick={(e) => handleFilters(e, "colors")}
             >

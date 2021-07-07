@@ -4,7 +4,10 @@ import { useFilterContext } from "../../context/filter_context.js";
 import { Category } from "./FiltersElements.js";
 
 const FilterCategory = ({ categories }) => {
-  const { handleFilters, category: filterCategory } = useFilterContext();
+  const {
+    handleFilters,
+    filters: { category: filterCategory },
+  } = useFilterContext();
   return (
     <Category className="category">
       <h3>Category</h3>

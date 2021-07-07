@@ -5,7 +5,11 @@ import { Price } from "./FiltersElements.js";
 import { formatPrice } from "../../utils/helper";
 
 const FilterPrice = () => {
-  const { handleFilters, max_range_value, price } = useFilterContext();
+  const {
+    handleFilters,
+    max_range_value,
+    filters: { price },
+  } = useFilterContext();
 
   return (
     <Price className="price">
@@ -14,8 +18,8 @@ const FilterPrice = () => {
       <input
         onChange={handleFilters}
         min="0"
-        max={`${max_range_value}`}
-        defaultValue={price || max_range_value}
+        max={max_range_value}
+        value={price || max_range_value}
         step="20"
         type="range"
         name="price"

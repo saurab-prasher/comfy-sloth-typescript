@@ -5,13 +5,13 @@ import { useProductsContext } from "./products_context";
 export const initialState = {
   filtered_products: [],
   all_products: [],
+  sort: "price-lowest",
+  max_range_value: 0,
   filters: {
     category: "all",
     company: "all",
     color: "all",
     price: 0,
-    sort: "price-lowest",
-    max_range_value: 0,
     search_term: "",
     freeshipping: false,
   },
@@ -29,7 +29,8 @@ export const FilterProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: "FILTERING_PRODUCTS" });
-  }, [state.filters]);
+    dispatch({ type: "SORT_PRODUCTS" });
+  }, [products, state.filters, state.sort]);
 
   const updateSort = (e) => {
     const value = e.target.value;
@@ -38,14 +39,15 @@ export const FilterProvider = ({ children }) => {
   };
 
   function handleFilters(e) {
-    let filterKey = e.target.name;
+    let filterKey = e.target.name || e.target.dataset.color;
     let filterValue =
-      e.target.value || e.target.dataset.name || e.target.textContent;
+      e.target.value ||
+      e.target.textContent ||
+      e.target.getAttribute("data-color");
 
     if (filterKey === "freeshipping") {
       filterValue = e.target.checked;
     }
-    console.log(filterKey, filterValue);
 
     dispatch({ type: "SETTING_FILTERS", payload: { filterKey, filterValue } });
   }
