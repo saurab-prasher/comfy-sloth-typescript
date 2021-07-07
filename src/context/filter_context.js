@@ -5,13 +5,16 @@ import { useProductsContext } from "./products_context";
 export const initialState = {
   filtered_products: [],
   all_products: [],
-  category: "all",
-  company: "all",
-  colors: "all",
-  price: 0,
-  max_range_value: 0,
-  search_term: "",
-  free_shipping: false,
+  filters: {
+    category: "all",
+    company: "all",
+    color: "all",
+    price: 0,
+    sort: "price-lowest",
+    max_range_value: 0,
+    search_term: "",
+    freeshipping: false,
+  },
 };
 
 const FilterContext = React.createContext();
@@ -22,15 +25,29 @@ export const FilterProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: "LOAD_PRODUCTS", payload: products });
-    dispatch({ type: "CALCULATE_TOTALS" });
   }, [products]);
 
-  function handleFilters(e, filterKey = "") {
-    const filterValue =
-      e.target.dataset.name || e.target.checked || e.target.value;
-    console.log("filterKey:", filterKey, "\nfilterValue:", filterValue);
-    dispatch({ type: "SETTING_FILTERS", payload: { filterKey, filterValue } });
+  useEffect(() => {
     dispatch({ type: "FILTERING_PRODUCTS" });
+  }, [state.filters]);
+
+  const updateSort = (e) => {
+    const value = e.target.value;
+    dispatch({ type: "UPDATE_SORT", payload: value });
+    console.log(value);
+  };
+
+  function handleFilters(e) {
+    let filterKey = e.target.name;
+    let filterValue =
+      e.target.value || e.target.dataset.name || e.target.textContent;
+
+    if (filterKey === "freeshipping") {
+      filterValue = e.target.checked;
+    }
+    console.log(filterKey, filterValue);
+
+    dispatch({ type: "SETTING_FILTERS", payload: { filterKey, filterValue } });
   }
 
   function resetFilters() {
@@ -43,6 +60,7 @@ export const FilterProvider = ({ children }) => {
         dispatch,
         handleFilters,
         resetFilters,
+        updateSort,
       }}
     >
       {children}

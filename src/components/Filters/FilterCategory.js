@@ -11,9 +11,9 @@ const FilterCategory = ({ categories }) => {
       {categories?.map((category, idx) => {
         return (
           <button
-            onClick={(e) => handleFilters(e, "category")}
+            onClick={handleFilters}
             key={idx}
-            data-name={`${category}`}
+            name="category"
             className={`${
               filterCategory === category ? "active-filter" : null
             }  `}

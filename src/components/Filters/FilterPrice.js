@@ -12,7 +12,7 @@ const FilterPrice = () => {
       <label htmlFor="price">Price</label>
       <p>{formatPrice(price || max_range_value)}</p>
       <input
-        onChange={(e) => handleFilters(e, "price")}
+        onChange={handleFilters}
         min="0"
         max={`${max_range_value}`}
         defaultValue={price || max_range_value}

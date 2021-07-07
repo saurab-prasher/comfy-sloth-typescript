@@ -7,11 +7,7 @@ const FilterCompany = ({ companies }) => {
   return (
     <Company className="company">
       <h3>Company</h3>
-      <select
-        onClick={(e) => handleFilters(e, "company")}
-        name="company"
-        id="company"
-      >
+      <select onClick={handleFilters} name="company" id="company">
         {companies.map((company, idx) => {
           return (
             <option key={idx} data-name={`${company}`} value={`${company}`}>

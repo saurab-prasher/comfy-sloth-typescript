@@ -1,18 +1,20 @@
 import React from "react";
+import { useFilterContext } from "../../context/filter_context";
 
 const Sort = () => {
+  const { updateSort, sort } = useFilterContext();
   return (
-    <div className="sort">
+    <form className="sort">
       <label style={{ marginRight: "1.5rem" }} htmlFor="sort">
         Sort By
       </label>
-      <select name="sort" id="sort">
-        <option value="lowest">Price (Lowest)</option>
-        <option value="highest">Price (Highest)</option>
-        <option value="a-z">Name (A-Z)</option>
-        <option value="z-a">Name (Z-A)</option>
+      <select value={sort} onChange={updateSort} name="sort" id="sort">
+        <option value="price-lowest">Price (Lowest)</option>
+        <option value="price-highest">Price (Highest)</option>
+        <option value="name-a">Name (A-Z)</option>
+        <option value="name-z">Name (Z-A)</option>
       </select>
-    </div>
+    </form>
   );
 };
 
