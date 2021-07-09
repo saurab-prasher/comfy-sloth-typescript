@@ -10,6 +10,8 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import CartPage from "./pages/CartPage";
+import CheckOut from "./pages/CheckOut";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
           <SingleProduct />
         </Route>
         <Route path="/cart" component={CartPage} />
+        <Route path="/login" component={Login} />
+        <Route path="/checkout" component={CheckOut} />
         <Route path="*" component={Error} />
       </Switch>
       <Footer />

@@ -23,6 +23,7 @@ const ProductList = () => {
   return (
     <>
       <Header location="products" />
+
       <ProductListContainer>
         <Filters products={products} />
         {products_loading ? (
@@ -34,7 +35,24 @@ const ProductList = () => {
               products={filtered_products}
               view={productView}
             />
-            {productView === "grid" ? <ProductGridView /> : <ProductListView />}
+
+            {filtered_products.length === 0 ? (
+              <h1
+                style={{
+                  fontSize: "3rem",
+                  margin: "4rem 2rem ",
+                  height: "50rem",
+                  fontWeight: "500",
+                  textAlign: "center",
+                }}
+              >
+                Sorry, no products matched your search.
+              </h1>
+            ) : productView === "grid" ? (
+              <ProductGridView />
+            ) : (
+              <ProductListView />
+            )}
           </section>
         )}
       </ProductListContainer>

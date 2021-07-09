@@ -6,7 +6,7 @@ const FilterForm = () => {
   const { handleFilters, search_term } = useFilterContext();
   return (
     <FilterFormContainer className="form">
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <input
           onChange={handleFilters}
           placeholder="Search"
