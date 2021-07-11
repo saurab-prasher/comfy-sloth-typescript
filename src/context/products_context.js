@@ -50,7 +50,10 @@ export const ProductsProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
+    fetchProducts(
+      process.env.REACT_APP_PRODUCTS_URL ||
+        "https://course-api.com/react-store-products"
+    );
   }, []);
 
   return (
