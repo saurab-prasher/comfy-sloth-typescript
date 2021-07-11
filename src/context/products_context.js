@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useReducer, useCallback } from "react";
 import axios from "axios";
 import reducer from "../reducers/products_reducer";
 
-const products_url = "https://course-api.com/react-store-products";
 // const single_product_url = `https://course-api.com/react-store-single-product?id=`;
 
 const initialState = {
@@ -51,7 +50,7 @@ export const ProductsProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    fetchProducts(products_url);
+    fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
   }, []);
 
   return (

@@ -23,8 +23,6 @@ import {
   Available,
 } from "./SinglePageElements";
 
-const single_product_url = `https://course-api.com/react-store-single-product?id=`;
-
 const SinglePage = () => {
   const {
     fetchSingleProduct,
@@ -35,7 +33,7 @@ const SinglePage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchSingleProduct(`${single_product_url}${id}`);
+    fetchSingleProduct(`${process.env.REACT_APP_SINGLE_PRODUCT}${id}`);
   }, [id, fetchSingleProduct]);
 
   const {
