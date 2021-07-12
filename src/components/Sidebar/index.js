@@ -82,8 +82,7 @@ const Sidebar = () => {
             }}
             to="/"
           >
-            Login
-            <UserLogin />
+            Logout
           </SidebarBtn>
         ) : (
           <SidebarBtn
