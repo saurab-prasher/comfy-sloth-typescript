@@ -16,6 +16,9 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 
+// Private route
+import PrivateRoute from "./PrivateRoute";
+
 const App = () => {
   return (
     <Router>
@@ -31,7 +34,7 @@ const App = () => {
         <Route path="/cart" component={CartPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUpPage} />
-        <Route path="/checkout" component={CheckOut} />
+        <PrivateRoute path="/checkout" component={CheckOut} />
         <Route path="*" component={Error} />
       </Switch>
       <Footer />

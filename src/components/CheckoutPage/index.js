@@ -1,7 +1,10 @@
 import React from "react";
+import { useUserContext } from "../../context/user_context";
 
-const index = () => {
-  return <main></main>;
+const Checkout = () => {
+  const { currentUser } = useUserContext();
+  console.log(currentUser.email);
+  return <main>{currentUser.email}</main>;
 };
 
-export default index;
+export default Checkout;

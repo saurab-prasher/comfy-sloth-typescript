@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useUserContext } from "../../context/user_context";
 import {
   NavBtn,
@@ -7,9 +7,23 @@ import {
   ShoppingCart,
   UserLogin,
 } from "./NavbarElements.js";
+import { useHistory } from "react-router";
 
 const NavBtnContainer = ({ total_items }) => {
   const { currentUser, logout } = useUserContext();
+  const [error, setError] = useState("");
+  const history = useHistory();
+
+  async function handleLogout() {
+    setError("");
+    try {
+      await logout();
+      history.push("/login");
+    } catch (error) {
+      console.log(error);
+      setError("Failed to log out");
+    }
+  }
   return (
     <BtnContainer>
       <NavBtn to="/cart">
@@ -18,7 +32,7 @@ const NavBtnContainer = ({ total_items }) => {
         <ShoppingCartValue>{total_items}</ShoppingCartValue>
       </NavBtn>
       {currentUser ? (
-        <NavBtn onClick={() => logout()} to="/">
+        <NavBtn onClick={() => handleLogout()} to="/">
           Logout
         </NavBtn>
       ) : (
