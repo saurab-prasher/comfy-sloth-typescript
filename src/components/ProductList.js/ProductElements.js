@@ -29,6 +29,14 @@ export const ProductGridSection = styled.article`
   }
 `;
 
+export const NotFoundH1 = styled.h1`
+  font-size: 3rem;
+  margin: 4rem 2rem;
+  height: 50rem;
+  font-weight: 500;
+  text-align: center;
+`;
+
 export const ProductGridBtnContainer = styled.div`
   display: grid;
   padding: 1.5rem;

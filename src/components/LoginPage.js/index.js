@@ -6,7 +6,7 @@ import {
   Button,
   FormGroup,
 } from "./LoginPageElements";
-const index = () => {
+const Login = () => {
   return (
     <LoginContainer>
       <FormContainer>
@@ -45,4 +45,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Login;

@@ -8,7 +8,7 @@ const FilterForm = () => {
     <FilterFormContainer className="form">
       <form onSubmit={(e) => e.preventDefault()}>
         <input
-          onChange={handleFilters}
+          onChange={(e) => handleFilters(e)}
           placeholder="Search"
           type="text"
           name="search_term"

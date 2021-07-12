@@ -7,19 +7,19 @@ import { formatPrice } from "../../utils/helper";
 const FilterPrice = () => {
   const {
     handleFilters,
-    max_range_value,
-    filters: { price },
+
+    filters: { price, max_price, min_price },
   } = useFilterContext();
 
   return (
     <Price className="price">
       <label htmlFor="price">Price</label>
-      <p>{formatPrice(price || max_range_value)}</p>
+      <p>{formatPrice(price || max_price)}</p>
       <input
-        onChange={handleFilters}
-        min="0"
-        max={max_range_value}
-        value={price || max_range_value}
+        onChange={(e) => handleFilters(e)}
+        min={min_price}
+        max={max_price}
+        value={price || max_price}
         step="20"
         type="range"
         name="price"

@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useUserContext } from "../../context/user_context";
 import {
   SignUpContainer,
   FormContainer,
@@ -7,7 +8,33 @@ import {
   FormGroup,
 } from "./SignupElements";
 
-const index = () => {
+const SignUp = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { signup, currentUser } = useUserContext();
+  const history = useHistory();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(error);
+    if (passwordRef.current.value !== passwordConfirmRef.current.value)
+      return setError("Passwords do not match");
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
+    } catch (err) {
+      console.error(err);
+      setError("Failed to create an account");
+    }
+    setLoading(false);
+  };
   return (
     <SignUpContainer>
       <FormContainer>
@@ -15,10 +42,11 @@ const index = () => {
         <p>
           Already have an account? <Link to="/login">Sign in</Link>
         </p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FormGroup className="form-group">
             <label htmlFor="email">Email</label>
             <input
+              ref={emailRef}
               placeholder="Enter Email"
               type="email"
               name="email"
@@ -29,6 +57,7 @@ const index = () => {
           <FormGroup className="form-group">
             <label htmlFor="password">Password</label>
             <input
+              ref={passwordRef}
               placeholder="Enter Password"
               type="password"
               name="password"
@@ -40,6 +69,7 @@ const index = () => {
           <FormGroup className="form-group">
             <label htmlFor="password-confirmation">Password Confirmation</label>
             <input
+              ref={passwordConfirmRef}
               type="password"
               placeholder="Confirm Password"
               name="password"
@@ -47,7 +77,7 @@ const index = () => {
               required
             />
           </FormGroup>
-          <Button type="submit">
+          <Button disabled={loading} type="submit">
             Sign up <span>&rarr;</span>
           </Button>
         </form>
@@ -56,4 +86,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default SignUp;

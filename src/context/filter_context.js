@@ -6,11 +6,14 @@ export const initialState = {
   filtered_products: [],
   all_products: [],
   sort: "price-lowest",
-  max_range_value: 0,
+
+  products_view: "grid",
   filters: {
     category: "all",
     company: "all",
     color: "all",
+    max_price: 0,
+    min_price: 0,
     price: 0,
     search_term: "",
     freeshipping: false,
@@ -30,7 +33,7 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: "FILTERING_PRODUCTS" });
     dispatch({ type: "SORT_PRODUCTS" });
-  }, [products, state.filters, state.sort]);
+  }, [state.filters, state.sort]);
 
   const updateSort = (e) => {
     const value = e.target.value;
@@ -51,9 +54,13 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: "SETTING_FILTERS", payload: { filterKey, filterValue } });
   }
 
-  function resetFilters() {
-    dispatch({ type: "RESET_FILTERS" });
-  }
+  const resetFilters = () => {
+    dispatch({ type: "RESET_FILTERS", payload: state.all_products });
+  };
+
+  const handleProductView = (view) => {
+    dispatch({ type: "SET_PRODUCTS_VIEW", payload: view });
+  };
   return (
     <FilterContext.Provider
       value={{
@@ -62,6 +69,7 @@ export const FilterProvider = ({ children }) => {
         handleFilters,
         resetFilters,
         updateSort,
+        handleProductView,
       }}
     >
       {children}

@@ -8,7 +8,8 @@ export const filter_reducer = (state, action) => {
         ...state,
         filtered_products: [...action.payload],
         all_products: [...action.payload],
-        max_range_value: maxPrice,
+
+        filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
       };
     }
 
@@ -48,10 +49,10 @@ export const filter_reducer = (state, action) => {
       };
     }
     case "FILTERING_PRODUCTS": {
-      const {
-        all_products,
-        filters: { category, company, color, price, search_term, freeshipping },
-      } = state;
+      const { all_products } = state;
+      const { category, company, color, price, search_term, freeshipping } =
+        state.filters;
+
       let tempFilteredProducts = [...all_products];
 
       if (search_term) {
@@ -76,11 +77,10 @@ export const filter_reducer = (state, action) => {
           product.colors.find((c) => c === color)
         );
       }
-      if (price > 0) {
-        tempFilteredProducts = tempFilteredProducts.filter(
-          (product) => product.price <= Number(price)
-        );
-      }
+      // price
+      tempFilteredProducts = tempFilteredProducts.filter(
+        (product) => product.price <= Number(price)
+      );
 
       if (freeshipping) {
         tempFilteredProducts = tempFilteredProducts.filter(
@@ -91,22 +91,26 @@ export const filter_reducer = (state, action) => {
       return { ...state, filtered_products: tempFilteredProducts };
     }
 
-    case "RESET_FILTERS": {
+    case "SET_PRODUCTS_VIEW": {
+      return { ...state, products_view: action.payload };
+    }
+    case "RESET_FILTERS":
       return {
         ...state,
 
+        max_range_value: state.max_range_value,
+        products_view: "grid",
+
         filters: {
+          ...state.filters,
           category: "all",
           company: "all",
-          colors: "all",
-          maxPrice: state.filters.max_range_value,
-          price: state.filters.max_range_value,
+          color: "all",
+          price: state.filters.max_price,
           search_term: "",
           freeshipping: false,
         },
       };
-    }
-
     default:
       throw new Error(`No matching "${action.type}" - action type `);
   }

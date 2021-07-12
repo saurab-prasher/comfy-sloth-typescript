@@ -33,8 +33,10 @@ const Filters = ({ products }) => {
 
       <FilterShipping />
 
-      <FilterClear onClick={resetFilters} className="clear">
-        <FilterClearBtn>Clear Filters</FilterClearBtn>
+      <FilterClear className="clear">
+        <FilterClearBtn onClick={() => resetFilters()}>
+          Clear Filters
+        </FilterClearBtn>
       </FilterClear>
     </FilterContainer>
   );

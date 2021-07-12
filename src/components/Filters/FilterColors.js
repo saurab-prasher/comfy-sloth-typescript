@@ -16,7 +16,7 @@ const FilterColors = ({ colors }) => {
         {colors?.map((color, idx) =>
           color === "all" ? (
             <SpanBtnAll
-              onClick={handleFilters}
+              onClick={(e) => handleFilters(e)}
               data-color={color}
               key={idx}
               name="color"

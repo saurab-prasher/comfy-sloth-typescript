@@ -8,7 +8,7 @@ const FilterShipping = () => {
     <Shipping className="free-shipping">
       <label htmlFor="freeshipping">Free Shipping</label>
       <input
-        onChange={handleFilters}
+        onChange={(e) => handleFilters(e)}
         type="checkbox"
         name="freeshipping"
         id="freeshipping"

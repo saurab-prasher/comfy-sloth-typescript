@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useProductsContext } from "../../context/products_context";
-import { ProductListContainer } from "./ProductElements";
+import { ProductListContainer, NotFoundH1 } from "./ProductElements";
 
 import Header from "../Header";
 import ProductGridView from "./ProductGridView";
@@ -12,13 +12,7 @@ import { useFilterContext } from "../../context/filter_context";
 
 const ProductList = () => {
   const { products_loading, products } = useProductsContext();
-  const { filtered_products } = useFilterContext();
-
-  const [productView, setProductView] = useState("grid");
-
-  const handleProductListView = (view) => {
-    setProductView(view);
-  };
+  const { filtered_products, products_view } = useFilterContext();
 
   return (
     <>
@@ -30,25 +24,11 @@ const ProductList = () => {
           <Loading productList={true} />
         ) : (
           <section>
-            <ProductGridBtns
-              handleView={handleProductListView}
-              products={filtered_products}
-              view={productView}
-            />
+            <ProductGridBtns />
 
-            {filtered_products.length === 0 ? (
-              <h1
-                style={{
-                  fontSize: "3rem",
-                  margin: "4rem 2rem ",
-                  height: "50rem",
-                  fontWeight: "500",
-                  textAlign: "center",
-                }}
-              >
-                Sorry, no products matched your search.
-              </h1>
-            ) : productView === "grid" ? (
+            {filtered_products.length < 1 ? (
+              <NotFoundH1>Sorry, no products matched your search.</NotFoundH1>
+            ) : products_view === "grid" ? (
               <ProductGridView />
             ) : (
               <ProductListView />
