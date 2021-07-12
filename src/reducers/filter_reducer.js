@@ -97,10 +97,9 @@ export const filter_reducer = (state, action) => {
     case "RESET_FILTERS":
       return {
         ...state,
-
         max_range_value: state.max_range_value,
         products_view: "grid",
-
+        sort: "price-lowest",
         filters: {
           ...state.filters,
           category: "all",

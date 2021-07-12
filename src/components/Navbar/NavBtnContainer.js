@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useUserContext } from "../../context/user_context";
 import {
   NavBtn,
   BtnContainer,
@@ -9,6 +9,7 @@ import {
 } from "./NavbarElements.js";
 
 const NavBtnContainer = ({ total_items }) => {
+  const { currentUser, logout } = useUserContext();
   return (
     <BtnContainer>
       <NavBtn to="/cart">
@@ -16,10 +17,16 @@ const NavBtnContainer = ({ total_items }) => {
         <ShoppingCart />
         <ShoppingCartValue>{total_items}</ShoppingCartValue>
       </NavBtn>
-      <NavBtn to="/login">
-        Login
-        <UserLogin />
-      </NavBtn>
+      {currentUser ? (
+        <NavBtn onClick={() => logout()} to="/">
+          Logout
+        </NavBtn>
+      ) : (
+        <NavBtn to="/login">
+          Login
+          <UserLogin />
+        </NavBtn>
+      )}
     </BtnContainer>
   );
 };

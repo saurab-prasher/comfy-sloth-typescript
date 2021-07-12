@@ -31,7 +31,17 @@ const Cart = () => {
       <Header location="cart" />
       <CartContainer>
         {cart?.length === 0 ? (
-          <h1>Add Items to cart</h1>
+          <h1
+            style={{
+              fontSize: "3rem",
+              margin: "4rem 2rem",
+              height: "50rem",
+              fontWeight: "500",
+              textAlign: "center",
+            }}
+          >
+            Add Items to the cart...
+          </h1>
         ) : (
           <>
             <div>

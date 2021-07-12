@@ -1,6 +1,7 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context.js";
 import { useCartContext } from "../../context/cart_context";
+import { useUserContext } from "../../context/user_context.js";
 import {
   NavBtn as SidebarBtn,
   ShoppingCartValue,
@@ -22,6 +23,7 @@ import {
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
+  const { currentUser, logout } = useUserContext();
   const { total_items } = useCartContext();
   return (
     <SidebarContainer isSidebarOpen={isSidebarOpen}>
@@ -56,10 +58,29 @@ const Sidebar = () => {
           <ShoppingCart />
           <ShoppingCartValue>{total_items}</ShoppingCartValue>
         </SidebarBtn>
-        <SidebarBtn onClick={closeSidebar} to="/login">
-          Login
-          <UserLogin />
-        </SidebarBtn>
+
+        {currentUser ? (
+          <SidebarBtn
+            onClick={() => {
+              closeSidebar();
+              logout();
+            }}
+            to="/"
+          >
+            Login
+            <UserLogin />
+          </SidebarBtn>
+        ) : (
+          <SidebarBtn
+            onClick={() => {
+              closeSidebar();
+            }}
+            to="/login"
+          >
+            Login
+            <UserLogin />
+          </SidebarBtn>
+        )}
       </SidebarBtnContainer>
     </SidebarContainer>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { useProductsContext } from "../../context/products_context";
 import { useCartContext } from "../../context/cart_context";
+
 import logo from "../../assets/images/logo.svg";
 import NavMenu from "./Menu";
 import NavBtnContainer from "./NavBtnContainer";
@@ -14,6 +15,7 @@ Logo.defaultProps = {
 const Navbar = () => {
   const { openSidebar } = useProductsContext();
   const { total_items } = useCartContext();
+
   return (
     <Header>
       <div>

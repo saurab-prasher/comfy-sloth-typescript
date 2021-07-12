@@ -3,7 +3,10 @@ import { useFilterContext } from "../../context/filter_context.js";
 import { Shipping } from "./FiltersElements.js";
 
 const FilterShipping = () => {
-  const { handleFilters } = useFilterContext();
+  const {
+    handleFilters,
+    filters: { freeshipping },
+  } = useFilterContext();
   return (
     <Shipping className="free-shipping">
       <label htmlFor="freeshipping">Free Shipping</label>
@@ -12,6 +15,7 @@ const FilterShipping = () => {
         type="checkbox"
         name="freeshipping"
         id="freeshipping"
+        checked={freeshipping}
       />
     </Shipping>
   );

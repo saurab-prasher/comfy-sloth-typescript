@@ -133,29 +133,30 @@ export const Shipping = styled.div`
   label {
     margin-bottom: 0;
     margin-right: 1rem;
+    cursor: pointer;
   }
 
   input {
+    cursor: pointer;
     height: 1.6rem;
     width: 1.6rem;
   }
 `;
-export const FilterClear = styled.div`
-  button {
-    background-color: #531410;
-    color: #fff;
-    padding: 0.75rem 1rem;
-    border-radius: 3px;
-    font-size: 1.5rem;
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
+export const FilterClear = styled.div``;
 
-    &:hover {
-      background-color: #fff;
-      color: rgb(83, 20, 16);
-      border: 1px solid rgb(83, 20, 16);
-    }
+export const FilterClearBtn = styled.button`
+  background-color: #531410;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 3px;
+  font-size: 1.5rem;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    color: rgb(83, 20, 16);
+    border: 1px solid rgb(83, 20, 16);
   }
 `;
-
-export const FilterClearBtn = styled.button``;
