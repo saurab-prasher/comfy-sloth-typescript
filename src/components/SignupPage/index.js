@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  LoginContainer,
+  SignUpContainer,
   FormContainer,
   Button,
   FormGroup,
-} from "./LoginPageElements";
+} from "./SignupElements";
+
 const index = () => {
   return (
-    <LoginContainer>
+    <SignUpContainer>
       <FormContainer>
-        <h1>Login to your account</h1>
+        <h1>Create an account</h1>
         <p>
-          Don't have an account? <Link to="/signup">Sign up</Link>
+          Already have an account? <Link to="/login">Sign in</Link>
         </p>
         <form>
           <FormGroup className="form-group">
@@ -36,12 +37,22 @@ const index = () => {
             />
           </FormGroup>
 
+          <FormGroup className="form-group">
+            <label htmlFor="password-confirmation">Password Confirmation</label>
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="password"
+              id="password-conformation"
+              required
+            />
+          </FormGroup>
           <Button type="submit">
-            Log In <span>&rarr;</span>
+            Sign up <span>&rarr;</span>
           </Button>
         </form>
       </FormContainer>
-    </LoginContainer>
+    </SignUpContainer>
   );
 };
 

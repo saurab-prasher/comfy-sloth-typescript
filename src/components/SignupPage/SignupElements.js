@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 // background-image: linear-gradient(to right, #642b28, #6d3734, #76433f, #7f4f4c, #875b58);
 
-export const LoginContainer = styled.main`
+export const SignUpContainer = styled.main`
   height: 82.5vh;
   width: 100vw;
   display: flex;
