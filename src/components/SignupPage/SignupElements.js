@@ -14,7 +14,6 @@ export const FormContainer = styled.div`
   padding: 4rem 2rem;
   border-radius: 1rem;
   text-align: center;
-  /* height: 50rem; */
   width: 45rem;
   border: 1px solid #ccc;
   h1 {
@@ -34,14 +33,12 @@ export const FormGroup = styled.div`
   width: 90%;
 
   input {
-    padding: 0.75rem 1rem;
+    padding: 1rem;
     border: 1px solid #a4a39e;
     border-radius: 3px;
-
     font-family: inherit;
     outline: none;
     width: 100%;
-    text-transform: capitalize;
     &:focus {
       box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
     }
@@ -57,7 +54,7 @@ export const FormGroup = styled.div`
 export const Button = styled.button`
   width: 90%;
   background-color: rgb(83, 20, 16);
-  padding: 0.75rem 1rem;
+  padding: 1rem;
   color: #fff;
   border: 1px solid transparent;
   font-size: 1.5rem;

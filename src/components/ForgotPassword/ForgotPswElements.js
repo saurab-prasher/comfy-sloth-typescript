@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-// background-image: linear-gradient(to right, #642b28, #6d3734, #76433f, #7f4f4c, #875b58);
-
 export const LoginContainer = styled.main`
   height: 82.5vh;
   width: 100vw;
@@ -14,7 +12,6 @@ export const FormContainer = styled.div`
   padding: 4rem 2rem;
   border-radius: 1rem;
   text-align: center;
-  /* height: 50rem; */
   width: 45rem;
   border: 1px solid #ccc;
   h1 {

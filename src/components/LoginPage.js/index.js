@@ -29,8 +29,8 @@ const Login = () => {
       history.push("/");
     } catch (err) {
       console.error(err);
-      setLoading(false);
       setError("Failed to create an account");
+      setLoading(false);
     }
   };
 
@@ -66,6 +66,22 @@ const Login = () => {
                 id="password"
                 required
               />
+            </FormGroup>
+            <FormGroup>
+              <Link
+                style={{
+                  display: "inline-block",
+                  margin: "0 auto",
+                  fontSize: "1.6rem",
+                  color: "#531410",
+                  fontWeight: "500",
+                  textDecoration: "underline",
+                }}
+                to="/forgotpassword"
+              >
+                {" "}
+                Forgot Password?{" "}
+              </Link>
             </FormGroup>
 
             <Button type="submit">

@@ -17,7 +17,6 @@ const Cart = () => {
     clearCart,
     shipping_fee,
   } = useCartContext();
-  console.log(useCartContext());
 
   const increase = (id, value) => {
     toggleAmount(id, value);

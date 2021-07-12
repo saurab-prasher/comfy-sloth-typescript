@@ -16,6 +16,7 @@ const NavBtnContainer = ({ total_items }) => {
 
   async function handleLogout() {
     setError("");
+    console.log(error);
     try {
       await logout();
       history.push("/login");

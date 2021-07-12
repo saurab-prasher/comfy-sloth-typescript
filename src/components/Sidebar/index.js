@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useProductsContext } from "../../context/products_context.js";
 import { useCartContext } from "../../context/cart_context";
 import { useUserContext } from "../../context/user_context.js";
+import { useHistory } from "react-router";
 import {
   NavBtn as SidebarBtn,
   ShoppingCartValue,
@@ -23,8 +24,22 @@ import {
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
+  const [error, setError] = useState("");
   const { currentUser, logout } = useUserContext();
   const { total_items } = useCartContext();
+  const history = useHistory();
+
+  async function handleLogout() {
+    setError("");
+    console.log(error);
+    try {
+      await logout();
+      history.push("/login");
+    } catch (error) {
+      console.log(error);
+      setError("Failed to log out");
+    }
+  }
   return (
     <SidebarContainer isSidebarOpen={isSidebarOpen}>
       <SidebarHeader>
@@ -63,7 +78,7 @@ const Sidebar = () => {
           <SidebarBtn
             onClick={() => {
               closeSidebar();
-              logout();
+              handleLogout();
             }}
             to="/"
           >

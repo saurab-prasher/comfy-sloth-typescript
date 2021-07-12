@@ -15,6 +15,7 @@ import SignUpPage from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
+import ForgotPassword from "./components/ForgotPassword";
 
 // Private route
 import PrivateRoute from "./PrivateRoute";
@@ -34,7 +35,8 @@ const App = () => {
         <Route path="/cart" component={CartPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUpPage} />
-        <PrivateRoute path="/checkout" component={CheckOut} />
+        <PrivateRoute exact path="/checkout" component={CheckOut} />
+        <Route path="/forgotpassword" component={ForgotPassword} />
         <Route path="*" component={Error} />
       </Switch>
       <Footer />

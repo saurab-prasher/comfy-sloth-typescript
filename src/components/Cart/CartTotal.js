@@ -1,4 +1,5 @@
 import React from "react";
+import { useUserContext } from "../../context/user_context";
 import { formatPrice } from "../../utils/helper";
 import {
   CartItemTotalContainer,
@@ -7,6 +8,7 @@ import {
 } from "./CartElements";
 
 const CartTotal = ({ total_amount, shipping_fee }) => {
+  const { currentUser } = useUserContext();
   return (
     <CartItemTotalContainer>
       <CartItemTotal>
@@ -24,7 +26,11 @@ const CartTotal = ({ total_amount, shipping_fee }) => {
           <p>{formatPrice(total_amount + shipping_fee)}</p>
         </div>
       </CartItemTotal>
-      <CartItemTotalBtn>Login</CartItemTotalBtn>
+      {currentUser ? (
+        <CartItemTotalBtn to="/checkout">Checkout</CartItemTotalBtn>
+      ) : (
+        <CartItemTotalBtn to="/login">Login</CartItemTotalBtn>
+      )}
     </CartItemTotalContainer>
   );
 };

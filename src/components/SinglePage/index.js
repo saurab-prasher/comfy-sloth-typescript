@@ -33,12 +33,7 @@ const SinglePage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchSingleProduct(
-      `${
-        process.env.REACT_APP_SINGLE_PRODUCT ||
-        `https://course-api.com/react-store-single-product?id=`
-      }${id}`
-    );
+    fetchSingleProduct(`${process.env.REACT_APP_SINGLE_PRODUCT}${id}`);
   }, [id, fetchSingleProduct]);
 
   const {
