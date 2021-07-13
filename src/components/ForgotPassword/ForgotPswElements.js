@@ -34,7 +34,7 @@ export const FormGroup = styled.div`
     padding: 1rem;
     border: 1px solid #a4a39e;
     border-radius: 3px;
-
+    font-size: 1.6rem;
     font-family: inherit;
     outline: none;
     width: 100%;

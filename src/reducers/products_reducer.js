@@ -18,7 +18,7 @@ const product_reducer = (state, action) => {
         products: action.payload,
       };
 
-    case "GET_PRODUCT_ERROR":
+    case "GET_PRODUCTS_ERROR":
       return {
         ...state,
         products_loading: false,
@@ -46,9 +46,6 @@ const product_reducer = (state, action) => {
         single_product_error: true,
       };
 
-    case "test":
-      console.log(action.payload);
-      return { ...state };
     default:
       throw new Error(`No matching "${action.type}" - action type `);
   }

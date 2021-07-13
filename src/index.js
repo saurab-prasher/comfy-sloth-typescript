@@ -11,17 +11,15 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <UserProvider>
-        <CartProvider>
-          <ProductsProvider>
-            <FilterProvider>
-              <App />
-            </FilterProvider>
-          </ProductsProvider>
-        </CartProvider>
-      </UserProvider>
-    </React.StrictMode>
+    <UserProvider>
+      <CartProvider>
+        <ProductsProvider>
+          <FilterProvider>
+            <App />
+          </FilterProvider>
+        </ProductsProvider>
+      </CartProvider>
+    </UserProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

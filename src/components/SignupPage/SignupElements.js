@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const SignUpContainer = styled.main`
   height: 82.5vh;
   width: 100vw;
@@ -43,6 +42,8 @@ export const FormGroup = styled.div`
     font-family: inherit;
     outline: none;
     width: 100%;
+    font-size: 1.6rem;
+
     &:focus {
       box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
     }
