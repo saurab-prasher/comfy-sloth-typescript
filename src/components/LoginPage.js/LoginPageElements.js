@@ -14,7 +14,6 @@ export const FormContainer = styled.div`
   padding: 4rem 2rem;
   border-radius: 1rem;
   text-align: center;
-  /* height: 50rem; */
   width: 45rem;
   border: 1px solid #ccc;
   h1 {
@@ -23,6 +22,12 @@ export const FormContainer = styled.div`
   }
   p {
     font-size: 1.6rem;
+
+    a {
+      color: rgb(83, 20, 16);
+      text-decoration: underline;
+      font-weight: 500;
+    }
   }
 `;
 
@@ -37,7 +42,6 @@ export const FormGroup = styled.div`
     padding: 1rem;
     border: 1px solid #a4a39e;
     border-radius: 3px;
-
     font-family: inherit;
     outline: none;
     width: 100%;

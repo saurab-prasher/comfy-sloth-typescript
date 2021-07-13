@@ -1,6 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useUserContext } from "../../context/user_context";
-import { Link, useHistory } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import Error from "../Error";
+
 import {
   LoginContainer,
   FormContainer,
@@ -12,27 +14,16 @@ const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { error, handleSubmitLogin, loading } = useUserContext();
 
-  const { login } = useUserContext();
-  const history = useHistory();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(error);
-    try {
-      setError("");
-      setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      setLoading(false);
-      history.push("/");
-    } catch (err) {
-      console.error(err);
-      setError("Failed to create an account");
-      setLoading(false);
-    }
-  };
+  // useEffect(() => {
+  //   const id = setTimeout(() => {
+  //     setError(null);
+  //   }, 3000);
+  //   return () => {
+  //     clearTimeout(id);
+  //   };
+  // }, [error]);
 
   return (
     <LoginContainer>
@@ -40,11 +31,13 @@ const Login = () => {
         <Loading />
       ) : (
         <FormContainer>
+          {error ? <Error message={error} /> : null}
           <h1>Login to your account</h1>
           <p>
             Don't have an account? <Link to="/signup">Sign up</Link>
           </p>
-          <form onSubmit={handleSubmit}>
+          <p>Test Id: test@test.com | password: 123456 </p>
+          <form onSubmit={(e) => handleSubmitLogin(e, emailRef, passwordRef)}>
             <FormGroup className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -64,7 +57,6 @@ const Login = () => {
                 type="password"
                 name="password"
                 id="password"
-                required
               />
             </FormGroup>
             <FormGroup>
@@ -79,8 +71,7 @@ const Login = () => {
                 }}
                 to="/forgotpassword"
               >
-                {" "}
-                Forgot Password?{" "}
+                Forgot Password?
               </Link>
             </FormGroup>
 
@@ -94,4 +85,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

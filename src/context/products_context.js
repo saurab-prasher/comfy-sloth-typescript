@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useReducer, useCallback } from "react";
 import axios from "axios";
 import reducer from "../reducers/products_reducer";
-
 const initialState = {
   isSidebarOpen: false,
   products_loading: false,

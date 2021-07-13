@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useUserContext } from "../../context/user_context";
 import {
   SignUpContainer,
@@ -7,47 +7,34 @@ import {
   Button,
   FormGroup,
 } from "./SignupElements";
+import Error from "../Error";
+
 import Loading from "../Loading";
 
 const SignUp = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const passwordConfirmRef = useRef(null);
 
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { signup } = useUserContext();
-  const history = useHistory();
+  const { handleSubmitSignup, loading, error } = useUserContext();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(error);
-    if (passwordRef.current.value !== passwordConfirmRef.current.value)
-      return setError("Passwords do not match");
-
-    try {
-      setError("");
-      setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      setLoading(false);
-      history.push("/");
-    } catch (err) {
-      console.error(err);
-      setError("Failed to create an account");
-      setLoading(false);
-    }
-  };
   return (
     <SignUpContainer>
       {loading ? (
         <Loading />
       ) : (
         <FormContainer>
+          {error ? <Error message={error} /> : null}
           <h1>Create an account</h1>
           <p>
             Already have an account? <Link to="/login">Sign in</Link>
           </p>
-          <form onSubmit={handleSubmit}>
+
+          <form
+            onSubmit={(e) =>
+              handleSubmitSignup(e, emailRef, passwordRef, passwordConfirmRef)
+            }
+          >
             <FormGroup className="form-group">
               <label htmlFor="email">Email</label>
               <input

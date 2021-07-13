@@ -3,7 +3,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 export const SidebarContainer = styled.aside`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 48em) {
     display: none;
   }
   position: fixed;

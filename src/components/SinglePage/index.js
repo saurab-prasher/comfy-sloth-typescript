@@ -48,8 +48,6 @@ const SinglePage = () => {
     stock,
   } = product;
 
-  console.log(product);
-
   return (
     <>
       {single_product_loading ? (

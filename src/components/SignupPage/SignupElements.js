@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// background-image: linear-gradient(to right, #642b28, #6d3734, #76433f, #7f4f4c, #875b58);
 
 export const SignUpContainer = styled.main`
   height: 82.5vh;
@@ -22,6 +21,11 @@ export const FormContainer = styled.div`
   }
   p {
     font-size: 1.6rem;
+    a {
+      color: rgb(83, 20, 16);
+      font-weight: 500;
+      text-decoration: underline;
+    }
   }
 `;
 

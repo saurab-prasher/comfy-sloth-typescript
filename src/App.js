@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 // Pages
 import About from "./pages/About";
 import Error from "./pages/Error";
@@ -19,10 +19,11 @@ import ForgotPassword from "./components/ForgotPassword";
 
 // Private route
 import PrivateRoute from "./PrivateRoute";
+import PrivateRoute1 from "./PrivateRoute1";
 
 const App = () => {
   return (
-    <Router>
+    <>
       <Navbar />
       <Sidebar />
       <Switch>
@@ -33,14 +34,14 @@ const App = () => {
           <SingleProduct />
         </Route>
         <Route path="/cart" component={CartPage} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUpPage} />
+        <PrivateRoute1 path="/login" component={Login} />
+        <PrivateRoute1 path="/signup" component={SignUpPage} />
         <PrivateRoute exact path="/checkout" component={CheckOut} />
-        <Route path="/forgotpassword" component={ForgotPassword} />
+        <PrivateRoute1 path="/forgotpassword" component={ForgotPassword} />
         <Route path="*" component={Error} />
       </Switch>
       <Footer />
-    </Router>
+    </>
   );
 };
 

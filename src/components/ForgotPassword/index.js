@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-
+import Error from "../Error";
 import {
   LoginContainer,
   FormContainer,
@@ -12,29 +12,7 @@ import { useUserContext } from "../../context/user_context.js";
 
 const ForgotPassword = () => {
   const emailRef = useRef();
-  const { resetPassword } = useUserContext();
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    console.log(message, error);
-
-    try {
-      setMessage("");
-      setError("");
-      setLoading(true);
-      await resetPassword(emailRef.current.value);
-      setMessage("Check your inbox for further instructions");
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setError("Failed to reset password");
-      setLoading(false);
-    }
-  }
+  const { handleResetPassword, error, loading, message } = useUserContext();
 
   return (
     <LoginContainer>
@@ -42,9 +20,12 @@ const ForgotPassword = () => {
         <Loading />
       ) : (
         <FormContainer>
+          {error || message ? (
+            <Error success={true} message={error || message} />
+          ) : null}
           <h1>Password Reset</h1>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(e) => handleResetPassword(e, emailRef)}>
             <FormGroup className="form-group">
               <label htmlFor="email">Email</label>
               <input
