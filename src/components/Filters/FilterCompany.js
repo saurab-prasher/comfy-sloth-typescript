@@ -1,17 +1,11 @@
 import React from "react";
 import { Company } from "./FiltersElements.js";
-import { useFilterContext } from "../../context/filter_context.js";
-const FilterCompany = ({ companies }) => {
-  const {
-    handleFilters,
-    filters: { company },
-  } = useFilterContext();
-
+const FilterCompany = ({ companies, handleFilters, filterCompany }) => {
   return (
     <Company className="company">
       <h3>Company</h3>
       <select
-        value={company}
+        value={filterCompany}
         onChange={(e) => handleFilters(e)}
         name="company"
         id="company"

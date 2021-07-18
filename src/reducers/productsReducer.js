@@ -1,4 +1,15 @@
-const product_reducer = (state, action) => {
+const initialState = {
+  isSidebarOpen: false,
+  products_loading: false,
+  products_error: false,
+  products: [],
+  featured_products: [],
+  single_product_loading: false,
+  single_product_error: false,
+  single_product: {},
+};
+
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SIDEBAR_OPEN":
       return { ...state, isSidebarOpen: true };
@@ -13,8 +24,8 @@ const product_reducer = (state, action) => {
       const featured_products = action.payload.filter((item) => item.featured);
       return {
         ...state,
-        products_loading: false,
         featured_products,
+        products_loading: false,
         products: action.payload,
       };
 
@@ -47,8 +58,8 @@ const product_reducer = (state, action) => {
       };
 
     default:
-      throw new Error(`No matching "${action.type}" - action type `);
+      return state;
   }
 };
 
-export default product_reducer;
+export default productReducer;

@@ -6,12 +6,9 @@ import {
   ProductListDetailBtn,
 } from "./ProductElements";
 import { formatPrice } from "../../utils/helper";
-import { useFilterContext } from "../../context/filter_context";
 
-const ProductListView = () => {
-  const { filtered_products } = useFilterContext();
-
-  return filtered_products?.map((item) => {
+const ProductListView = ({ products }) => {
+  return products?.map((item) => {
     const { id, image, name, description, price } = item;
     return (
       <ProductListSection key={id}>

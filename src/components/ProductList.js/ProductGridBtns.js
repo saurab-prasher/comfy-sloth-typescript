@@ -3,27 +3,24 @@ import React from "react";
 import { ProductGridBtnContainer, BtnGrid, BtnList } from "./ProductElements";
 import Sort from "./Sort";
 
-import { useFilterContext } from "../../context/filter_context";
-const ProductGridBtns = ({ products }) => {
-  const { handleProductView, products_view, filtered_products } =
-    useFilterContext();
+const ProductGridBtns = ({
+  products,
+  view,
+  handleProductView,
+  updateSort,
+  sort,
+}) => {
   return (
     <ProductGridBtnContainer className="btn-container">
       <div className="btn-container">
-        <BtnGrid
-          onClick={() => handleProductView("grid")}
-          background={products_view}
-        />
-        <BtnList
-          onClick={() => handleProductView("list")}
-          background={products_view}
-        />
+        <BtnGrid onClick={() => handleProductView("grid")} background={view} />
+        <BtnList onClick={() => handleProductView("list")} background={view} />
       </div>
 
-      <p>{filtered_products.length} Products Found</p>
+      <p>{products.length ? products.length : null} Products Found</p>
 
       <hr />
-      <Sort />
+      <Sort sort={sort} updateSort={updateSort} />
     </ProductGridBtnContainer>
   );
 };

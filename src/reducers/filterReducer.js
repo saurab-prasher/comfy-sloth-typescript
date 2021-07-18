@@ -1,4 +1,22 @@
-export const filter_reducer = (state, action) => {
+const initialState = {
+  filtered_products: [],
+  all_products: [],
+  sort: "price-lowest",
+
+  products_view: "grid",
+  filters: {
+    category: "all",
+    company: "all",
+    color: "all",
+    max_price: 0,
+    min_price: 0,
+    price: 0,
+    search_term: "",
+    freeshipping: false,
+  },
+};
+
+const filterReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOAD_PRODUCTS": {
       let maxPrice = action.payload.map((item) => item.price);
@@ -8,7 +26,6 @@ export const filter_reducer = (state, action) => {
         ...state,
         filtered_products: [...action.payload],
         all_products: [...action.payload],
-
         filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
       };
     }
@@ -50,11 +67,11 @@ export const filter_reducer = (state, action) => {
     }
     case "FILTERING_PRODUCTS": {
       const { all_products } = state;
+
       const { category, company, color, price, search_term, freeshipping } =
         state.filters;
 
       let tempFilteredProducts = [...all_products];
-
       if (search_term) {
         tempFilteredProducts = tempFilteredProducts.filter((product) =>
           product.name.toLowerCase().startsWith(search_term)
@@ -111,6 +128,8 @@ export const filter_reducer = (state, action) => {
         },
       };
     default:
-      throw new Error(`No matching "${action.type}" - action type `);
+      return state;
   }
 };
+
+export default filterReducer;

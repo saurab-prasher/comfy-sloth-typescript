@@ -1,9 +1,7 @@
 import React from "react";
-import { useFilterContext } from "../../context/filter_context.js";
 
 import { FilterFormContainer } from "./FiltersElements.js";
-const FilterForm = () => {
-  const { handleFilters, search_term } = useFilterContext();
+const FilterForm = ({ handleFilters, searchTerm }) => {
   return (
     <FilterFormContainer className="form">
       <form onSubmit={(e) => e.preventDefault()}>
@@ -12,7 +10,7 @@ const FilterForm = () => {
           placeholder="Search"
           type="text"
           name="search_term"
-          value={search_term}
+          value={searchTerm || ""}
         />
       </form>
     </FilterFormContainer>
