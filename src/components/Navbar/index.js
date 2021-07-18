@@ -1,21 +1,18 @@
 import React from "react";
-import { useProductsContext } from "../../context/products_context";
-import { useCartContext } from "../../context/cart_context";
+
+import { connect } from "react-redux";
+import { openSidebar } from "../../actions";
 
 import logo from "../../assets/images/logo.svg";
 import NavMenu from "./Menu";
 import NavBtnContainer from "./NavBtnContainer";
-
 import { Header, MobileIcon, Logo, Nav } from "./NavbarElements.js";
 
 Logo.defaultProps = {
   src: logo,
 };
 
-const Navbar = () => {
-  const { openSidebar } = useProductsContext();
-  const { total_items } = useCartContext();
-
+const Navbar = ({ openSidebar, totalItems }) => {
   return (
     <Header>
       <div>
@@ -29,9 +26,16 @@ const Navbar = () => {
       <Nav>
         <NavMenu />
       </Nav>
-      <NavBtnContainer total_items={total_items} />
+      <NavBtnContainer total_items={totalItems} />
     </Header>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    totalItems: state.cart.total_items,
+    openSidebar: state.products.openSidebar,
+  };
+};
+
+export default connect(mapStateToProps, { openSidebar })(Navbar);

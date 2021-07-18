@@ -23,13 +23,10 @@ import {
   Available,
 } from "./SinglePageElements";
 
-const SinglePage = () => {
-  const {
-    fetchSingleProduct,
-    single_product_loading,
-    single_product: product,
-  } = useProductsContext();
+import { connect } from "react-redux";
+import { fetchSingleProduct } from "../../actions";
 
+const SinglePage = ({ loading, product, fetchSingleProduct }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -50,7 +47,7 @@ const SinglePage = () => {
 
   return (
     <>
-      {single_product_loading ? (
+      {loading ? (
         <Loading singleProduct={true} />
       ) : (
         <div
@@ -105,5 +102,10 @@ const SinglePage = () => {
     </>
   );
 };
-
-export default SinglePage;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.products.single_product_loading,
+    product: state.products.single_product,
+  };
+};
+export default connect(mapStateToProps, { fetchSingleProduct })(SinglePage);

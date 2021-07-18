@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { useProductsContext } from "../../context/products_context";
+import { connect } from "react-redux";
+import { fetchProducts } from "../../actions";
 
 import {
   FeaturedContainer,
@@ -14,11 +15,12 @@ import {
 import Loading from "../Loading";
 import Card from "../Card";
 
-const Featured = () => {
-  const { featured_products, products_loading, products_error } =
-    useProductsContext();
+const Featured = ({ featured, loading, error, fetchProducts }) => {
+  useEffect(() => {
+    fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
+  }, []);
 
-  if (products_error) {
+  if (error) {
     return (
       <FeaturedContainer>
         <h1>SomeThing Went Wrong!!</h1>;
@@ -27,14 +29,14 @@ const Featured = () => {
   } else {
     return (
       <FeaturedContainer>
-        {products_loading ? (
+        {loading ? (
           <Loading mainPage={true} />
         ) : (
           <FeaturedInner>
             <FeaturedH2>Featured Products</FeaturedH2>
             <Line />
             <FeaturedCards>
-              {featured_products.slice(0, 3).map((item) => {
+              {featured.slice(0, 3).map((item) => {
                 return <Card key={item.id} {...item} />;
               })}
             </FeaturedCards>
@@ -46,4 +48,11 @@ const Featured = () => {
   }
 };
 
-export default Featured;
+const mapStateToProps = (state) => {
+  return {
+    featured: state.products.featured_products,
+    loading: state.products.products_loading,
+    error: state.products.products_error,
+  };
+};
+export default connect(mapStateToProps, { fetchProducts })(Featured);

@@ -44,7 +44,6 @@ const ErrorContainer = styled.div`
 
     h3 {
       font-size: 3rem;
-      /* margin: 2rem 0; */
     }
     p {
       font-size: 1.8rem;

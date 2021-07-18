@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { useCartContext } from "../../context/cart_context";
 import { AddToCartContainer, AddToCartBtn } from "./AddToCartElements";
 
 import ColorsContainer from "./ColorsContainer";
 import ChangeItemAmount from "../Cart/ChangeQuantity";
 
-const AddToCart = ({ product }) => {
+import { connect } from "react-redux";
+import { addToCart } from "../../actions";
+
+const AddToCart = ({ product, addToCart }) => {
   const { id, colors, stock } = product;
-  const { addToCart } = useCartContext();
 
   const [mainColor, setMainColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
@@ -49,4 +50,4 @@ const AddToCart = ({ product }) => {
   );
 };
 
-export default AddToCart;
+export default connect(null, { addToCart })(AddToCart);

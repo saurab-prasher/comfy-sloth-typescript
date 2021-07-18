@@ -1,28 +1,38 @@
-import React from "react";
-import { useCartContext } from "../../context/cart_context";
-import { CartContainer } from "./CartElements";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import {
+  deleteItem,
+  clearCart,
+  toggleCartItem,
+  countCartTotals,
+} from "../../actions";
 
+import { CartContainer } from "./CartElements";
 import Header from "../Header";
 import CartHeading from "./CartHeading";
 import SingleCartItem from "./SingleCartItem";
 import CartTotal from "./CartTotal";
 import CartBtns from "./CartBtns";
 
-const Cart = () => {
-  const {
-    cart,
-    total_amount,
-    deleteItem,
-    toggleAmount,
-    clearCart,
-    shipping_fee,
-  } = useCartContext();
+const Cart = ({
+  deleteItem,
+  clearCart,
+  cart,
+  shippingFee,
+  TotalAmount,
+  countCartTotals,
+  toggleCartItem,
+}) => {
+  useEffect(() => {
+    countCartTotals();
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const increase = (id, value) => {
-    toggleAmount(id, value);
+    toggleCartItem(id, value);
   };
   const decrease = (id, value) => {
-    toggleAmount(id, value);
+    toggleCartItem(id, value);
   };
 
   return (
@@ -57,10 +67,7 @@ const Cart = () => {
             <hr />
             <CartBtns clearCart={clearCart} />
 
-            <CartTotal
-              total_amount={total_amount}
-              shipping_fee={shipping_fee}
-            />
+            <CartTotal total_amount={TotalAmount} shipping_fee={shippingFee} />
           </>
         )}
       </CartContainer>
@@ -68,4 +75,18 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+const mapToStateProps = (state) => {
+  return {
+    cart: state.cart.cart,
+    shippingFee: state.cart.shipping_fee,
+    totamAmount: state.cart.total_amount,
+    totalCartItems: state.cart.total_items,
+  };
+};
+
+export default connect(mapToStateProps, {
+  deleteItem,
+  clearCart,
+  toggleCartItem,
+  countCartTotals,
+})(Cart);

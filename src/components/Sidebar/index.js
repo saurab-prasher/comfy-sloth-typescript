@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useProductsContext } from "../../context/products_context.js";
+
 import { useCartContext } from "../../context/cart_context";
 import { useUserContext } from "../../context/user_context.js";
 import { useHistory } from "react-router";
@@ -22,11 +22,13 @@ import {
   SidebarItem,
 } from "./SidebarElements";
 
-const Sidebar = () => {
-  const { isSidebarOpen, closeSidebar } = useProductsContext();
+import { connect } from "react-redux";
+import { closeSidebar } from "../../actions/index.js";
+
+const Sidebar = ({ isSidebarOpen, closeSidebar, totalItems }) => {
   const [error, setError] = useState("");
   const { currentUser, logout } = useUserContext();
-  const { total_items } = useCartContext();
+  // const { total_items } = useCartContext();
   const history = useHistory();
 
   async function handleLogout() {
@@ -71,7 +73,7 @@ const Sidebar = () => {
         <SidebarBtn onClick={closeSidebar} to="/cart">
           Cart
           <ShoppingCart />
-          <ShoppingCartValue>{total_items}</ShoppingCartValue>
+          <ShoppingCartValue>{totalItems}</ShoppingCartValue>
         </SidebarBtn>
 
         {currentUser ? (
@@ -100,4 +102,11 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+  return {
+    totalItems: state.cart.total_items,
+    isSidebarOpen: state.products.isSidebarOpen,
+  };
+};
+
+export default connect(mapStateToProps, { closeSidebar })(Sidebar);
