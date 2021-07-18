@@ -45,16 +45,16 @@ const App = ({
   filteringProducts,
 }) => {
   useEffect(() => {
-    fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
-  }, [fetchProducts]);
-
-  useEffect(() => {
     loadProducts();
   }, [products, loadProducts]);
 
   useEffect(() => {
-    sortProducts();
+    fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
+  }, [fetchProducts]);
+
+  useEffect(() => {
     filteringProducts();
+    sortProducts();
   }, [filters, sort, sortProducts, filteringProducts]);
 
   useEffect(() => {
