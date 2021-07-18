@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import {
   deleteItem,
@@ -20,14 +20,8 @@ const Cart = ({
   cart,
   shippingFee,
   TotalAmount,
-  countCartTotals,
   toggleCartItem,
 }) => {
-  useEffect(() => {
-    countCartTotals();
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
   const increase = (id, value) => {
     toggleCartItem(id, value);
   };

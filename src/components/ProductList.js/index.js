@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { ProductListContainer, NotFoundH1 } from "./ProductElements";
 
@@ -24,12 +24,7 @@ const ProductList = ({
   view,
   handleProductView,
   updateSort,
-  fetchProducts,
-  filters,
-  filteringProducts,
 }) => {
-  console.log(sort);
-
   return (
     <>
       <Header location="products" />

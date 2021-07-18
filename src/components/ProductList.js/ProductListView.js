@@ -8,7 +8,6 @@ import {
 import { formatPrice } from "../../utils/helper";
 
 const ProductListView = ({ products }) => {
-  console.log(products);
   return products?.map((item) => {
     const { id, image, name, description, price } = item;
     return (

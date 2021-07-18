@@ -72,7 +72,6 @@ export const fetchSingleProduct = (url) => async (dispatch) => {
 };
 
 export const updateSort = (e) => {
-  console.log(e?.target.value);
   return { type: "UPDATE_SORT", payload: e?.target.value };
 };
 
@@ -93,11 +92,11 @@ export const loadProducts = () => {
 };
 
 export const settingFilters = (e) => {
-  let filterKey = e?.target.name || e?.target.dataset.color;
+  let filterKey = e.target.name || e.target.dataset.color;
   let filterValue =
-    e?.target.value ||
-    e?.target.textContent ||
-    e?.target.getAttribute("data-color");
+    e.target.value ||
+    e.target.textContent ||
+    e.target.getAttribute("data-color");
 
   if (filterKey === "freeshipping") {
     filterValue = e?.target.checked;

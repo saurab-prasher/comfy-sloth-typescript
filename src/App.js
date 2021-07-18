@@ -41,22 +41,29 @@ const App = ({
   fetchProducts,
   countCartTotals,
   loadProducts,
-  updateSort,
   sortProducts,
+  filteringProducts,
 }) => {
   useEffect(() => {
     fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
-  }, []);
+  }, [fetchProducts]);
 
   useEffect(() => {
     loadProducts();
-  }, [products]);
+  }, [products, loadProducts]);
 
   useEffect(() => {
     sortProducts();
     filteringProducts();
-  }, [filters, sort]);
+  }, [filters, sort, sortProducts, filteringProducts]);
 
+  useEffect(() => {
+    countCartTotals();
+  }, [cart.cart, countCartTotals]);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart.cart));
+  }, [cart]);
   return (
     <>
       <Navbar />

@@ -10,7 +10,7 @@ const FilterForm = ({ handleFilters, searchTerm }) => {
           placeholder="Search"
           type="text"
           name="search_term"
-          value={searchTerm}
+          value={searchTerm || ""}
         />
       </form>
     </FilterFormContainer>
