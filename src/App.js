@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 // Pages
 import About from "./pages/About";
@@ -21,7 +21,42 @@ import ForgotPassword from "./components/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import PrivateRoute1 from "./PrivateRoute1";
 
-const App = () => {
+// Redux
+import { connect } from "react-redux";
+
+// actions
+import {
+  countCartTotals,
+  fetchProducts,
+  filteringProducts,
+  sortProducts,
+  loadProducts,
+} from "./actions";
+
+const App = ({
+  cart,
+  filters,
+  sort,
+  products,
+  fetchProducts,
+  countCartTotals,
+  loadProducts,
+  updateSort,
+  sortProducts,
+}) => {
+  useEffect(() => {
+    fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
+  }, []);
+
+  useEffect(() => {
+    loadProducts();
+  }, [products]);
+
+  useEffect(() => {
+    sortProducts();
+    filteringProducts();
+  }, [filters, sort]);
+
   return (
     <>
       <Navbar />
@@ -45,4 +80,18 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products.products,
+    cart: state.cart,
+    filters: state.filter.filters,
+    sort: state.filter.sort,
+  };
+};
+export default connect(mapStateToProps, {
+  countCartTotals,
+  fetchProducts,
+  filteringProducts,
+  sortProducts,
+  loadProducts,
+})(App);

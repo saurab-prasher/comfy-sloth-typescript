@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { FilterProvider } from "./context/filter_context";
 import { UserProvider } from "./context/user_context";
 import App from "./App";
 import "./index.css";
@@ -20,9 +19,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <UserProvider>
-        <FilterProvider>
-          <App />
-        </FilterProvider>
+        <App />
       </UserProvider>
     </BrowserRouter>
   </Provider>,

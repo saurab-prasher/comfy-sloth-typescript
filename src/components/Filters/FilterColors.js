@@ -1,14 +1,9 @@
 import React from "react";
 
-import { useFilterContext } from "../../context/filter_context.js";
 import { Colors, FilterColorBtn, SpanBtnAll } from "./FiltersElements.js";
 import { FaCheck } from "react-icons/fa";
 
-const FilterColors = ({ colors }) => {
-  const {
-    handleFilters,
-    filters: { color: filterColor },
-  } = useFilterContext();
+const FilterColors = ({ colors, handleFilters, filterColor }) => {
   return (
     <Colors className="color">
       <h3>Colors</h3>

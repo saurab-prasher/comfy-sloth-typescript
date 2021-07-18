@@ -1,25 +1,18 @@
 import React from "react";
-import { useFilterContext } from "../../context/filter_context.js";
 import { Price } from "./FiltersElements.js";
 
 import { formatPrice } from "../../utils/helper";
 
-const FilterPrice = () => {
-  const {
-    handleFilters,
-
-    filters: { price, max_price, min_price },
-  } = useFilterContext();
-
+const FilterPrice = ({ handleFilters, maxPrice, minPrice, price }) => {
   return (
     <Price className="price">
       <label htmlFor="price">Price</label>
-      <p>{formatPrice(price || max_price)}</p>
+      <p>{formatPrice(price || maxPrice)}</p>
       <input
         onChange={(e) => handleFilters(e)}
-        min={min_price}
-        max={max_price}
-        value={price || max_price}
+        min={minPrice}
+        max={maxPrice}
+        value={price || maxPrice}
         step="20"
         type="range"
         name="price"

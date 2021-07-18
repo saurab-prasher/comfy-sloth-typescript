@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { openSidebar } from "../../actions";
+import { openSidebar, countCartTotals } from "../../actions";
 
 import logo from "../../assets/images/logo.svg";
 import NavMenu from "./Menu";
@@ -12,7 +12,7 @@ Logo.defaultProps = {
   src: logo,
 };
 
-const Navbar = ({ openSidebar, totalItems }) => {
+const Navbar = ({ openSidebar, totalItems, countCartTotals }) => {
   return (
     <Header>
       <div>
@@ -33,9 +33,12 @@ const Navbar = ({ openSidebar, totalItems }) => {
 
 const mapStateToProps = (state) => {
   return {
+    cart: state.cart,
     totalItems: state.cart.total_items,
     openSidebar: state.products.openSidebar,
   };
 };
 
-export default connect(mapStateToProps, { openSidebar })(Navbar);
+export default connect(mapStateToProps, { openSidebar, countCartTotals })(
+  Navbar
+);

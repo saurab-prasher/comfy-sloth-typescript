@@ -14,24 +14,50 @@ import FilterCompany from "./FilterCompany.js";
 import FilterColors from "./FilterColors.js";
 import FilterPrice from "./FilterPrice.js";
 import FilterShipping from "./FilterShipping.js";
-import { useFilterContext } from "../../context/filter_context.js";
 
-const Filters = ({ products }) => {
-  const { resetFilters } = useFilterContext();
+import { connect } from "react-redux";
+import { settingFilters } from "../../actions/index.js";
+import { resetFilters } from "../../actions/index.js";
+
+const Filters = ({ products, filters, resetFilters, settingFilters }) => {
   const categories = getUniqueValues(products, "category");
   const companies = getUniqueValues(products, "company");
   const colors = getUniqueValues(products, "colors");
+
   return (
     <FilterContainer>
-      <FilterForm />
+      <FilterForm
+        handleFilters={settingFilters}
+        searchTerm={filters.search_term}
+      />
 
-      <FilterCategory categories={categories} />
-      <FilterCompany companies={companies} />
-      <FilterColors colors={colors} />
+      <FilterCategory
+        filterCategory={filters.category}
+        handleFilters={settingFilters}
+        categories={categories}
+      />
+      <FilterCompany
+        filterCompany={filters.company}
+        companies={companies}
+        handleFilters={settingFilters}
+      />
+      <FilterColors
+        filterColor={filters.color}
+        handleFilters={settingFilters}
+        colors={colors}
+      />
 
-      <FilterPrice />
+      <FilterPrice
+        maxPrice={filters.max_price}
+        minPrice={filters.min_price}
+        price={filters.price}
+        handleFilters={settingFilters}
+      />
 
-      <FilterShipping />
+      <FilterShipping
+        handleFilters={settingFilters}
+        freeshipping={filters.freeshipping}
+      />
 
       <FilterClear className="clear">
         <FilterClearBtn onClick={() => resetFilters()}>
@@ -42,4 +68,13 @@ const Filters = ({ products }) => {
   );
 };
 
-export default Filters;
+const mapStateToProps = (state) => {
+  return {
+    filters: state.filter.filters,
+    products: state.products.products,
+  };
+};
+export default connect(mapStateToProps, {
+  resetFilters,
+  settingFilters,
+})(Filters);

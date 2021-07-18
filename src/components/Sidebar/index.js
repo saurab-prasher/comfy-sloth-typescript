@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import { useCartContext } from "../../context/cart_context";
 import { useUserContext } from "../../context/user_context.js";
 import { useHistory } from "react-router";
 import {
@@ -28,7 +27,6 @@ import { closeSidebar } from "../../actions/index.js";
 const Sidebar = ({ isSidebarOpen, closeSidebar, totalItems }) => {
   const [error, setError] = useState("");
   const { currentUser, logout } = useUserContext();
-  // const { total_items } = useCartContext();
   const history = useHistory();
 
   async function handleLogout() {

@@ -1,8 +1,6 @@
 import React from "react";
-import { useFilterContext } from "../../context/filter_context";
 
-const Sort = () => {
-  const { updateSort, sort } = useFilterContext();
+const Sort = ({ sort, updateSort }) => {
   return (
     <form onSubmit={(e) => e.preventDefault()} className="sort">
       <label style={{ marginRight: "1.5rem" }} htmlFor="sort">

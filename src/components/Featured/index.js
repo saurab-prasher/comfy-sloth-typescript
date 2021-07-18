@@ -15,11 +15,7 @@ import {
 import Loading from "../Loading";
 import Card from "../Card";
 
-const Featured = ({ featured, loading, error, fetchProducts }) => {
-  useEffect(() => {
-    fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
-  }, []);
-
+const Featured = ({ featured, loading, error }) => {
   if (error) {
     return (
       <FeaturedContainer>

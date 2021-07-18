@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useProductsContext } from "../../context/products_context";
 
 import { useParams } from "react-router-dom";
 import { formatPrice } from "../../utils/helper";

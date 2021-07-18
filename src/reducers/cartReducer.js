@@ -21,7 +21,6 @@ const cartReducer = (state = initialState, action) => {
 
       const tempItem = state.cart.find((i) => i.id === id + color);
 
-      console.log(tempItem);
       if (tempItem) {
         const tempCart = state.cart.map((cartItem) => {
           if (cartItem.id === id + color) {

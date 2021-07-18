@@ -1,13 +1,8 @@
 import React from "react";
-import { useFilterContext } from "../../context/filter_context.js";
 
 import { Category } from "./FiltersElements.js";
 
-const FilterCategory = ({ categories }) => {
-  const {
-    handleFilters,
-    filters: { category: filterCategory },
-  } = useFilterContext();
+const FilterCategory = ({ categories, handleFilters, filterCategory }) => {
   return (
     <Category className="category">
       <h3>Category</h3>

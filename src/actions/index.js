@@ -70,3 +70,54 @@ export const fetchSingleProduct = (url) => async (dispatch) => {
     dispatch({ type: "GET_SINGLE_PRODUCT_ERROR" });
   }
 };
+
+export const updateSort = (e) => {
+  console.log(e?.target.value);
+  return { type: "UPDATE_SORT", payload: e?.target.value };
+};
+
+export const sortProducts = () => {
+  return { type: "SORT_PRODUCTS" };
+};
+
+export const filteringProducts = () => {
+  return {
+    type: "FILTERING_PRODUCTS",
+  };
+};
+
+export const loadProducts = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: "LOAD_PRODUCTS", payload: getState().products.products });
+  };
+};
+
+export const settingFilters = (e) => {
+  let filterKey = e?.target.name || e?.target.dataset.color;
+  let filterValue =
+    e?.target.value ||
+    e?.target.textContent ||
+    e?.target.getAttribute("data-color");
+
+  if (filterKey === "freeshipping") {
+    filterValue = e?.target.checked;
+  }
+
+  return {
+    type: "SETTING_FILTERS",
+    payload: { filterKey, filterValue },
+  };
+};
+
+export const resetFilters = () => {
+  return {
+    type: "RESET_FILTERS",
+  };
+};
+
+export const handleProductView = (view) => {
+  return {
+    type: "SET_PRODUCTS_VIEW",
+    payload: view,
+  };
+};
