@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { BsStarHalf, BsStar, BsStarFill } from "react-icons/bs";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { BsStarHalf, BsStar, BsStarFill } from 'react-icons/bs';
 
 export const SinglePageMain = styled.main`
   display: grid;

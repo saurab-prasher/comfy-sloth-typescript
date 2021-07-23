@@ -25,7 +25,6 @@ const ProductList = ({
   handleProductView,
   updateSort,
 }) => {
-  console.log(products);
   return (
     <>
       <Header location="products" />
