@@ -1,4 +1,4 @@
-# Demo Link - [comfy sloth](https://practical-einstein-217d23.netlify.app/)
+# Demo Link - [comfy sloth](https://practical-einstein-217d23.netlify.app/) - Ported to Typescript soon.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
