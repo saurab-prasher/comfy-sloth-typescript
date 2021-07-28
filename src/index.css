@@ -38,7 +38,7 @@ html {
 }
 
 body {
-  font-family: "Encode Sans", sans-serif;
+  font-family: 'Encode Sans', sans-serif;
   color: #444444;
   position: relative;
   line-height: 1.6;
@@ -91,7 +91,7 @@ a {
 }
 
 .active-filter::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: -0.35rem;
