@@ -3,16 +3,17 @@ import { useUserContext } from '../context/userContext';
 
 interface PrivateRouteProps {
   component: any;
-  path:string
-  exact?:boolean | undefined
+  path: string;
+  exact?: boolean | undefined;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({
   component: Component,
   ...rest
 }) => {
-  const { state:currentUser } = useUserContext();
-
+  const {
+    state: { currentUser },
+  } = useUserContext();
 
   return (
     <Route

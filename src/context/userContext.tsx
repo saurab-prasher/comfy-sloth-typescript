@@ -1,9 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useReducer,
-  useLayoutEffect,
-} from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 import { auth } from '../firebase/firebase';
 import reducer from '../state/reducers/userReducer';
 import { useHistory } from 'react-router-dom';
@@ -74,7 +69,7 @@ export const UserProvider: React.FC = ({
   // };
 
   // settting user if exists
-  useLayoutEffect(() => {
+  useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       dispatch({ type: ActionTypes.SET_USER, payload: user });
     });
