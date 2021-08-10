@@ -1,4 +1,5 @@
 import { ActionTypes } from '../action-types';
+import { ActionFilter } from '../actions';
 interface FilterState {
   filterProducts: any[];
   allProducts: any[];
@@ -36,7 +37,10 @@ const initialState = {
   },
 };
 
-const filterReducer = (state: FilterState = initialState, action: any) => {
+const filterReducer = (
+  state: FilterState = initialState,
+  action: ActionFilter
+) => {
   switch (action.type) {
     case ActionTypes.LOAD_PRODUCTS: {
       let maxPrice = action.payload.map((item: any) => item.price);
@@ -56,6 +60,7 @@ const filterReducer = (state: FilterState = initialState, action: any) => {
 
     case ActionTypes.SORT_PRODUCTS: {
       const { sort, filterProducts } = state;
+
       let tempSortedArr = [...filterProducts];
 
       if (sort === 'price-lowest') {

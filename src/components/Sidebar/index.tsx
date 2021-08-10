@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 
-import { useUserContext } from '../../context/userContext.js';
+import { useUserContext } from '../../context/userContext';
 import { useHistory } from 'react-router';
 import {
   NavBtn as SidebarBtn,
@@ -30,7 +30,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ totalItems }) => {
   const [error, setError] = useState('');
-  const { currentUser, logout } = useUserContext();
+  const { state: currentUser, logout  } = useUserContext();
   const history = useHistory();
 
   async function handleLogout() {

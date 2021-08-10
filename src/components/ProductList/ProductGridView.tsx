@@ -1,5 +1,4 @@
 import { ProductGridSection } from './ProductElements';
-
 import Card from '../Card';
 
 interface ProductView {

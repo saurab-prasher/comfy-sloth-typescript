@@ -10,11 +10,11 @@ import {
 } from './ForgotPswElements';
 
 import Loading from '../Loading';
-import { useUserContext } from '../../context/userContext.js';
+import { useUserContext } from '../../context/userContext';
 
 const ForgotPassword = () => {
   const emailRef = useRef<HTMLInputElement>(null);
-  const { handleResetPassword, error, loading, message } = useUserContext();
+  const { handleResetPassword, state: {error , loading, message} } = useUserContext();
 
   return (
     <LoginContainer>

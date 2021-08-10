@@ -12,7 +12,8 @@ interface NavBtnContainerProps {
 }
 
 const NavBtnContainer: React.FC<NavBtnContainerProps> = ({ totalItems }) => {
-  const { currentUser, handleLogout } = useUserContext();
+  const {state:{currentUser}, handleLogout } = useUserContext();
+
 
   return (
     <BtnContainer>
@@ -22,7 +23,7 @@ const NavBtnContainer: React.FC<NavBtnContainerProps> = ({ totalItems }) => {
         <ShoppingCartValue>{totalItems}</ShoppingCartValue>
       </NavBtn>
       {currentUser ? (
-        <NavBtn onClick={handleLogout} to='/'>
+        <NavBtn onClick={handleLogout}  to='/'>
           Logout
         </NavBtn>
       ) : (

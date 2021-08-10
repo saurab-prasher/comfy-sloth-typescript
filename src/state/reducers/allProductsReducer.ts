@@ -1,4 +1,5 @@
 import { ActionTypes } from '../action-types';
+import {ActionFetchProducts} from '../actions'
 
 interface ProductState {
   isSidebarOpen: boolean;
@@ -18,7 +19,7 @@ const initialState = {
 
 const reducer = (
   state: ProductState = initialState,
-  action: any
+  action: ActionFetchProducts
 ): ProductState => {
   switch (action.type) {
     case ActionTypes.SIDEBAR_OPEN:

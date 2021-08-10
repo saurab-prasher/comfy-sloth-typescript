@@ -16,7 +16,7 @@ const SignUp = () => {
   const passwordRef = useRef(null);
   const passwordConfirmRef = useRef(null);
 
-  const { handleSubmitSignup, loading, error } = useUserContext();
+  const { handleSubmitSignup, state: {loading, error} } = useUserContext();
 
   return (
     <SignUpContainer>
@@ -71,7 +71,7 @@ const SignUp = () => {
                 required
               />
             </FormGroup>
-            <Button disabled={loading} type='submit'>
+            <Button disabled={true} type='submit'>
               Sign up <span>&rarr;</span>
             </Button>
           </form>

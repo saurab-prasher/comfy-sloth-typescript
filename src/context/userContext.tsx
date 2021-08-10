@@ -1,9 +1,24 @@
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useReducer,
+  useLayoutEffect,
+} from 'react';
 import { auth } from '../firebase/firebase';
 import reducer from '../state/reducers/userReducer';
 import { useHistory } from 'react-router-dom';
+import { ActionTypes } from '../state/action-types';
 
-const UserContext = React.createContext();
+export interface initialStateType {
+  email: string;
+  password: any;
+  passwordConfirm: any;
+  error: any;
+  userLoading: boolean;
+  loading: boolean;
+  currentUser: string;
+  message: any;
+}
 
 const initialState = {
   email: '',
@@ -16,14 +31,30 @@ const initialState = {
   message: '',
 };
 
-export const UserProvider = ({ children }) => {
+interface UserStateContextProps {
+  state: initialStateType;
+  handleResetPassword: any;
+  resetPassword: any;
+  handleSubmitSignup: any;
+  handleSubmitLogin: any;
+  handleLogout: any;
+  logout: any;
+}
+
+const UserContext = React.createContext<UserStateContextProps>(
+  {} as UserStateContextProps
+);
+
+export const UserProvider: React.FC = ({
+  children,
+}: React.PropsWithChildren<{}>) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const history = useHistory();
-  const signup = (email, password) => {
+  const signup = (email: string, password: string) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
 
-  const login = (email, password) => {
+  const login = (email: string, password: string) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
@@ -31,7 +62,7 @@ export const UserProvider = ({ children }) => {
     return auth.signOut();
   };
 
-  const resetPassword = (email) => {
+  const resetPassword = (email: string) => {
     return auth.sendPasswordResetEmail(email);
   };
 
@@ -43,9 +74,9 @@ export const UserProvider = ({ children }) => {
   // };
 
   // settting user if exists
-  useEffect(() => {
+  useLayoutEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      dispatch({ type: 'SET_USER', payload: user });
+      dispatch({ type: ActionTypes.SET_USER, payload: user });
     });
 
     return () => {
@@ -56,47 +87,52 @@ export const UserProvider = ({ children }) => {
   // set Error timer
   useEffect(() => {
     const id = setTimeout(() => {
-      dispatch({ type: 'SET_ERROR_TIMER' });
+      dispatch({ type: ActionTypes.SET_ERROR_TIMER });
     }, 3000);
     return () => clearTimeout(id);
   }, [state.error, state.message]);
 
   // handles signup
-  const handleSubmitSignup = async (e, email, password, passwordConfirm) => {
+  const handleSubmitSignup = async (
+    e: Event,
+    email: any,
+    password: any,
+    passwordConfirm: any
+  ) => {
     e.preventDefault();
 
     if (password?.current.value !== passwordConfirm?.current.value) {
       return dispatch({
-        type: 'SET_SIGNUP_ERROR',
+        type: ActionTypes.SET_SIGNUP_ERROR,
         payload: 'Passwords do not match!',
       });
     }
 
     try {
-      dispatch({ type: 'SET_SIGNUP_BEGIN' });
+      dispatch({ type: ActionTypes.SET_SIGNUP_BEGIN });
       await signup(email.current.value, password.current.value);
 
-      dispatch({ type: 'SET_SIGNUP_SUCCESS' });
+      dispatch({ type: ActionTypes.SET_SIGNUP_SUCCESS });
       history.push('/');
     } catch (err) {
       dispatch({
-        type: 'SET_SIGNUP_ERROR',
+        type: ActionTypes.SET_SIGNUP_ERROR,
         payload: 'Email Already in use, please login',
       });
     }
   };
 
   // handles login
-  const handleSubmitLogin = async (e, email, password) => {
+  const handleSubmitLogin = async (e: Event, email: any, password: any) => {
     e.preventDefault();
-    dispatch({ type: 'SET_LOGIN_BEGIN' });
+    dispatch({ type: ActionTypes.SET_LOGIN_BEGIN });
 
     try {
       await login(email.current.value, password.current.value);
-      dispatch({ type: 'SET_LOGIN_SUCCESS' });
+      dispatch({ type: ActionTypes.SET_LOGIN_SUCCESS });
     } catch (err) {
       dispatch({
-        type: 'SET_LOGIN_ERROR',
+        type: ActionTypes.SET_LOGIN_ERROR,
         payload: 'You have entered an invalid username or password',
       });
     }
@@ -104,28 +140,28 @@ export const UserProvider = ({ children }) => {
 
   // handles logout
   const handleLogout = async () => {
-    dispatch({ type: 'SET_LOGOUT_BEGIN' });
+    dispatch({ type: ActionTypes.SET_LOGOUT_BEGIN });
 
     try {
       await logout();
-      dispatch({ type: 'SET_LOGOUT_SUCCESS' });
+      dispatch({ type: ActionTypes.SET_LOGOUT_SUCCESS });
       history.push('/login');
     } catch (err) {
       dispatch({
-        type: 'SET_LOGOUT_ERROR',
+        type: ActionTypes.SET_LOGOUT_ERROR,
         payload: 'Failed to logout, please try again!',
       });
     }
   };
 
-  const handleResetPassword = async (e, email) => {
+  const handleResetPassword = async (e: Event, email: any) => {
     e.preventDefault();
 
     try {
-      dispatch({ type: 'SET_RESET_PASSWORD_BEGIN' });
+      dispatch({ type: ActionTypes.SET_RESET_PASSWORD_BEGIN });
       await resetPassword(email.current.value);
       dispatch({
-        type: 'SET_RESET_PASSWORD_SUCCESS',
+        type: ActionTypes.SET_RESET_PASSWORD_SUCCESS,
         payload: { message: 'Check your inbox for further instructions' },
       });
       setTimeout(() => {
@@ -133,7 +169,7 @@ export const UserProvider = ({ children }) => {
       }, 4000);
     } catch (err) {
       dispatch({
-        type: 'SET_RESET_PASSWORD_ERROR',
+        type: ActionTypes.SET_RESET_PASSWORD_ERROR,
         payload: 'Failed to reset password',
       });
     }
@@ -141,12 +177,13 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
-        ...state,
+        state,
         handleResetPassword,
         resetPassword,
         handleSubmitSignup,
         handleSubmitLogin,
         handleLogout,
+        logout,
       }}
     >
       {!state.userLoading && children}

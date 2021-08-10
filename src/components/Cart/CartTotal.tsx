@@ -13,7 +13,7 @@ interface CartTotalProps {
 }
 
 const CartTotal: React.FC<CartTotalProps> = ({ totalAmount, shippingFee }) => {
-  const { currentUser } = useUserContext();
+  const { state:{currentUser} } = useUserContext();
   return (
     <CartItemTotalContainer>
       <CartItemTotal>

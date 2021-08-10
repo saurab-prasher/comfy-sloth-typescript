@@ -14,7 +14,7 @@ const Login = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const { error, handleSubmitLogin, loading } = useUserContext();
+  const { state: {error,loading}, handleSubmitLogin } = useUserContext();
 
   // useEffect(() => {
   //   const id = setTimeout(() => {

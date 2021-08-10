@@ -15,7 +15,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 
 // environment variable
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 ReactDOM.render(

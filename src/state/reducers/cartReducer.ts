@@ -1,4 +1,6 @@
 import { ActionTypes } from '../action-types';
+import { ActionCart } from '../actions';
+
 const getLocalStorage = () => {
   let cart = localStorage.getItem('cart');
   if (cart) {
@@ -24,7 +26,7 @@ const initialState = {
 
 const cartReducer = (
   state: CartState = initialState,
-  action: any
+  action: ActionCart
 ): CartState => {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART: {

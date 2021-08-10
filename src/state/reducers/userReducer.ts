@@ -1,63 +1,67 @@
-const reducer = (state: any, action: any) => {
+import { initialStateType } from '../../context/userContext';
+import { ActionTypes } from '../action-types';
+import { ActionUser } from '../actions';
+
+const reducer = (state: initialStateType, action: ActionUser) => {
   switch (action.type) {
-    case 'SET_USER': {
+    case ActionTypes.SET_USER: {
       return { ...state, currentUser: action.payload, userLoading: false };
     }
-    case 'SET_LOGIN_BEGIN': {
+    case ActionTypes.SET_LOGIN_BEGIN: {
       return { ...state, error: '', loading: true };
     }
 
-    case 'SET_LOGIN_SUCCESS': {
+    case ActionTypes.SET_LOGIN_SUCCESS: {
       return { ...state, error: '', loading: false };
     }
 
-    case 'SET_LOGIN_ERROR': {
+    case ActionTypes.SET_LOGIN_ERROR: {
       return { ...state, error: action.payload, loading: false };
     }
 
-    case 'SET_LOGOUT_BEGIN': {
+    case ActionTypes.SET_LOGOUT_BEGIN: {
       return { ...state, error: '', loading: true };
     }
 
-    case 'SET_LOGOUT_SUCCESS': {
+    case ActionTypes.SET_LOGOUT_SUCCESS: {
       return { ...state, error: '', loading: false };
     }
 
-    case 'SET_LOGOUT_ERROR': {
+    case ActionTypes.SET_LOGOUT_ERROR: {
       return { ...state, error: action.payload, loading: false };
     }
 
-    case 'SET_SIGNUP_BEGIN': {
+    case ActionTypes.SET_SIGNUP_BEGIN: {
       return { ...state, error: '', loading: true };
     }
 
-    case 'SET_SIGNUP_SUCCESS': {
+    case ActionTypes.SET_SIGNUP_SUCCESS: {
       return { ...state, error: '', loading: false };
     }
 
-    case 'SET_SIGNUP_ERROR': {
+    case ActionTypes.SET_SIGNUP_ERROR: {
       return { ...state, error: action.payload, loading: false };
     }
 
-    case 'SET_RESET_PASSWORD_BEGIN': {
+    case ActionTypes.SET_RESET_PASSWORD_BEGIN: {
       return { ...state, error: '', message: '', loading: true };
     }
 
-    case 'SET_RESET_PASSWORD_SUCCESS': {
+    case ActionTypes.SET_RESET_PASSWORD_SUCCESS: {
       const { message } = action.payload;
       return { ...state, error: '', message, loading: false };
     }
 
-    case 'SET_RESET_PASSWORD_ERROR': {
+    case ActionTypes.SET_RESET_PASSWORD_ERROR: {
       return { ...state, error: action.payload, loading: false };
     }
 
-    case 'SET_ERROR_TIMER': {
+    case ActionTypes.SET_ERROR_TIMER: {
       return { ...state, error: '', message: '' };
     }
 
     default:
-      throw new Error(`No matching "${action.type}" - action type `);
+      throw new Error(`No matching - action type `);
   }
 };
 

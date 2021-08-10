@@ -18,8 +18,8 @@ import Footer from './components/Footer';
 import ForgotPassword from './components/ForgotPassword';
 
 // Private route
-import PrvtRouteCheckout from './utils/PrvtRouteCheckout';
-import PrvtRouteLogin from './utils/PrvtRouteLogin';
+import PrivateRouteCheckout from './utils/PrivateRouteCheckout';
+import PrivateRouteLogin from './utils/PrivateRouteLogin';
 
 // Redux
 import { useActions } from './hooks/useActions';
@@ -43,6 +43,7 @@ const App = () => {
   // Fetch all products
   useEffect(() => {
     fetchProducts(process.env.REACT_APP_PRODUCTS_URL);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [process.env.REACT_APP_PRODUCTS_URL]);
 
@@ -53,11 +54,14 @@ const App = () => {
   }, [allProducts]);
 
   // Sort and filter products
+
   useEffect(() => {
-    sortProducts();
+    // Order is important here First filter and then sort
     filterProducts();
+    sortProducts();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters, sort]);
+  }, [sort, filters]);
 
   // Count Cart total amount and set cart to local Storage
   useEffect(() => {
@@ -78,10 +82,10 @@ const App = () => {
           <SingleProduct />
         </Route>
         <Route path='/cart' component={CartPage} />
-        <PrvtRouteLogin path='/login' component={Login} />
-        <PrvtRouteLogin path='/signup' component={SignUpPage} />
-        <PrvtRouteCheckout exact path='/checkout' component={CheckOut} />
-        <PrvtRouteLogin path='/forgotpassword' component={ForgotPassword} />
+        <PrivateRouteLogin path='/login' component={Login} />
+        <PrivateRouteLogin path='/signup' component={SignUpPage} />
+        <PrivateRouteCheckout exact path='/checkout' component={CheckOut} />
+        <PrivateRouteLogin path='/forgotpassword' component={ForgotPassword} />
         <Route path='*' component={Error} />
       </Switch>
       <Footer />

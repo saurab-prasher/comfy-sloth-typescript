@@ -12,6 +12,7 @@
 /build
 .env
 env
+react-app-env.d.ts
 
 # misc
 .DS_Store
